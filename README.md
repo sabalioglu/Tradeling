@@ -7,7 +7,9 @@ Türkiye'deki bir hububat ticaret masası için hazırlanmış sabah bülteni da
 ## Nasıl açılır
 
 - `index.html` dosyasını tarayıcıda açın.
-- Ya da GitHub Pages'i açın: *Settings → Pages → Branch: main / root*. Sayfa birkaç dakika içinde yayına çıkar.
+- Ya da GitHub Pages'i açın: *Settings → Pages → Source: Deploy from a branch → main / (root)*. Sayfa birkaç dakika içinde `https://sabalioglu.github.io/tradeling/` adresinde yayına çıkar.
+
+**Canlı kur:** GitHub Pages'te veya tarayıcıda açıldığında USD/TRY ve EUR/TRY anlık olarak Coinbase'in açık kur servisinden çekilir (yanıt gelmezse ExchangeRate-API'nin günlük kuru, o da gelmezse sayfadaki sabit değer). Fiyat şeridinde "Canlı · saat" etiketi görünür. Diğer veriler şimdilik sabittir.
 
 ## İçerik
 

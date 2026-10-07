@@ -787,5 +787,50 @@ footer li:target { background: var(--accent-soft); border-radius: 4px; }
   window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawLine, 120); });
 })();
 </script>
+<script>
+/* GitHub Pages sürümü: sayfa açılınca USD/TRY ve EUR/TRY canlı çekilir.
+   İki kaynak da yanıt vermezse sayfadaki sabit değer kalır. */
+(function () {
+  var fx = null;
+  Array.prototype.forEach.call(document.querySelectorAll("#ticker .kpi"), function (t) {
+    var l = t.querySelector(".kpi-label");
+    if (l && l.textContent.trim() === "USD/TRY") fx = t;
+  });
+  if (!fx || !window.fetch) return;
+  function timed(url) {
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
+    return fetch(url, ctl ? { signal: ctl.signal } : {}).then(function (r) {
+      clearTimeout(timer);
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    });
+  }
+  function coinbase() {
+    return timed("https://api.coinbase.com/v2/exchange-rates?currency=USD").then(function (d) {
+      var tr = parseFloat(d.data.rates.TRY), eur = parseFloat(d.data.rates.EUR);
+      if (!(tr > 0 && eur > 0)) throw new Error("veri yok");
+      return { usd: tr, eur: tr / eur, src: "Coinbase" };
+    });
+  }
+  function erApi() {
+    return timed("https://open.er-api.com/v6/latest/USD").then(function (d) {
+      var tr = d.rates.TRY, eur = d.rates.EUR;
+      if (!(tr > 0 && eur > 0)) throw new Error("veri yok");
+      return { usd: tr, eur: tr / eur, src: "ExchangeRate-API, günlük" };
+    });
+  }
+  function f(n) { return n.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  coinbase().catch(erApi).then(function (q) {
+    fx.querySelector(".kpi-value b").textContent = f(q.usd);
+    var sub = fx.querySelector(".kpi-sub");
+    if (sub) sub.textContent = "EUR/TRY " + f(q.eur);
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+    var foot = fx.querySelector(".kpi-foot span");
+    if (foot) foot.textContent = "Canlı · " + hh + " · " + q.src;
+  }).catch(function () { /* sabit değer kalır */ });
+})();
+</script>
 </body>
 </html>
