@@ -6,8 +6,8 @@ window.HUBUBAT = {
   "schema": 1,
   "meta": {
     "bulletinDate": "2026-10-07",
-    "generatedAt": "2026-10-07T08:00:00+03:00",
-    "generatedBy": "Elle derlendi (prototip)",
+    "generatedAt": "2026-10-07T17:15:00+03:00",
+    "generatedBy": "Claude rutini",
     "projectsCheckedAt": "2026-10-07"
   },
   "kpis": [
@@ -23,7 +23,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [28]
     },
     {
@@ -37,7 +37,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [28]
     },
     {
@@ -52,7 +52,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [28]
     },
     {
@@ -67,19 +67,19 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.1825,
+      "value": 49.1972,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 54.99, "decimals": 2 },
-      "asOf": "2026-10-07T17:10:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.0061, "decimals": 2 },
+      "asOf": "2026-10-07T17:12:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 7 Eki 15:30: 49,15",
       "asOfNote": "piyasa"
@@ -95,7 +95,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-02",
       "asOfNote": "IKAR, haftalık",
       "cadence": "haftalik",
-      "checked": "2026-10-07T17:30:00+03:00",
+      "checked": "2026-10-07T17:15:00+03:00",
       "src": [27]
     },
     {
@@ -110,7 +110,7 @@ window.HUBUBAT = {
       "asOfNote": "21.09–27.09 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [30]
     },
     {
@@ -123,7 +123,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:10:00+03:00",
+      "checked": "2026-10-07T17:12:00+03:00",
       "src": [29],
       "sub": "1. grup beyaz sert 21.461 · 2. grup kırmızı sert 19.554"
     },
@@ -134,11 +134,12 @@ window.HUBUBAT = {
       "decimals": 0,
       "unit": "TL/t",
       "fx": "usdtry",
-      "asOf": "2026-10-01",
-      "asOfNote": "yürürlük",
+      "asOf": "2026-10-05",
+      "asOfNote": "satış başlangıcı",
       "cadence": "olay",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [11]
+      "checked": "2026-10-07T17:15:00+03:00",
+      "src": [34],
+      "sub": "5,5 Mt · 5–31 Eki teslim · düşük vasıflı 16.750 · KDV ve manipülasyon hariç"
     },
     {
       "id": "ru_duty",
@@ -150,40 +151,47 @@ window.HUBUBAT = {
       "asOf": "2026-09-19",
       "asOfNote": "kararname",
       "cadence": "olay",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [5]
+      "checked": "2026-10-07T17:15:00+03:00",
+      "src": [5, 37]
     }
   ],
   "brief": [
     {
-      "headline": "Karadeniz'deki lojistik kriz Rus ihracatını sert biçimde kesiyor",
-      "body": "Novorossiysk'teki üç ana tahıl terminali (yıllık yaklaşık 24,6 Mt kapasite) Ağustos saldırılarından sonra durdu. Rus Tahıl Birliği Eylül buğday ihracatını 1 Mt civarında bekliyor; geçen yıl aynı ay 5,7 Mt idi. SovEcon 30 Eylül'de 2026/27 Rus tahıl ihracat tahminini 49,4 Mt'tan 44,7 Mt'a indirdi.",
-      "src": [8, 4, 2],
-      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi; Ocak–Mayıs'ta Türkiye'ye tahıl ihracatı değer olarak ikiye katlanmıştı. Açık sözleşmelerde teslim tarihi, navlun ve savaş riski sigortası maddeleri gözden geçirilmeli. Türkiye, taraflarla güvenli seyir önerileri üzerinde çalışıyor.",
-      "impactSrc": [19, 9]
+      "headline": "Batı Karadeniz'de iki günde üç Türk işletmeli gemi vuruldu",
+      "body": "5 Ekim'de Ukrayna mısırı taşıyan Royad Mammadov Romanya açıklarında drone saldırısıyla battı; iki kişi öldü. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, Byala'nın yaklaşık 70 mil açığında Alfa Watan battı ve mürettebatı bulunamadı; buğday taşıyan Able yandı, 18 kişi kurtarıldı. Bulgaristan aramayı 7 Ekim'de durdurdu. Ukrayna saldırılardan Rusya'yı sorumlu tutuyor.",
+      "src": [31, 32, 38],
+      "impact": "Saldırıların ikisi NATO üyesi Romanya ve Bulgaristan açıklarında, Boğaz'a giden rotada oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Tuna ve Ukrayna çıkışlı yüklerde navlun ve savaş riski primi yükselebilir; açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
+      "impactSrc": [33, 31]
     },
     {
-      "headline": "Rus ve AB buğdayı arasındaki fark 77 $/t'a açıldı",
-      "body": "Rus buğdayı FOB Novorossiysk 212 $/t, AB buğdayı 289 $/t civarında. İhraç edilemeyen Rus buğdayının iç piyasa fiyatı 8.900 RUB/t'a geriledi. Rusya, tahıl ihracat vergilerini 1 Eylül'den geçerli olmak üzere 31 Aralık'a kadar sıfırladı.",
-      "src": [4, 5],
-      "impact": "Teslim edilebilir Rus kargosu bulan ithalatçı için belirgin maliyet avantajı var, ama teslim riski yüksek. Aynı fark Mısır gibi alıcıları Fransız buğdayına yöneltiyor.",
-      "impactSrc": [10]
+      "headline": "Rus buğday ihracatı Eylül'de dörtte bire indi, yük Baltık'a kaydı",
+      "body": "Rus Tahıl Birliği'ne göre Eylül'de 1,36 Mt buğday ihraç edildi (geçen yıl 5,4 Mt); Ust-Luga ve Vysotsk başı çekti, alıcı ülke sayısı 37'den 12'ye düştü. Piyasa analistleri Eylül'ü 2,3–2,4 Mt, Ekim'i 2,5 Mt'a kadar tahmin ediyor. SovEcon 2026/27 buğday ihracat tahminini 4,7 Mt indirerek 36,7 Mt'a çekti. IKAR'a göre Baltık FOB 266 $/t.",
+      "src": [35, 27, 36],
+      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi. Novorossiysk yerine Baltık'tan yükleme yolu uzatıyor; Rus kargosunda teslim süresi ve navlun riski sürüyor. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor: vergi muafiyetinin yıl sonunda bitmesi bekleniyor.",
+      "impactSrc": [35, 37]
     },
     {
-      "headline": "CBOT buğdayı Eylül başından geri çekildi; gözler Cuma'daki WASDE'de",
-      "body": "Aralık kontratı 1 Eylül'deki 782,5 ¢ uzlaşmasından 30 Eylül'de 698,5 ¢'e indi; bir gün önce altı haftanın dibini görmüştü. Ekim WASDE raporu 9 Ekim Cuma 19:00 TSİ'de yayımlanacak.",
-      "src": [1, 2, 15],
-      "impact": "İç piyasa rahat: rekor 23 Mt üstü hasat, TMO satışları 1 Ekim'de 18.500 TL/t'dan başladı ve ekmeklik buğday ihracatı 29 Temmuz'dan beri açık.",
-      "impactSrc": [13, 11, 12]
+      "headline": "TMO 5 Ekim'den 5,5 Mt buğday satıyor; Konya borsası TMO'nun üstünde",
+      "body": "TMO ekmeklik ve makarnalık buğdayı 17.750–18.500 TL/t'dan (düşük vasıflı 16.750) satışa açtı; ödeme 5–23 Ekim, teslim 31 Ekim'e kadar. Fiyatlar hasat döneminde açıklananla aynı. Konya Ticaret Borsası'nda 6 Ekim'de 1. grup kırmızı sert buğday ortalaması 20.684 TL/t oldu.",
+      "src": [34, 29],
+      "impact": "Borsa fiyatı TMO'nun 18.500 TL/t'luk üst fiyatının ≈2.200 TL/t (≈%12) üstünde. 5,5 Mt'luk arz Ekim'de iç piyasa fiyatlarını TMO seviyesine doğru çekebilir; un sanayicisi için TMO kanalı daha ucuz.",
+      "impactSrc": [34, 29]
     }
   ],
   "risks": [
     {
       "category": "Lojistik",
-      "title": "Karadeniz ve Novorossiysk",
-      "body": "Ana tahıl terminalleri kapalı; Azak Denizi'nde 10 Temmuz'dan beri seyir kısıtlaması var.",
+      "title": "Batı Karadeniz'de gemi saldırıları",
+      "body": "5–6 Ekim'de Romanya ve Bulgaristan açıklarında üç Türk işletmeli gemi vuruldu; ikisi battı. Saldırılar ilk kez NATO üyesi bir ülkenin ekonomik bölgesine uzandı.",
       "level": "high",
-      "src": [8]
+      "src": [31, 32]
+    },
+    {
+      "category": "Lojistik",
+      "title": "Novorossiysk ve Rus ihracat kapasitesi",
+      "body": "Rus ihracatçıları Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor; alternatif rotalar ayda ancak yüz binlerce ton ekleyebiliyor.",
+      "level": "high",
+      "src": [36]
     },
     {
       "category": "Hava",
@@ -195,23 +203,23 @@ window.HUBUBAT = {
     {
       "category": "Fiyat",
       "title": "WASDE öncesi oynaklık",
-      "body": "CBOT buğday altı haftalık dibin ardından tepki veriyor; Cuma raporu yön belirleyebilir.",
+      "body": "Ekim WASDE raporu 9 Ekim 19:00'da; ABD ve dünya stok revizyonları CBOT'ta yön belirleyebilir.",
       "level": "mid",
-      "src": [2]
+      "src": [15]
     },
     {
       "category": "Politika",
-      "title": "Rus ihracat vergisi muafiyeti",
-      "body": "Tahıl vergisi yıl sonuna kadar sıfır; ihracat yolu açılırsa Rus fiyatlarını destekler.",
-      "level": "pos",
-      "src": [5]
+      "title": "Rus ihracat vergisinin 2027'de dönmesi",
+      "body": "Vergi 31 Aralık'a kadar sıfır; bütçe taslağı 2027 için 60,3 milyar ruble tahıl vergisi geliri öngörüyor (önceki plan 152,4 milyar).",
+      "level": "mid",
+      "src": [37]
     },
     {
-      "category": "Hava",
-      "title": "Türkiye yeni sezon",
-      "body": "2026 su yılı yağışı son 66 yılın en yükseği oldu; yaygın kuraklık riski bildirilmiyor.",
-      "level": "low",
-      "src": [18]
+      "category": "Arz",
+      "title": "Türkiye iç piyasası",
+      "body": "TMO Ekim'de 5,5 Mt buğdayı sabit fiyatla satıyor; 2026 su yılı yağışı son 66 yılın en yükseği oldu.",
+      "level": "pos",
+      "src": [34, 18]
     }
   ],
   "supplyDemand": {
@@ -222,27 +230,34 @@ window.HUBUBAT = {
       { "label": "Dünya buğday bitiş stoku 2025/26", "value": "280,6 Mt", "change": "Ağu 280,2", "src": [14] },
       { "label": "ABD mısır üretimi 2026/27", "value": "15,80 mlr bu", "change": "▼ Ağu 16,01", "src": [14] },
       { "label": "ABD buğday bitiş stoku 2026/27", "value": "717 mn bu", "change": "Ağu 717", "src": [14] },
-      { "label": "Rusya tahıl ihracatı 2026/27 (SovEcon)", "value": "44,7 Mt", "change": "▼ önceki 49,4", "src": [2] },
+      { "label": "Rusya buğday ihracatı 2026/27 (SovEcon)", "value": "36,7 Mt", "change": "▼ 4,7 Mt", "src": [36] },
+      { "label": "Rusya tahıl ihracatı 2026/27 (SovEcon)", "value": "44,7 Mt", "change": "▼ önceki 49,4", "src": [36] },
       { "label": "Türkiye buğday üretimi 2026", "value": "23 Mt üstü", "change": "rekor", "src": [13] }
     ]
   },
   "exports": {
-    "note": "Milyon ton · aylık",
+    "note": "Milyon ton · aylık buğday",
     "unit": "Mt",
     "max": 6,
-    "footnote": "Çizgili çubuk tahmindir. Bıyık, Rusagrotrans'ın daha yüksek tahminini gösterir.",
-    "src": [4, 21],
+    "footnote": "Rus Tahıl Birliği liman verisi. Çizgili çubuk tahmindir; bıyık, piyasa analistlerinin daha yüksek Eylül tahminini (2,3–2,4 Mt) gösterir.",
+    "src": [35, 4, 27],
     "rows": [
-      { "label": "Eylül 2025", "value": 5.7, "display": "5,7", "note": "Geçen yılın aynı ayı" },
+      { "label": "Eylül 2025", "value": 5.4, "display": "5,4", "note": "Geçen yılın aynı ayı (Rus Tahıl Birliği)" },
       { "label": "Ağustos 2026", "value": 1.3, "display": "1,3", "note": "Rus Tahıl Birliği" },
       {
         "label": "Eylül 2026",
+        "value": 1.36,
+        "hi": 2.4,
+        "display": "1,36",
+        "note": "Rus Tahıl Birliği · analistler 2,3–2,4"
+      },
+      {
+        "label": "Ekim 2026",
         "tag": "tahmin",
-        "value": 1,
-        "hi": 1.75,
+        "value": 2.5,
         "estimate": true,
-        "display": "≈1,0",
-        "note": "Rus Tahıl Birliği ≈1,0 · Rusagrotrans 1,75"
+        "display": "≤2,5",
+        "note": "Analist tahmini (Reuters)"
       }
     ]
   },
@@ -260,7 +275,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-09-29",
-    "checked": "2026-10-07T17:10:00+03:00",
+    "checked": "2026-10-07T17:12:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -303,20 +318,29 @@ window.HUBUBAT = {
   },
   "policy": [
     {
-      "date": "2026-09-30",
-      "country": "RU",
-      "title": "SovEcon ihracat tahminini düşürdü",
-      "body": "2026/27 Rus tahıl ihracatı 49,4 Mt'tan 44,7 Mt'a; gerekçe güney limanlarındaki aksama.",
+      "date": "2026-10-02",
+      "dateLabel": "2–5 Eki",
+      "country": "TR",
+      "title": "TMO 5,5 Mt buğdayı satışa açtı",
+      "body": "Ekmeklik ve makarnalık 17.750–18.500 TL/t, düşük vasıflı 16.750; arpa 14.000 TL/t. Ödeme 5–23 Ekim, teslim 31 Ekim'e kadar; fiyatlar değişmedi.",
       "level": "mid",
-      "src": [2]
+      "src": [34]
     },
     {
       "date": "2026-10-01",
-      "country": "TR",
-      "title": "TMO hububat satışları başladı",
-      "body": "Ekmeklik ve makarnalık buğday 18.500 TL/t, arpa 14.000 TL/t (2. grup).",
+      "country": "RU",
+      "title": "Bütçe taslağı: tahıl vergisi 2027'de dönüyor",
+      "body": "Tahıl ihracat vergisi geliri 2026 için 135,8'den 12,0 milyar rubleye indirildi; 2027'de 60,3, 2028'de 58,6 milyar ruble öngörülüyor.",
       "level": "mid",
-      "src": [11]
+      "src": [37]
+    },
+    {
+      "date": "2026-10-01",
+      "country": "RU",
+      "title": "SovEcon buğday ihracat tahminini düşürdü",
+      "body": "2026/27 buğday ihracatı 36,7 Mt (−4,7 Mt), tahıl 49,4'ten 44,7 Mt'a; gerekçe Karadeniz ve Azak'taki aksama.",
+      "level": "mid",
+      "src": [36]
     },
     {
       "date": "2026-09-22",
@@ -342,15 +366,6 @@ window.HUBUBAT = {
       "body": "Mart 2025'ten beri kapalıydı. Başvurular OAİB üzerinden, TMO onayıyla.",
       "level": "mid",
       "src": [12]
-    },
-    {
-      "date": "2026-06-01",
-      "dateLabel": "Haz",
-      "country": "TR",
-      "title": "TMO 2026 alım fiyatları",
-      "body": "Buğday 16.500 TL/t, arpa 12.750 TL/t; desteklerle buğdayda 19.514 TL/t.",
-      "level": "low",
-      "src": [11]
     }
   ],
   "calendar": [
@@ -364,19 +379,35 @@ window.HUBUBAT = {
       "src": [15]
     },
     {
+      "date": "2026-10-09",
+      "time": "22:30",
+      "title": "CFTC COT",
+      "short": "COT",
+      "body": "6 Ekim Salı pozisyonları",
+      "key": true,
+      "src": [25]
+    },
+    {
+      "date": "2026-10-23",
+      "title": "TMO buğday satışı: son ödeme günü",
+      "short": "TMO",
+      "body": "5,5 Mt'luk Ekim satışı; teslim 31 Ekim'e kadar",
+      "key": true,
+      "src": [34]
+    },
+    {
       "date": "2026-11-10",
       "time": "20:00",
       "title": "USDA WASDE (Kasım)",
       "short": "WASDE",
       "body": "ABD'de yaz saati bittiği için saat 20:00",
-      "key": true,
       "src": [15]
     },
     {
       "date": "2026-12-31",
       "title": "Rus tahıl vergisi muafiyeti bitiyor",
-      "body": "Uzatma kararı takip edilecek",
-      "src": [5]
+      "body": "Bütçe taslağı 2027'de vergi geliri öngörüyor",
+      "src": [5, 37]
     },
     {
       "recurring": "Her Pzt",
@@ -436,7 +467,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 28,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -458,9 +489,9 @@ window.HUBUBAT = {
       "method": "Web (Rusça)",
       "cost": "Ücretsiz",
       "status": "used",
-      "ref": 5,
-      "latest": "2026-09-22",
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "ref": 37,
+      "latest": "2026-10-01",
+      "lastChecked": "2026-10-07T17:15:00+03:00"
     },
     {
       "name": "IKAR, SovEcon, Rus Tahıl Birliği",
@@ -471,8 +502,8 @@ window.HUBUBAT = {
       "cost": "Ham veri ücretli",
       "status": "used",
       "ref": 27,
-      "latest": "2026-10-02",
-      "lastChecked": "2026-10-07T17:30:00+03:00"
+      "latest": "2026-10-05",
+      "lastChecked": "2026-10-07T17:15:00+03:00"
     },
     {
       "name": "Konya Ticaret Borsası",
@@ -484,7 +515,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -496,19 +527,19 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-09-27",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
       "name": "TMO duyuruları",
       "data": "Alım ve satış fiyatları, ihracat izinleri",
       "freq": "Olay bazlı",
       "cadence": "olay",
-      "method": "Web",
+      "method": "Haber (tarimdanhaber.com)",
       "cost": "Ücretsiz",
       "status": "used",
-      "ref": 11,
-      "latest": "2026-10-01",
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "ref": 34,
+      "latest": "2026-10-02",
+      "lastChecked": "2026-10-07T17:15:00+03:00"
     },
     {
       "name": "USDA WASDE ve FAS",
@@ -520,7 +551,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 14,
       "latest": "2026-09-11",
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "lastChecked": "2026-10-07T17:15:00+03:00"
     },
     {
       "name": "TCMB gösterge kurları",
@@ -532,7 +563,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -543,8 +574,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-07T17:10:00+03:00",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "latest": "2026-10-07T17:12:00+03:00",
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -556,19 +587,19 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-09-29",
-      "lastChecked": "2026-10-07T17:10:00+03:00"
+      "lastChecked": "2026-10-07T17:12:00+03:00"
     },
     {
-      "name": "Sektör haberleri",
-      "data": "Liman olayları, lojistik",
+      "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
+      "data": "Gemi saldırıları, liman olayları, lojistik",
       "freq": "Sürekli",
       "cadence": "olay",
       "method": "Haber",
       "cost": "Bazıları abonelikli",
       "status": "used",
-      "ref": 10,
-      "latest": null,
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "ref": 32,
+      "latest": "2026-10-07",
+      "lastChecked": "2026-10-07T17:15:00+03:00"
     },
     {
       "name": "Resmî Gazete",
@@ -932,21 +963,9 @@ window.HUBUBAT = {
       "published": null
     },
     {
-      "id": 9,
-      "title": "ROIC: Karadeniz limanları ve ateşkes senaryosu",
-      "url": "https://www.roic.ai/news/russia-can-quickly-restart-80-of-black-sea-grain-ports-if-ceasefire-holds-but-damaged-terminals-pose-months-long-bottleneck-09-25-2026",
-      "published": "2026-09-25"
-    },
-    {
       "id": 10,
       "title": "Fastmarkets: Novorossiysk'te üçüncü terminal durdu",
       "url": "https://www.fastmarkets.com/insights/third-major-terminal-suspended-at-novorossiysk/",
-      "published": null
-    },
-    {
-      "id": 11,
-      "title": "Milliyet Uzmanpara: TMO 2026 hububat alım ve satış fiyatları",
-      "url": "https://uzmanpara.milliyet.com.tr/uzmanpara/galeri/tmo-bugday-ve-arpa-fiyat-listesi-2026-bugday-ve-arpa-alim-fiyatlari-ne-kadar-toprak-mahsulleri-ofisi-hububat-alim-ve-satim-7598191",
       "published": null
     },
     {
@@ -981,21 +1000,9 @@ window.HUBUBAT = {
       "published": null
     },
     {
-      "id": 19,
-      "title": "CropGPT: Rusya'dan Türkiye'ye tahıl ihracatı Ocak–Mayıs 2026",
-      "url": "https://cropgpt.ai/russian-wheat-export-prices-dip-to-231-233-on-faster-harvest",
-      "published": null
-    },
-    {
       "id": 20,
       "title": "Databento fiyatlandırma (CBOT vadeli verisi)",
       "url": "https://databento.com/pricing",
-      "published": null
-    },
-    {
-      "id": 21,
-      "title": "UkrAgroConsult: Rusagrotrans Eylül tahmini 1,75 Mt",
-      "url": "https://ukragroconsult.com/en/news/port-attacks-could-push-russian-wheat-exports-below-2-mln-tons-per-month/",
       "published": null
     },
     {
@@ -1045,6 +1052,54 @@ window.HUBUBAT = {
       "title": "AB Komisyonu tarım veri portalı: Fransa değirmenlik buğdayı, Rouen (limana teslim)",
       "url": "https://agridata.ec.europa.eu/extensions/DataPortal/cereals.html",
       "published": "2026-10-01"
+    },
+    {
+      "id": 31,
+      "title": "Baird Maritime: Royad Mammadov Karadeniz'de battı",
+      "url": "https://www.bairdmaritime.com/security/incidents/ukraine-blames-russian-drones-after-fire-sinks-ship-in-black-sea-leaving-two-dead",
+      "published": "2026-10-05"
+    },
+    {
+      "id": 32,
+      "title": "Baird Maritime: Bulgaristan açıklarında Alfa Watan battı, Able vuruldu",
+      "url": "https://www.bairdmaritime.com/security/incidents/acts-of-war/suspected-russian-drone-strike-sinks-merchant-ship-off-bulgaria-crew-missing",
+      "published": "2026-10-06"
+    },
+    {
+      "id": 33,
+      "title": "Al Jazeera: Bulgaristan, iki ticari gemiye drone saldırısı",
+      "url": "https://www.aljazeera.com/news/2026/10/6/bulgaria-says-two-commercial-vessels-were-hit-in-drone-attack-in-its-waters",
+      "published": "2026-10-06"
+    },
+    {
+      "id": 34,
+      "title": "Tarımdan Haber: TMO 5,5 milyon ton buğdayı piyasaya veriyor",
+      "url": "https://www.tarimdanhaber.com/tmo-55-milyon-ton-bugdayi-piyasaya-veriyor-ekim-ayi-satis-fiyatlari-belli-oldu",
+      "published": "2026-10-02"
+    },
+    {
+      "id": 35,
+      "title": "Interfax: Rus Tahıl Birliği, Eylül ihracatı",
+      "url": "https://www.interfax.ru/russia/1119761",
+      "published": "2026-10-01"
+    },
+    {
+      "id": 36,
+      "title": "UkrAgroConsult: SovEcon buğday ihracat tahminini 36,7 Mt'a indirdi",
+      "url": "https://ukragroconsult.com/en/news/russian-exporters-no-longer-expect-normalization-as-wheat-export-forecast-falls-to-a-multi-year-low/",
+      "published": "2026-10-01"
+    },
+    {
+      "id": 37,
+      "title": "Interfax: 2027 bütçe taslağında tahıl ihracat vergisi geliri",
+      "url": "https://www.interfax.ru/business/1119613",
+      "published": "2026-10-01"
+    },
+    {
+      "id": 38,
+      "title": "Baird Maritime: Bulgaristan mürettebat aramasını durdurdu",
+      "url": "https://www.bairdmaritime.com/security/incidents/no-survivors-found-bulgaria-ends-search-for-crew-of-drone-hit-black-sea-vessel",
+      "published": "2026-10-07"
     }
   ]
 };
