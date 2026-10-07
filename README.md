@@ -2,7 +2,7 @@
 
 Türkiye'deki bir hububat ticaret masası için sabah bülteni dashboard'u. Statik bir sayfadır; sunucu, veritabanı ya da kurulum gerektirmez.
 
-**Nasıl güncellenir:** Her gün 06:29 TSİ'de bir Claude rutini yeni bir oturum açar, verileri kaynaklarından yeniden toplar, `data.js` dosyasını günceller, doğrulamadan geçirir ve `main` dalına gönderir. n8n ya da başka bir otomasyon aracı kullanılmaz.
+**Nasıl güncellenir:** Her gün 06:29 TSİ'de bir Claude rutini çalışır, verileri kaynaklarından yeniden toplar, `data.js` dosyasını günceller, doğrulamadan geçirir ve `main` dalına gönderir. n8n ya da başka bir otomasyon aracı kullanılmaz.
 
 **Tazelik:** Her rakam tarihli ve kaynaklıdır. Sayfa açıldığında her göstergenin tazeliği tarayıcıda yeniden hesaplanır: yeşil güncel, sarı gecikmiş, kırmızı eski. Rutin bir gün çalışmazsa noktalar kendiliğinden sararır ve sayfanın üstünde uyarı çıkar.
 
@@ -31,9 +31,15 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 ## Sabah rutini
 
 - **Ad:** Hububat Masası sabah güncellemesi
-- **Zaman:** Her gün 06:29 TSİ (hafta sonu da çalışır; piyasa verisi yoksa haber, politika ve hava kısmını yeniler)
+- **Zaman:** Her gün 06:29 TSİ. Hafta sonu da çalışır; piyasa verisi yoksa haber, politika ve hava kısmını yeniler.
+- **Nerede çalışır:** "Hububat Masası · sabah rutini" adlı kalıcı Claude Code oturumunda. Depo bu oturumun kaynağıdır ve `main`'e push yetkisi buradan gelir. Rutin her sabah bu oturuma güncelleme mesajı gönderir. **Bu oturumu arşivlemeyin**; arşivlenirse rutin çalışmaz.
 - **Yönetim:** claude.ai/code → Routines. Saat, istem ya da durdurma buradan değiştirilir.
-- **Ne yapar:** Önce resmi ve ücretsiz kaynaklara bakar, fiyatları iki kaynakla çapraz kontrol eder, özet ve risk metinlerini yalnızca topladığı kaynaklardan yazar, `node scripts/kontrol.mjs --sabah` geçmeden push etmez.
+- **Neden her gün yeni oturum değil:** Rutinin her çalışmada açtığı yeni oturumlar depoya push yetkisi alamadı (denendi, 403). Rutini claude.ai arayüzünden depoyu seçerek yeniden kurarsanız her sabah temiz bir oturum da kullanılabilir.
+- **Ne yapar:**
+  - Önce API'si olan kaynaklardan otomatik çeker (`node scripts/cek.mjs --yaz`), sonra araştırır.
+  - Fiyatları iki kaynakla çapraz kontrol eder.
+  - Özet ve risk metinlerini yalnızca topladığı kaynaklardan yazar.
+  - `node scripts/kontrol.mjs --sabah` geçmeden push etmez.
 - **Pazartesileri** ayrıca açık kaynak araç listesini yeniler: lisans değişikliği, son etkinlik, yeni adaylar.
 
 Prosedürün tamamı `.claude/skills/sabah-guncellemesi/SKILL.md` dosyasındadır. Prosedürü değiştirmek için rutini değil bu dosyayı düzenleyin.

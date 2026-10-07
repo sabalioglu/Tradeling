@@ -22,8 +22,8 @@ Hedef: `data.js`'teki her rakamı kaynağın yayımladığı **en son** veriyle 
 ## Adımlar
 
 ### 0. Hazırlık
-- Çalışma dizininde repo yoksa `add_repo` ile ekle (owner `sabalioglu`, repo `Tradeling`, access `push`) ve verilen komutla klonla.
-- `git checkout main && git pull origin main`
+- Rutin, depoyu kaynak olarak içeren kalıcı "Hububat Masası · sabah rutini" oturumunda çalışır. Repo kökünde: `git checkout main && git pull origin main`.
+- Repo çalışma dizininde yoksa ve `mcp__claude-code-remote__add_repo` aracı varsa onunla ekle (owner `sabalioglu`, repo `Tradeling`, access `push`). Araç yoksa dur ve bildir: düz `git clone` push yetkisi vermez.
 - Bugünün TSİ tarihi ve günü: `TZ=Europe/Istanbul date`. Hafta sonu ya da ABD/Avrupa/Rusya/Türkiye tatili mi, not al.
 
 ### 1. Durumu gör
