@@ -396,11 +396,11 @@ window.HUBUBAT = {
   "feeds": [
     {
       "name": "USDA AMS günlük raporları",
-      "data": "CBOT, KC, MGEX uzlaşma fiyatları",
+      "data": "CBOT, KC, MGE vadeli uzlaşma fiyatları",
       "freq": "Günlük",
       "cadence": "gunluk",
-      "method": "PDF ayrıştırma",
-      "cost": "Ücretsiz",
+      "method": "PDF, otomatik (cek.mjs cbot)",
+      "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 26,
       "latest": "2026-10-06",
@@ -408,10 +408,10 @@ window.HUBUBAT = {
     },
     {
       "name": "Reuters (haber akışı)",
-      "data": "Seans öncesi beklenti, tahmin revizyonları",
+      "data": "Piyasa yorumu, tahmin revizyonları",
       "freq": "Günlük",
       "cadence": "gunluk",
-      "method": "RSS / haber",
+      "method": "Haber",
       "cost": "Özet ücretsiz",
       "status": "used",
       "ref": 2,
@@ -524,11 +524,20 @@ window.HUBUBAT = {
       "ref": null
     },
     {
+      "name": "Meteostat",
+      "data": "İstasyon gözlemleri (Konya, Rostov, Krasnodar)",
+      "freq": "Günlük",
+      "method": "JSON API / Python",
+      "cost": "Ücretsiz, CC BY 4.0 (atıf şart)",
+      "status": "plan",
+      "ref": null
+    },
+    {
       "name": "Open-Meteo",
       "data": "Yağış ve sıcaklık sapmaları",
       "freq": "Günlük",
       "method": "REST API",
-      "cost": "Ticari olmayan kullanımda ücretsiz",
+      "cost": "Ücretsiz API yalnız ticari olmayan kullanım; ticari için ücretli plan ya da kendi sunucusu",
       "status": "plan",
       "ref": null
     },
@@ -788,6 +797,36 @@ window.HUBUBAT = {
       "lastActivity": "2026-10-01",
       "maintained": true,
       "caveat": "Motor serbest; QuantConnect bulut verisi ayrı ve ücretli. Docker/.NET kurulumu ağır.",
+      "effort": "yuksek",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "Mirror-Market",
+      "url": "https://github.com/philipbergman6-glitch/Mirror-Market",
+      "category": "Benzer sistem (fikir kaynağı)",
+      "what": "Bu bültene en çok benzeyen proje: her sabah 36 veri katmanını (USDA NASS/PSD/WASDE/AMS, CFTC, CONAB, EIA, hava) toplayıp GitHub Pages üzerinde sinyal ve brifing sitesi üretiyor.",
+      "use": "Hangi veri katmanlarının long/short sinyaline dönüştürülebileceğine dair fikir kaynağı. Soya kompleksine odaklı; Türkiye ve Karadeniz katmanı yok.",
+      "license": "Lisans yok (tüm hakları saklı)",
+      "commercial": "kisitli",
+      "lastActivity": "2026-10-07",
+      "maintained": true,
+      "caveat": "LICENSE dosyası yok: kod kopyalanamaz, yalnızca fikir alınabilir. Yahoo verisine ve ticari kullanıma kapalı ücretsiz Open-Meteo API'sine bağlı.",
+      "effort": "yuksek",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "grain-market-dashboard",
+      "url": "https://github.com/josea12345/grain-market-dashboard",
+      "category": "Benzer sistem (fikir kaynağı)",
+      "what": "Streamlit ve GitHub Actions ile CBOT mısır, soya, küspe, yağ ve CBOT/KC buğday için fiyat, vade eğrisi, fon pozisyonu yüzdelikleri, WASDE olay çalışması ve mevsimsellik gösteriyor.",
+      "use": "Vade eğrisi, fon pozisyonu yüzdeliği ve WASDE olay çalışması gibi panellerin nasıl kurulabileceğine örnek. ABD odaklı; Karadeniz FOB, TMO ve USD/TRY yok.",
+      "license": "Lisans yok (tüm hakları saklı)",
+      "commercial": "kisitli",
+      "lastActivity": "2026-10-07",
+      "maintained": true,
+      "caveat": "LICENSE dosyası yok: kod kopyalanamaz. 5 Ekim 2026'da açılmış yeni bir depo; fiyatları Yahoo'dan alıyor (kişisel kullanım şartı).",
       "effort": "yuksek",
       "recommendation": "izle",
       "checked": "2026-10-07"

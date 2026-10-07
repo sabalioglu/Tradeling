@@ -90,4 +90,19 @@ Türkçe, en fazla 12 satır: güncellenen göstergeler (eski → yeni), gecikmi
 
 ## Kaynak sırası
 
-<!-- KAYNAK_TABLOSU -->
+Önce `node scripts/cek.mjs` ile mekanik kaynaklar, sonra araştırma. Her satırda soldaki kaynak tercih edilir; yanıt vermezse ya da yeni veri yoksa sağdakine geç. Saatler TSİ.
+
+| Veri | Sıklık | Birincil kaynak | Yedek | Ne zaman yayımlanır | Not |
+|---|---|---|---|---|---|
+| CBOT buğday, mısır, soya (`cbot_*`, `chart`) | Her iş günü | `cek.mjs cbot`: USDA AMS günlük tahıl raporu (`ams.usda.gov/mnreports/ams_3100.pdf`, kamu verisi) | Uzlaşma rakamını açıkça yazan kapanış haberleri (Reuters, DTN, Brownfield, Successful Farming) | Uzlaşma 21:20 TSİ sonrası (ABD kış saatinde 22:20); AMS raporu ABD akşamı | **CME sitesine otomatik istek atma**: kullanım koşulları yasaklıyor ve IP engelliyor. Göstergedeki `contract` alanı ("Dec 26") okunacak vadeyi belirler |
+| USD/TRY, EUR/TRY (`usdtry`) | Anlık + iş günü | `cek.mjs kur`: Coinbase piyasa kuru + TCMB `today.xml` | open.er-api.com | TCMB 15:30 | Sayfa açılışta ayrıca canlı kur çeker |
+| Fon pozisyonları (`positioning`) | Haftalık | `cek.mjs cot`: CFTC Socrata API (disaggregated, `72hh-3qpy`) | cftc.gov COT sayfası | Cuma 15:30 ET (22:30, kışın 23:30 TSİ) | Salı pozisyonları; tatil haftasında yayın kayar |
+| AB buğdayı (`eu_wheat`) | Her iş günü | Euronext değirmenlik buğday (vadeli, ön ay) uzlaşmasını yazan haberler: Reuters "European wheat", Agritel/Argus özetleri, Terre-net, FranceAgriMer | AB Komisyonu tarım veri portalı (haftalık FOB Rouen) | Euronext kapanışı 18:30 CET (19:30 TSİ) | Euronext sitesine toplu/otomatik istek atma. €/t veri için `unit: "€/t"` ve `eur: true` kullan; $/t'yi sayfa hesaplar |
+| Rus buğdayı %12,5 FOB (`ru_fob`) | Haftalık | IKAR / SovEcon haftalık fiyatı (Interfax, Reuters üzerinden) | Rusagrotrans, APK-Inform, UkrAgroConsult, zerno.ru | Genelde pazartesi–salı | Aralık verilmişse orta noktayı yaz, aralığı `sub`'a ekle; işlem azsa "nominal" notu |
+| Rus ihracat vergisi (`ru_duty`) | Haftalık (şu an askıda) | Rusya Tarım Bakanlığı duyurusu (mcx.gov.ru), hükümet kararnamesi (government.ru) | Interfax, TASS | Normalde cuma | 31 Ara 2026'ya kadar sıfır kararı var; uzatma ya da erken bitişi izle |
+| TMO fiyatları (`tmo_sell`) | Karar çıktıkça | tmo.gov.tr duyuruları | AA, Resmî Gazete, Ticaret Bakanlığı | Olay bazlı | Değişiklik yoksa yalnız `checked` güncellenir |
+| Arz ve talep (`supplyDemand`) | Aylık | USDA WASDE (usda.gov/oce/commodity/wasde) | DTN/Reuters WASDE özetleri; SovEcon/IKAR tahmin revizyonları | WASDE günü 19:00 (kışın 20:00) | `asOf` = rapor tarihi |
+| Rus ihracatı (`exports`) | Aylık / haftalık tahmin | Rus Tahıl Birliği, Rusagrotrans, SovEcon | Interfax, UkrAgroConsult | Ay başı ve hafta içi | Tahminleri `estimate: true`, alternatif tahmini `hi` ile göster |
+| Politika (`policy`) ve takvim | Günlük tarama | Resmî Gazete (resmigazete.gov.tr), TMO, Ticaret Bakanlığı; government.ru, mcx.gov.ru; USDA ve CME rapor takvimleri | AA, Interfax, Reuters | — | Yalnız son 90 gün |
+
+Bir veri için yukarıdakilerden daha güncel ya da daha birincil ve kullanım koşulları uygun bir kaynak bulursan kullan, `feeds` tablosuna ekle ve son mesajda belirt.

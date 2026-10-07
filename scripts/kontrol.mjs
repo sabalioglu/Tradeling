@@ -66,7 +66,7 @@ req(D.meta.projectsCheckedAt == null || isDate(D.meta.projectsCheckedAt), "meta.
 
 /* ---------- Göstergeler ---------- */
 // Birim hatasını yakalamak için geniş aralıklar. Gerçek bir piyasa hareketi aralığı aşarsa gerekçesiyle genişletin.
-const RANGE = { cbot_wheat: [300, 2000], cbot_corn: [250, 1200], cbot_soy: [700, 2500], ru_fob: [120, 600], eu_wheat: [120, 600], ru_duty: [0, 10000], usdtry: [20, 150], tmo_sell: [5000, 100000] };
+const RANGE = { cbot_wheat: [300, 2000], cbot_corn: [250, 1200], cbot_soy: [700, 2500], ru_fob: [120, 600], eu_wheat: [100, 600], ru_duty: [0, 10000], usdtry: [20, 150], tmo_sell: [5000, 100000] };
 const kpiIds = new Set();
 D.kpis.forEach((k, i) => {
   const at = `kpis[${i}] ${k.id || "?"}`;
@@ -84,6 +84,7 @@ D.kpis.forEach((k, i) => {
   if (k.base) req(isNum(k.base.value) && k.base.value !== 0 && isStr(k.base.label), `${at}: base {value, label} eksik`);
   if (k.secondary) req(isStr(k.secondary.label) && isNum(k.secondary.value), `${at}: secondary {label, value} eksik`);
   if (k.perTonne != null) req(isNum(k.perTonne), `${at}: perTonne sayı olmalı`);
+  if (k.eur) req(k.unit === "€/t", `${at}: eur: true ise unit "€/t" olmalı`);
   const r = RANGE[k.id];
   if (r && isNum(k.value) && (k.value < r[0] || k.value > r[1])) errors.push(`${at}: ${k.value} makul aralık dışında [${r.join("–")}]; birim hatası olabilir`);
   src(k.src, at);

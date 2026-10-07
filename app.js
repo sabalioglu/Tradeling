@@ -69,17 +69,19 @@
 
   /* ---------- Ticker ---------- */
   function kpiNum(k) { return (k.approx ? "≈" : "") + fmt(k.value, k.decimals || 0); }
-  // $/t karşılığı: ¢/bu ise bushel/ton ile, TL ise kur göstergesiyle hesaplanır.
+  // $/t karşılığı: ¢/bu ise bushel/ton ile, TL ise kur göstergesiyle, € ise EUR/USD çaprazıyla hesaplanır.
+  function eurUsd() { var k = KPI.usdtry; return k && k.secondary ? k.secondary.value / k.value : null; }
   function usdPerTonne(k) {
     if (k.perTonne) return k.value / 100 * k.perTonne;
     if (k.fx && KPI[k.fx]) return k.value / KPI[k.fx].value;
+    if (k.eur && eurUsd()) return k.value * eurUsd();
     return k.value;
   }
   $("ticker").innerHTML = D.kpis.map(function (k) {
     var subs = [];
     if (k.perTonne) subs.push("≈ " + fmt(usdPerTonne(k), 0) + " $/t");
-    if (k.fx && KPI[k.fx]) subs.push("≈ " + fmt(usdPerTonne(k), 0) + " $/t (hesaplanan)");
-    if (k.spread && KPI[k.spread.kpi]) subs.push(k.spread.label + " " + fmt(k.value - KPI[k.spread.kpi].value, 0) + " " + k.unit);
+    if ((k.fx && KPI[k.fx]) || (k.eur && eurUsd())) subs.push("≈ " + fmt(usdPerTonne(k), 0) + " $/t (hesaplanan)");
+    if (k.spread && KPI[k.spread.kpi]) subs.push(k.spread.label + " " + ((k.eur || KPI[k.spread.kpi].eur) ? "≈" : "") + fmt(usdPerTonne(k) - usdPerTonne(KPI[k.spread.kpi]), 0) + " $/t");
     if (k.secondary) subs.push(k.secondary.label + " " + fmt(k.secondary.value, k.secondary.decimals || 0));
     if (k.sub) subs.push(k.sub);
     var asOfText = when(k.asOf) + (k.asOfNote ? " · " + k.asOfNote : "");
@@ -418,9 +420,10 @@
   // Fiyat merdiveni göstergelerden hesaplanır, böylece şeritteki rakamlarla hep aynı kalır.
   var fxK = KPI.usdtry;
   var ladRows = D.ladder.map(function (r) {
-    var k = KPI[r.kpi], v = usdPerTonne(k), calc = !!(k.perTonne || k.fx);
+    var k = KPI[r.kpi], v = usdPerTonne(k), calc = !!(k.perTonne || k.fx || k.eur);
     var how = k.perTonne ? fmt(k.value, k.decimals || 0) + " ¢/bu × " + fmt(k.perTonne, 2) + " bu/t"
-      : k.fx ? fmt(k.value, 0) + " TL/t ÷ " + fmt(KPI[k.fx].value, 2) : null;
+      : k.fx ? fmt(k.value, 0) + " TL/t ÷ " + fmt(KPI[k.fx].value, 2)
+      : k.eur ? fmt(k.value, k.decimals || 0) + " €/t × " + fmt(eurUsd(), 4) + " EUR/USD" : null;
     var note = [r.note, how, when(k.asOf) + (k.asOfNote ? " " + k.asOfNote : "")].filter(Boolean).join(" · ");
     return { label: r.label, tag: calc ? "hesaplanan" : null, v: v, disp: (calc || k.approx ? "≈" : "") + fmt(v, 0), note: note, day: T.tsiDay(k.asOf) };
   });

@@ -56,7 +56,7 @@ Yayın gecikmesi bilinen serilerde göstergeye özel `maxAge` sınırı kullanı
 | Bölüm | Alanlar |
 |---|---|
 | `meta` | `bulletinDate`, `generatedAt`, `generatedBy`, `projectsCheckedAt` |
-| `kpis[]` | `id`, `label`, `value`, `decimals`, `unit`, `asOf`, `asOfNote`, `cadence`, `checked`, `src[]`; isteğe bağlı `maxAge`, `base {value,label}` (% değişim), `perTonne` (¢/bu → $/t), `fx` (TL → $), `spread {kpi,label}`, `secondary {label,value}`, `sub`, `approx`, `staleReason` |
+| `kpis[]` | `id`, `label`, `value`, `decimals`, `unit`, `asOf`, `asOfNote`, `cadence`, `checked`, `src[]`; isteğe bağlı `maxAge`, `base {value,label}` (% değişim), `perTonne` (¢/bu → $/t), `fx` (TL → $), `eur` (€/t → $/t, EUR/USD çaprazı kur göstergesinden), `spread {kpi,label}`, `secondary {label,value}`, `sub`, `approx`, `staleReason` |
 | `brief[]` | Tam 3 madde: `headline`, `body`, `src[]`, `impact`, `impactSrc[]` |
 | `risks[]` | `category`, `title`, `body`, `level` (`high`, `mid`, `low`, `pos`), `src[]` |
 | `supplyDemand` | `source`, `asOf`, `rows[] {label, value, change, src[]}` |
