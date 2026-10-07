@@ -1,0 +1,80 @@
+# Sabah bülteni: Claude, .claude/skills/sabah-guncellemesi/SKILL.md prosedürünü uygular,
+# data.js'i günceller, doğrular ve main'e gönderir. Claude aboneliğiyle çalışır:
+# CLAUDE_CODE_OAUTH_TOKEN repo sırrı gerekir (claude setup-token ile alınır).
+# Sır yoksa iş atlanır; o gün yedek claude.ai rutini bülteni yazar.
+name: Sabah bülteni
+
+on:
+  schedule:
+    - cron: "29 3 * * *"  # 06:29 TSİ, her gün
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: data-js
+  cancel-in-progress: false
+
+jobs:
+  bulten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - name: Claude jetonu var mı
+        id: jeton
+        env:
+          T: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          if [ -z "$T" ]; then
+            echo "::notice::CLAUDE_CODE_OAUTH_TOKEN sırrı yok; bülten atlandı. README → Canlı yayın ve otomasyon."
+            echo "var=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "var=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v6
+        if: steps.jeton.outputs.var == 'true'
+      - uses: actions/setup-node@v4
+        if: steps.jeton.outputs.var == 'true'
+        with:
+          node-version: 22
+      - name: Araçları kur (pdftotext, önizleme için Chromium)
+        if: steps.jeton.outputs.var == 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+          npm install -g playwright@1.56.1 >/dev/null
+          npx -y playwright@1.56.1 install --with-deps chromium >/dev/null
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Bülteni yaz
+        if: steps.jeton.outputs.var == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          allowed_bots: "*"
+          prompt: |
+            Türkiye Hububat Masası sabah bülteni güncellemesi. GitHub Actions'ta, depo kökünde (main dalı) çalışıyorsun.
+            .claude/skills/sabah-guncellemesi/SKILL.md dosyasını baştan sona oku ve adımlarını eksiksiz uygula.
+            Kurallar (dosyadan önce gelir):
+            - Her rakamı kaynağın en son yayınıyla doğrula ve tarihle. Yeni veri yoksa uydurma; değeri koru, gerekçeyi staleReason alanına yaz.
+            - Rakamı ve niteliği kaynakta yazdığı gibi aktar; kaynakta olmayan çıkarım yapma.
+            - CME ve Euronext sitelerine otomatik istek atma.
+            - Yalnızca data.js'i değiştir. node scripts/kontrol.mjs --sabah geçmeden commit ve push etme.
+            - Zorla push yapma, geçmişi yeniden yazma, PR açma.
+            Doğrulama geçince data.js'i "Sabah bülteni: YYYY-AA-GG" mesajıyla commit edip git push origin HEAD:main ile gönder; reddedilirse git pull --rebase origin main yapıp kontrolü yeniden çalıştır.
+            Bitince Türkçe kısa özet yaz: güncellenen göstergeler, gecikenler ve gerekçesi, ulaşılamayan kaynaklar, bülten başlıkları, commit hash'i.
+          claude_args: |
+            --model claude-opus-5-5
+            --max-turns 150
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebSearch,WebFetch,Bash(node scripts/*),Bash(git *),Bash(date *),Bash(TZ=Europe/Istanbul date *),Bash(ls *),Bash(cat *)"
+
+      - name: Yayınlanan veriyi doğrula
+        if: steps.jeton.outputs.var == 'true'
+        run: |
+          git pull -q origin main
+          git log -1 --format='%h %s'
+          node scripts/kontrol.mjs --sabah

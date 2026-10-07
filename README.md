@@ -2,14 +2,14 @@
 
 Türkiye'deki bir hububat ticaret masası için sabah bülteni dashboard'u. Statik bir sayfadır; sunucu, veritabanı ya da kurulum gerektirmez.
 
-**Nasıl güncellenir:** Her gün 06:29 TSİ'de bir Claude rutini çalışır, verileri kaynaklarından yeniden toplar, `data.js` dosyasını günceller, doğrulamadan geçirir ve `main` dalına gönderir. n8n ya da başka bir otomasyon aracı kullanılmaz.
+**Nasıl güncellenir:** Otomasyon repoya gömülüdür (GitHub Actions). Hafta içi günde üç kez fiyatlar yapay zekâsız çekilir; her gün 06:29 TSİ'de Claude bülteni yazar, doğrular ve `main` dalına gönderir; her güncellemeden sonra sayfa yeniden yayınlanır. n8n ya da başka bir otomasyon aracı kullanılmaz.
 
 **Tazelik:** Her rakam tarihli ve kaynaklıdır. Sayfa açıldığında her göstergenin tazeliği tarayıcıda yeniden hesaplanır: yeşil güncel, sarı gecikmiş, kırmızı eski. Rutin bir gün çalışmazsa noktalar kendiliğinden sararır ve sayfanın üstünde uyarı çıkar.
 
 ## Nasıl açılır
 
-- `index.html` dosyasını tarayıcıda açın. `data.js`, `tazelik.js` ve `app.js` aynı klasörde olmalıdır.
-- GitHub Pages için: *Settings → Pages → Source: Deploy from a branch → main / (root)*. Sayfa birkaç dakika içinde `https://sabalioglu.github.io/Tradeling/` adresinde yayına çıkar. Rutin her sabah `main`'e gönderdiği için Pages kendiliğinden yenilenir.
+- Canlı: GitHub Pages üzerinden, kendi alan adınızla (kurulum aşağıda, "Canlı yayın ve otomasyon").
+- Yerel: `index.html` dosyasını tarayıcıda açın. `data.js`, `tazelik.js` ve `app.js` aynı klasörde olmalıdır.
 
 USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt gelmezse ExchangeRate-API). İkisi de yanıt vermezse bültendeki değer kalır.
 
@@ -27,22 +27,33 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 | `scripts/veri.mjs` | `data.js` okuma, yazma, biçimleme |
 | `.claude/skills/sabah-guncellemesi/SKILL.md` | Rutinin izlediği güncelleme prosedürü ve kaynak sırası |
 | `.claude/settings.json` | Rutinin izin istemine takılmadan çalışması için gereken komut izinleri |
+| `.github/workflows/veri.yml` | "Veri çek": hafta içi 13:07, 15:45, 23:20 TSİ'de API'li kaynakları çeker (yapay zekâ yok) |
+| `.github/workflows/sabah-bulteni.yml` | "Sabah bülteni": her gün 06:29 TSİ'de Claude prosedürü uygular |
+| `.github/workflows/yayin.yml` | "Yayın": her güncellemeden sonra sayfayı GitHub Pages'e yayınlar |
 
-## Sabah rutini
+## Canlı yayın ve otomasyon
 
-- **Ad:** Hububat Masası sabah güncellemesi
-- **Zaman:** Her gün 06:29 TSİ. Hafta sonu da çalışır; piyasa verisi yoksa haber, politika ve hava kısmını yeniler.
-- **Nerede çalışır:** "Hububat Masası · sabah rutini" adlı kalıcı Claude Code oturumunda. Depo bu oturumun kaynağıdır ve `main`'e push yetkisi buradan gelir. Rutin her sabah bu oturuma güncelleme mesajı gönderir. **Bu oturumu arşivlemeyin**; arşivlenirse rutin çalışmaz.
-- **Yönetim:** claude.ai/code → Routines. Saat, istem ya da durdurma buradan değiştirilir.
-- **Neden her gün yeni oturum değil:** Rutinin her çalışmada açtığı yeni oturumlar depoya push yetkisi alamadı (denendi, 403). Rutini claude.ai arayüzünden depoyu seçerek yeniden kurarsanız her sabah temiz bir oturum da kullanılabilir.
-- **Ne yapar:**
-  - Önce API'si olan kaynaklardan otomatik çeker (`node scripts/cek.mjs --yaz`), sonra araştırır.
-  - Fiyatları iki kaynakla çapraz kontrol eder.
-  - Özet ve risk metinlerini yalnızca topladığı kaynaklardan yazar.
-  - `node scripts/kontrol.mjs --sabah` geçmeden push etmez.
-- **Pazartesileri** ayrıca açık kaynak araç listesini yeniler: lisans değişikliği, son etkinlik, yeni adaylar.
+| İş akışı | Ne zaman (TSİ) | Ne yapar | Yapay zekâ |
+|---|---|---|---|
+| Veri çek | Hafta içi 13:07, 15:45, 23:20 | CBOT/KC uzlaşmaları, kur, Konya borsası, AB Rouen, CFTC COT; değiştiyse `main`'e gönderir | Yok, ücretsiz |
+| Sabah bülteni | Her gün 06:29 | `SKILL.md` prosedürü: araştırma, bülten metni, doğrulama, gönderim | Claude (aboneliğinizden) |
+| Yayın | Her güncellemeden sonra | `index.html`, `app.js`, `tazelik.js`, `data.js`'i GitHub Pages'e yayınlar | Yok |
 
-Prosedürün tamamı `.claude/skills/sabah-guncellemesi/SKILL.md` dosyasındadır. Prosedürü değiştirmek için rutini değil bu dosyayı düzenleyin.
+Bir iş akışı başarısız olursa GitHub e-postayla haber verir. Elle çalıştırmak için: *Actions → iş akışı → Run workflow*.
+
+**Bir kerelik kurulum (repo sahibi yapar):**
+
+1. **Claude jetonu.** Bilgisayarınızda `claude setup-token` çalıştırın ve çıkan jetonu *Settings → Secrets and variables → Actions → New repository secret* ile `CLAUDE_CODE_OAUTH_TOKEN` adıyla ekleyin. Jeton yokken "Sabah bülteni" kendini atlar.
+2. **GitHub Pages.** *Settings → Pages → Build and deployment → Source: GitHub Actions*.
+3. **Alan adı.** Aynı sayfada *Custom domain* kutusuna alan adını yazın (ör. `hububat.sirketiniz.com`) ve *Enforce HTTPS*'i açın. Alan adınızın DNS panelinde bir kayıt ekleyin:
+   - Alt alan adı için: `CNAME` kaydı, ad `hububat`, değer `sabalioglu.github.io`
+   - Kök alan adı için: `A` kayıtları `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+
+   DNS'in yayılması birkaç dakikadan birkaç saate kadar sürebilir; HTTPS sertifikası ardından kendiliğinden gelir.
+
+**Yedek rutin:** claude.ai'deki "Hububat Masası sabah güncellemesi" rutini her gün 08:13 TSİ'de kalıcı "Hububat Masası · sabah rutini" oturumunu uyandırır. O günün bülteni zaten yayınlandıysa hiçbir şey yapmadan durur; GitHub tarafı çalışmadıysa bülteni o yazar. Bu oturumu arşivlemeyin. Yedeğe gerek kalmazsa claude.ai → Routines'ten kapatılabilir.
+
+Prosedürün tamamı `.claude/skills/sabah-guncellemesi/SKILL.md` dosyasındadır. Prosedürü değiştirmek için iş akışını değil bu dosyayı düzenleyin. Pazartesileri prosedür açık kaynak araç listesini de yeniler.
 
 ## Tazelik kuralları
 

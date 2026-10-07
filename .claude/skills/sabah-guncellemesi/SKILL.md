@@ -22,14 +22,16 @@ Hedef: `data.js`'teki her rakamı kaynağın yayımladığı **en son** veriyle 
 ## Adımlar
 
 ### 0. Hazırlık
-- Rutin, depoyu kaynak olarak içeren kalıcı "Hububat Masası · sabah rutini" oturumunda çalışır. Repo kökünde: `git checkout main && git pull origin main`.
-- Repo çalışma dizininde yoksa ve `mcp__claude-code-remote__add_repo` aracı varsa onunla ekle (owner `sabalioglu`, repo `Tradeling`, access `push`). Araç yoksa dur ve bildir: düz `git clone` push yetkisi vermez.
+- Rutin normalde GitHub Actions'ta çalışır (`.github/workflows/sabah-bulteni.yml`, her gün 06:29 TSİ); depo zaten çalışma dizinindedir. Yedek olarak kalıcı "Hububat Masası · sabah rutini" claude.ai oturumu 08:13'te uyanır ve o günün bülteni yayınlanmamışsa aynı prosedürü uygular.
+- Repo kökünde: `git checkout main && git pull origin main`.
+- claude.ai oturumunda repo çalışma dizininde yoksa ve `mcp__claude-code-remote__add_repo` aracı varsa onunla ekle (owner `sabalioglu`, repo `Tradeling`, access `push`). Araç yoksa dur ve bildir: düz `git clone` push yetkisi vermez.
 - Bugünün TSİ tarihi ve günü: `TZ=Europe/Istanbul date`. Hafta sonu ya da ABD/Avrupa/Rusya/Türkiye tatili mi, not al.
 
 ### 1. Durumu gör
 `node scripts/kontrol.mjs` → hangi göstergeler eski, hangi uyarılar var.
 
 ### 2. Mekanik veriler
+"Veri çek" iş akışı bu çekimi hafta içi günde üç kez (13:07, 15:45, 23:20 TSİ) yapay zekâsız yapar; sabah yine çalıştır.
 `node scripts/cek.mjs` API'si olan kaynakları çeker ve önerilen değerleri yazdırır. `node scripts/cek.mjs --yaz` aynı değerleri `data.js`'e işler. Çıktıyı mantık açısından kontrol et; bir kaynak yanıt vermezse aşağıdaki yedeğe geç.
 
 ### 3. Piyasa göstergeleri
@@ -54,7 +56,7 @@ Her gösterge için kaynak sırası, yayın saati (TSİ) ve notlar aşağıdaki 
 - `supplyDemand`: yeni WASDE ya da büyük tahmin revizyonu geldiyse güncelle (`asOf` = rapor tarihi).
 - `exports`: yeni Rus aylık ihracat verisi ya da tahmini geldiyse güncelle; `max` en büyük değerin üstünde kalmalı.
 - `chart.points`: CBOT buğday göstergesinin son uzlaşmasını ekle (aynı gün varsa güncelle). Tarihler artan sırada ve tekil.
-- `meta`: `bulletinDate` bugün, `generatedAt` şimdi (`+03:00`), `generatedBy` "Claude rutini".
+- `meta`: `bulletinDate` bugün, `generatedAt` şimdi (`+03:00`), `generatedBy` "Claude rutini" (GitHub Actions'ta "Claude rutini · GitHub Actions").
 
 ### 6. Kaynak listesi
 - Bugün kullandığın her kaynak için `refs` kaydı: kısa başlık ("Kurum: konu"), doğrudan URL, `published`.

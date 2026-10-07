@@ -1,0 +1,45 @@
+# API'si olan kaynaklardan (USDA AMS, TCMB, Coinbase, CFTC, Konya TB, AB Komisyonu) veri çeker.
+# Yapay zekâ kullanmaz. Saatler UTC; TSİ = UTC+3.
+name: Veri çek
+
+on:
+  schedule:
+    - cron: "7 10 * * 1-5"   # 13:07 TSİ: Konya borsası günlük bülteni
+    - cron: "45 12 * * 1-5"  # 15:45 TSİ: TCMB 15:30 gösterge kurları
+    - cron: "20 20 * * 1-5"  # 23:20 TSİ: CBOT/KC uzlaşmaları (AMS raporları), cuma ise CFTC COT
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-js
+  cancel-in-progress: false
+
+jobs:
+  cek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: pdftotext kur (AMS PDF raporları için)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Veriyi çek
+        run: node scripts/cek.mjs --yaz
+      - name: Doğrula
+        run: node scripts/veri.mjs bicimle && node scripts/kontrol.mjs
+      - name: Değiştiyse gönder
+        run: |
+          if git diff --quiet -- data.js; then echo "data.js değişmedi."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.js
+          git commit -m "Veri: otomatik çekim ($(TZ=Europe/Istanbul date +'%d.%m %H:%M') TSİ)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep $((i * 10))
+          done
+          exit 1
