@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Türkiye Hububat Masası</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: masthead + price ticker strip, then a two-column desk (brief | risk radar),
+   chart row, policy + calendar, then full-width source registry and the n8n pipeline. */
+:root {
+  --bg: #EDF0F3;
+  --surface: #FFFFFF;
+  --surface-2: #F4F6F8;
+  --ink: #111B25;
+  --ink-2: #445260;
+  --muted: #6C7A88;
+  --line: #DBE1E7;
+  --line-strong: #C2CBD4;
+  --accent: #0B5F7E;
+  --accent-soft: #DFEDF3;
+  --wheat: #9C6210;
+  --crit: #B23A31;
+  --crit-soft: #F7E2DF;
+  --warn: #8F5D06;
+  --warn-soft: #F5EBD6;
+  --good: #2B7549;
+  --good-soft: #DFEFE5;
+  --info: #3A5C88;
+  --info-soft: #E2E9F3;
+  --f-display: "Archivo", "Arial Narrow", "Helvetica Neue", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1016; --surface: #111921; --surface-2: #17212B; --ink: #E5EBF1; --ink-2: #A7B4C1;
+    --muted: #7D8B98; --line: #22303D; --line-strong: #324457; --accent: #5BB6D9; --accent-soft: #11303D;
+    --wheat: #DFA346; --crit: #EF8379; --crit-soft: #3A1D1A; --warn: #E3AE4E; --warn-soft: #382A11;
+    --good: #6AC292; --good-soft: #14301F; --info: #8EAFD9; --info-soft: #182638; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1016; --surface: #111921; --surface-2: #17212B; --ink: #E5EBF1; --ink-2: #A7B4C1;
+  --muted: #7D8B98; --line: #22303D; --line-strong: #324457; --accent: #5BB6D9; --accent-soft: #11303D;
+  --wheat: #DFA346; --crit: #EF8379; --crit-soft: #3A1D1A; --warn: #E3AE4E; --warn-soft: #382A11;
+  --good: #6AC292; --good-soft: #14301F; --info: #8EAFD9; --info-soft: #182638; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  padding-block: 20px 40px;
+  display: grid;
+  gap: 16px;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+/* Masthead */
+.mast {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px;
+  padding-bottom: 14px; border-bottom: 2px solid var(--ink);
+}
+.mast-l { display: grid; gap: 4px; min-width: 0; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.mast h1 { font-size: clamp(26px, 4.2vw, 40px); font-weight: 800; font-stretch: 80%; letter-spacing: -.01em; line-height: 1.05; }
+.mast-meta { color: var(--ink-2); font-size: 13px; }
+.mast-r { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; border: 1px solid var(--line-strong); color: var(--ink-2); background: var(--surface);
+  white-space: nowrap;
+}
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.pill.next { border-color: transparent; background: var(--accent-soft); color: var(--ink); }
+
+/* Ticker */
+.ticker {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
+}
+.kpi { padding: 14px 16px 13px; display: grid; gap: 3px; align-content: start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
+.kpi:nth-child(4n) { border-right: 0; }
+.kpi:nth-last-child(-n+4) { border-bottom: 0; }
+.kpi-label { font-size: 12px; color: var(--ink-2); font-weight: 500; }
+.kpi-value { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.kpi-value b { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 26px; letter-spacing: -.01em; line-height: 1.1; }
+.kpi-value span { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.kpi-sub { font-size: 12px; color: var(--ink-2); }
+.kpi-delta { font-family: var(--f-mono); font-size: 12px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.kpi-delta i { font-style: normal; color: var(--muted); font-family: var(--f-body); }
+.kpi-foot { display: flex; justify-content: space-between; gap: 8px; margin-top: 2px; font-size: 11px; color: var(--muted); font-family: var(--f-mono); }
+.src { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.src:hover { color: var(--accent); text-decoration: underline; }
+
+/* Panels */
+.row { display: grid; gap: 16px; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.row.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px 18px; min-width: 0; display: grid; gap: 12px; align-content: start; }
+.panel-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; }
+.panel-h h2 { font-size: 17px; font-weight: 700; font-stretch: 88%; letter-spacing: .005em; }
+.panel-h .note { font-size: 12px; color: var(--muted); }
+.tag {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px; background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line);
+}
+
+/* Brief */
+.brief { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: b; }
+.brief li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 10px; padding: 12px 0; border-top: 1px solid var(--line); }
+.brief li:first-child { border-top: 0; padding-top: 2px; }
+.brief .n { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--accent); line-height: 1.2; font-stretch: 80%; }
+.brief h3 { font-size: 15.5px; font-weight: 700; font-stretch: 92%; line-height: 1.3; }
+.brief p { margin: 4px 0 0; color: var(--ink-2); max-width: 70ch; }
+.impact { margin-top: 8px; padding: 8px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); font-size: 13px; }
+.impact b { font-weight: 600; }
+
+/* Risk radar */
+.risks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.risk { display: grid; grid-template-columns: 4px minmax(0, 1fr); gap: 0 12px; padding: 9px 12px 9px 0; border-radius: 6px; background: var(--surface-2); }
+.risk .stripe { border-radius: 6px 0 0 6px; }
+.risk-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.risk-cat { font-size: 11px; color: var(--muted); font-family: var(--f-mono); text-transform: uppercase; letter-spacing: .06em; }
+.risk-title { font-weight: 600; font-size: 13.5px; }
+.risk-body { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
+.sev { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.sev svg { width: 11px; height: 11px; }
+.sev-high { color: var(--crit); background: var(--crit-soft); } .stripe.sev-high { background: var(--crit); }
+.sev-mid { color: var(--warn); background: var(--warn-soft); } .stripe.sev-mid { background: var(--warn); }
+.sev-low { color: var(--good); background: var(--good-soft); } .stripe.sev-low { background: var(--good); }
+.sev-pos { color: var(--info); background: var(--info-soft); } .stripe.sev-pos { background: var(--info); }
+
+/* Charts */
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.axis-t { font-family: var(--f-mono); font-size: 10.5px; fill: var(--muted); }
+.lbl-t { font-family: var(--f-mono); font-size: 11.5px; fill: var(--ink); font-weight: 500; }
+.lbl-s { font-family: var(--f-mono); font-size: 10.5px; fill: var(--ink-2); }
+.tip {
+  position: absolute; pointer-events: none; z-index: 5; min-width: 150px; max-width: 240px;
+  background: var(--ink); color: var(--surface); border-radius: 6px; padding: 7px 9px; font-size: 12px; line-height: 1.35;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+}
+.tip b { font-family: var(--f-mono); font-weight: 500; font-size: 13px; }
+.tip .t-s { opacity: .75; font-size: 11px; }
+.chart-foot { font-size: 11.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.key { display: inline-flex; align-items: center; gap: 6px; }
+.key i { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--accent); }
+.key i.gap { border-top: 2px dotted var(--muted); }
+
+/* HTML bars */
+.bars { display: grid; gap: 12px; }
+.bar-row { display: grid; gap: 5px; }
+.bar-lab { display: flex; justify-content: space-between; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+.bar-lab em { font-style: normal; font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); }
+.bar-track { position: relative; height: 22px; display: flex; align-items: center; }
+.bar {
+  height: 22px; background: var(--accent); border-radius: 0 4px 4px 0; position: relative; flex: none;
+}
+.bar.est { background: repeating-linear-gradient(45deg, var(--accent) 0 3px, var(--accent-soft) 3px 6px); }
+.bar-val { margin-left: 8px; font-family: var(--f-mono); font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.whisker { position: absolute; top: 50%; height: 0; border-top: 1.5px solid var(--ink-2); }
+.whisker::after { content: ""; position: absolute; right: -1px; top: -6px; height: 11px; border-right: 1.5px solid var(--ink-2); }
+.bar-hit { position: absolute; inset: -4px 0; cursor: default; }
+.base { border-left: 1px solid var(--line-strong); }
+
+/* Supply-demand + tables */
+.kv { width: 100%; border-collapse: collapse; font-size: 13px; }
+.kv th, .kv td { text-align: left; padding: 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.kv tr:last-child th, .kv tr:last-child td { border-bottom: 0; }
+.kv th { font-weight: 500; color: var(--ink-2); padding-right: 12px; }
+.kv td { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kv td small { display: block; font-size: 10.5px; color: var(--muted); }
+.chg { font-family: var(--f-mono); font-size: 11px; margin-left: 4px; color: var(--ink-2); }
+
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+.tbl th { text-align: left; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 6px 10px 8px 0; border-bottom: 1px solid var(--line-strong); white-space: nowrap; font-family: var(--f-mono); }
+.tbl td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl .date { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink-2); font-size: 12px; }
+.tbl .what b { font-weight: 600; }
+.tbl .what div { color: var(--ink-2); font-size: 12.5px; margin-top: 2px; }
+.flag { font-family: var(--f-mono); font-size: 11px; padding: 1px 6px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line); white-space: nowrap; }
+
+/* Calendar */
+.cal { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.cal li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 2px 12px; padding: 9px 0; border-top: 1px solid var(--line); }
+.cal li:first-child { border-top: 0; padding-top: 0; }
+.cal .when { font-family: var(--f-mono); font-size: 12px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cal .when small { display: block; color: var(--muted); font-size: 10.5px; }
+.cal .ev b { font-weight: 600; font-size: 13.5px; }
+.cal .ev div { font-size: 12.5px; color: var(--ink-2); }
+.cal li.soon .when { color: var(--accent); font-weight: 500; }
+.count { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--ink); margin-left: 6px; }
+
+/* Sources */
+.seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 7px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: 12.5px; padding: 5px 12px; background: var(--surface); color: var(--ink-2); border: 0; border-right: 1px solid var(--line-strong); cursor: pointer;
+}
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.st { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+.st i { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.st.used i { background: var(--good); }
+.st.plan i { background: transparent; border: 1.5px solid var(--muted); }
+.st.lic i { background: var(--warn); }
+.cost { font-size: 12.5px; color: var(--ink-2); }
+.summary-line { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink-2); }
+.summary-line b { font-family: var(--f-mono); color: var(--ink); font-weight: 500; }
+
+/* Pipeline */
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: s; }
+.step { position: relative; padding: 12px 18px 12px 0; display: grid; gap: 4px; align-content: start; }
+.step + .step { padding-left: 18px; border-left: 1px dashed var(--line-strong); }
+.step-h { display: flex; align-items: baseline; gap: 8px; }
+.step-n { font-family: var(--f-display); font-weight: 800; font-stretch: 80%; font-size: 22px; color: var(--accent); line-height: 1; }
+.step-h b { font-family: var(--f-display); font-stretch: 90%; font-size: 15px; }
+.step-time { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.step p { margin: 0; font-size: 12.5px; color: var(--ink-2); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.chip { font-family: var(--f-mono); font-size: 10.5px; padding: 1px 6px; border-radius: 4px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); }
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--ink); }
+pre {
+  margin: 10px 0 0; padding: 12px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px;
+  font-family: var(--f-mono); font-size: 11.5px; line-height: 1.55; overflow-x: auto; color: var(--ink);
+}
+.callout { font-size: 12.5px; color: var(--ink-2); padding: 10px 12px; border-left: 3px solid var(--wheat); background: var(--surface-2); border-radius: 0 6px 6px 0; }
+
+/* Footer */
+footer { display: grid; gap: 10px; font-size: 12px; color: var(--ink-2); padding-top: 6px; border-top: 1px solid var(--line-strong); }
+footer ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+footer li { break-inside: avoid; margin-bottom: 4px; }
+footer li:target { background: var(--accent-soft); border-radius: 4px; }
+.disc { color: var(--muted); max-width: 90ch; }
+
+@media (max-width: 900px) {
+  .row, .row.even { grid-template-columns: minmax(0, 1fr); }
+  .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .step:nth-child(3) { border-left: 0; padding-left: 0; }
+  .step:nth-child(n+3) { border-top: 1px dashed var(--line-strong); }
+}
+@media (max-width: 720px) {
+  .ticker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(4n) { border-right: 1px solid var(--line); }
+  .kpi:nth-child(2n) { border-right: 0; }
+  .kpi:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
+  .kpi:nth-last-child(-n+2) { border-bottom: 0; }
+  footer ol { columns: 1; }
+}
+@media (max-width: 520px) {
+  .wrap { padding-inline: 16px; }
+  .kpi { padding: 12px; }
+  .kpi-value b { font-size: 22px; }
+  .flow { grid-template-columns: minmax(0, 1fr); }
+  .step, .step + .step { border-left: 0; padding-left: 0; }
+  .step + .step { border-top: 1px dashed var(--line-strong); }
+  .cal li { grid-template-columns: 80px minmax(0, 1fr); }
+  .panel { padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="mast-l">
+      <div class="eyebrow">Sabah bülteni · Prototip</div>
+      <h1>Türkiye Hububat Masası</h1>
+      <div class="mast-meta">7 Ekim 2026, Çarşamba · 08:00 TSİ · Veri kesiti 30 Eylül – 2 Ekim kaynakları</div>
+    </div>
+    <div class="mast-r">
+      <span class="pill"><span class="dot"></span>Her rakam tarihli ve kaynaklı</span>
+      <span class="pill next">Sonraki kritik veri: WASDE · 9 Eki 19:00</span>
+    </div>
+  </header>
+
+  <section class="ticker" id="ticker" aria-label="Fiyat ve politika şeridi"></section>
+
+  <div class="row">
+    <section class="panel" aria-labelledby="h-brief">
+      <div class="panel-h">
+        <h2 id="h-brief">Bugünün özeti</h2>
+        <span class="tag">LLM özeti · yalnızca toplanan kayıtlardan</span>
+      </div>
+      <ol class="brief" id="brief"></ol>
+    </section>
+    <section class="panel" aria-labelledby="h-risk">
+      <div class="panel-h">
+        <h2 id="h-risk">Risk radarı</h2>
+        <span class="note">Lojistik · hava · politika · fiyat</span>
+      </div>
+      <ul class="risks" id="risks"></ul>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="panel" aria-labelledby="h-cbot">
+      <div class="panel-h">
+        <h2 id="h-cbot">CBOT buğday, Aralık 2026 kontratı</h2>
+        <span class="note">¢/bushel · 2026 gözlemleri</span>
+      </div>
+      <div class="chart" id="lineChart" role="img" aria-label="CBOT Aralık 2026 buğday vadeli fiyatının 2026 boyunca seyri. Ocak sonunda 577 sent, 1 Eylül'de 782,5 sent, 30 Eylül'de 698,5 sent."></div>
+      <div class="chart-foot">
+        <span class="key"><i></i>Ardışık gözlemler</span>
+        <span class="key"><i class="gap"></i>Veri boşluğu (14 günden uzun)</span>
+        <span>Uzlaşma fiyatları: USDA AMS günlük raporları <a class="src" href="#s1">[1]</a>, 21 Ağu <a class="src" href="#s3">[3]</a>, 30 Eyl seans içi <a class="src" href="#s2">[2]</a></span>
+      </div>
+    </section>
+    <section class="panel" aria-labelledby="h-sd">
+      <div class="panel-h">
+        <h2 id="h-sd">Arz ve talep</h2>
+        <span class="note">USDA WASDE, 11 Eylül</span>
+      </div>
+      <table class="kv" id="sd"></table>
+    </section>
+  </div>
+
+  <div class="row even">
+    <section class="panel" aria-labelledby="h-exp">
+      <div class="panel-h">
+        <h2 id="h-exp">Rusya buğday ihracatı</h2>
+        <span class="note">Milyon ton · aylık</span>
+      </div>
+      <div class="bars" id="expBars"></div>
+      <div class="chart-foot"><span>Çizgili çubuk tahmindir. Bıyık, Rusagrotrans'ın daha yüksek tahminini gösterir. <a class="src" href="#s4">[4]</a> <a class="src" href="#s21">[21]</a></span></div>
+    </section>
+    <section class="panel" aria-labelledby="h-lad">
+      <div class="panel-h">
+        <h2 id="h-lad">Fiyat merdiveni</h2>
+        <span class="note">$/ton · Eylül sonu</span>
+      </div>
+      <div class="bars" id="ladder"></div>
+      <div class="chart-foot"><span>Teslim şekilleri ve kaliteler farklı. Bu bir yön göstergesidir, doğrudan maliyet karşılaştırması değildir. ≈ işaretli değerler hesaplanmıştır (1 ton = 36,74 bu; 1 $ = 49,14 TL).</span></div>
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="panel" aria-labelledby="h-pol">
+      <div class="panel-h">
+        <h2 id="h-pol">Politika ve mevzuat takibi</h2>
+        <span class="note">Türkiye ve Karadeniz · son 90 gün</span>
+      </div>
+      <div class="scroll"><table class="tbl" id="policy"></table></div>
+    </section>
+    <section class="panel" aria-labelledby="h-cal">
+      <div class="panel-h">
+        <h2 id="h-cal">Takvim</h2>
+        <span class="note">Saatler TSİ</span>
+      </div>
+      <ul class="cal" id="cal"></ul>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="h-src">
+    <div class="panel-h">
+      <h2 id="h-src">Veri kaynakları</h2>
+      <div class="seg" role="group" aria-label="Kaynak filtresi">
+        <button type="button" id="f-all" data-f="all" aria-pressed="true">Tümü</button>
+        <button type="button" id="f-used" data-f="used" aria-pressed="false">Bu bültende kullanılan</button>
+        <button type="button" id="f-plan" data-f="plan" aria-pressed="false">Canlı sürüm için</button>
+      </div>
+    </div>
+    <div class="summary-line" id="srcSummary"></div>
+    <div class="scroll"><table class="tbl" id="sources"></table></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-flow">
+    <div class="panel-h">
+      <h2 id="h-flow">Bülten nasıl üretiliyor</h2>
+      <span class="note">n8n akışı · her iş günü</span>
+    </div>
+    <div class="flow" id="flow"></div>
+    <div class="callout">Kurumsal pilotta aynı akış, şirketin zaten lisansladığı kaynaklarla (Reuters, Argus, Platts gibi) ve onaylı araçlarla çalışır. Şirket verisi dış sunucuya çıkmaz.</div>
+    <details>
+      <summary>Veri sözleşmesi: dashboard'un okuduğu tek JSON</summary>
+      <pre id="schema"></pre>
+    </details>
+  </section>
+
+  <footer>
+    <ol id="refs"></ol>
+    <p class="disc">Bu sayfa bir prototiptir. Rakamlar belirtilen tarihlerde yayımlanmış kaynaklardan derlenmiştir; gerçek zamanlı değildir ve işlem kararı için kullanılmamalıdır. Hesaplanan değerler ≈ ile işaretlidir.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Data: in the live version n8n writes this object ---------- */
+  var SOURCES = [
+    { id: 1, t: "USDA AMS Grain Market News, günlük tahıl raporları (Ocak–Eylül 2026; örnek: 8 Eylül)", u: "https://www.oklahomafarmreport.com/wp-content/uploads/sites/2/2026/09/ams_3100-2026-09-08T172426.452.pdf" },
+    { id: 2, t: "Reuters, CBOT Trends, 30 Eylül 2026 (Capital.com üzerinden)", u: "https://capital.com/en-au/news/cbot-trends-wheat-up-3-6-cents-corn-up-1-3-cents-soy" },
+    { id: 3, t: "top agrar, Börsennews Agrar, 24 Ağustos 2026", u: "https://www.topagrar.com/markt/news/gewinnmitnahmen-belasten-borsenkurse-fur-raps-und-weizen-20028455.html" },
+    { id: 4, t: "UkrAgroConsult: Rusya Eylül buğday ihracatı (Rus Tahıl Birliği)", u: "https://ukragroconsult.com/en/news/russia-may-export-only-around-1-mln-tons-of-wheat-in-september/" },
+    { id: 5, t: "Interfax, 22 Eylül 2026: tahıl ihracat vergileri yıl sonuna kadar sıfır", u: "https://interfax.com/newsroom/top-stories/119226/" },
+    { id: 6, t: "Xinhua / The Star, 22 Eylül 2026: ayçiçek yağı ve küspe vergisi sınırı", u: "https://www.thestar.com.my/news/world/2026/09/22/russia-zeroes-out-grain-export-tariffs-through-late-2026" },
+    { id: 7, t: "Biofuels Digest, 5 Eylül 2026: buğday vergisi 787,5 RUB/t", u: "https://biofuelsdigest.com/?p=1006793" },
+    { id: 8, t: "Baird Maritime: Novorossiysk terminalleri durdu", u: "https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/port-shutdowns-push-russia-into-deeper-grain-export-slowdown" },
+    { id: 9, t: "ROIC, 25 Eylül 2026: Karadeniz limanları ve ateşkes senaryosu", u: "https://www.roic.ai/news/russia-can-quickly-restart-80-of-black-sea-grain-ports-if-ceasefire-holds-but-damaged-terminals-pose-months-long-bottleneck-09-25-2026" },
+    { id: 10, t: "Fastmarkets: Novorossiysk'te üçüncü terminal durdu", u: "https://www.fastmarkets.com/insights/third-major-terminal-suspended-at-novorossiysk/" },
+    { id: 11, t: "Milliyet Uzmanpara: TMO 2026 hububat alım ve satış fiyatları", u: "https://uzmanpara.milliyet.com.tr/uzmanpara/galeri/tmo-bugday-ve-arpa-fiyat-listesi-2026-bugday-ve-arpa-alim-fiyatlari-ne-kadar-toprak-mahsulleri-ofisi-hububat-alim-ve-satim-7598191" },
+    { id: 12, t: "NTV / AA, 29 Temmuz 2026: ekmeklik buğday ihracatı serbest", u: "https://www.ntv.com.tr/gundem/ekmeklik-bugday-ihracati-serbest-birakildi-1734997" },
+    { id: 13, t: "Milliyet, 8 Ağustos 2026: rekor buğday rekoltesi", u: "https://www.milliyet.com.tr/haber/7637313/" },
+    { id: 14, t: "DTN, 11 Eylül 2026: Eylül WASDE özeti", u: "https://www.dtnpf.com/agriculture/web/ag/news/article/2026/09/11/usda-releases-september-crop-wasde" },
+    { id: 15, t: "USDA WASDE 2026 yayın takvimi", u: "https://usda.gov/wasde" },
+    { id: 16, t: "Bloomberg HT, 2 Ekim 2026: dolar kurunda son durum", u: "https://www.bloomberght.com/dolar-ne-kadar-oldu-2-ekim-2026-dolar-kurunda-son-durum-ne-pkh2-3790079" },
+    { id: 17, t: "The Scottish Farmer: Rusya güz ekimi kuraklık altında", u: "https://www.thescottishfarmer.co.uk/news/25456977.russias-autumn-sowing-campaign-hit-drought-rising-input-costs" },
+    { id: 18, t: "Karar: 2026 su yılı yağışları son 66 yılın en yükseği", u: "https://www.karar.com/guncel-haberler/yagislar-rekor-kirdi-tarimda-verim-beklentisi-artti-2062613" },
+    { id: 19, t: "CropGPT: Rusya'dan Türkiye'ye tahıl ihracatı Ocak–Mayıs 2026", u: "https://cropgpt.ai/russian-wheat-export-prices-dip-to-231-233-on-faster-harvest" },
+    { id: 20, t: "Databento fiyatlandırma (CBOT vadeli verisi)", u: "https://databento.com/pricing" },
+    { id: 21, t: "UkrAgroConsult: Rusagrotrans Eylül tahmini 1,75 Mt", u: "https://ukragroconsult.com/en/news/port-attacks-could-push-russian-wheat-exports-below-2-mln-tons-per-month/" },
+    { id: 22, t: "CME Group: 2026 USDA rapor takvimi", u: "https://www.cmegroup.com/news/2026/understanding-major-usda-reports-in-2026.html" }
+  ];
+
+  var KPIS = [
+    { label: "CBOT buğday · Ara-26", value: "698,5", unit: "¢/bu", delta: "−6,5%", ref: "8 Eyl uzlaşmasına göre (747,0)", sub: "≈ 257 $/t", asOf: "30 Eyl · seans içi", src: [1, 2] },
+    { label: "CBOT mısır · Ara-26", value: "524,75", unit: "¢/bu", delta: "−1,6%", ref: "8 Eyl'e göre (533,5)", asOf: "30 Eyl · seans içi", src: [1, 2] },
+    { label: "CBOT soya · Kas-26", value: "1.305,25", unit: "¢/bu", delta: "−0,8%", ref: "8 Eyl'e göre (1.316,25)", asOf: "30 Eyl · seans içi", src: [1, 2] },
+    { label: "Rus buğdayı FOB · %12,5", value: "212", unit: "$/t", sub: "Novorossiysk · işlem az, fiyat nominal", asOf: "Eylül sonu", src: [4] },
+    { label: "AB buğdayı", value: "≈289", unit: "$/t", sub: "Rus FOB ile fark 77 $/t", asOf: "Eylül sonu", src: [4] },
+    { label: "Rus ihracat vergisi · buğday", value: "0", unit: "RUB/t", sub: "31 Ara'ya kadar · önceki 787,5", asOf: "19 Eyl kararnamesi", src: [5, 7] },
+    { label: "USD/TRY", value: "49,14", unit: "", sub: "EUR/TRY 55,37", asOf: "2 Eki · 09:29", src: [16] },
+    { label: "TMO satış · ekmeklik buğday", value: "18.500", unit: "TL/t", sub: "≈ 376 $/t (hesaplanan)", asOf: "1 Eki'den itibaren", src: [11] }
+  ];
+
+  var BRIEF = [
+    {
+      h: "Karadeniz'deki lojistik kriz Rus ihracatını sert biçimde kesiyor",
+      p: "Novorossiysk'teki üç ana tahıl terminali (yıllık yaklaşık 24,6 Mt kapasite) Ağustos saldırılarından sonra durdu. Rus Tahıl Birliği Eylül buğday ihracatını 1 Mt civarında bekliyor; geçen yıl aynı ay 5,7 Mt idi. SovEcon 30 Eylül'de 2026/27 Rus tahıl ihracat tahminini 49,4 Mt'tan 44,7 Mt'a indirdi.",
+      src: [8, 4, 2],
+      impact: "Rusya, Türkiye'nin ana buğday tedarikçisi; Ocak–Mayıs'ta Türkiye'ye tahıl ihracatı değer olarak ikiye katlanmıştı. Açık sözleşmelerde teslim tarihi, navlun ve savaş riski sigortası maddeleri gözden geçirilmeli. Türkiye, taraflarla güvenli seyir önerileri üzerinde çalışıyor.",
+      isrc: [19, 9]
+    },
+    {
+      h: "Rus ve AB buğdayı arasındaki fark 77 $/t'a açıldı",
+      p: "Rus buğdayı FOB Novorossiysk 212 $/t, AB buğdayı 289 $/t civarında. İhraç edilemeyen Rus buğdayının iç piyasa fiyatı 8.900 RUB/t'a geriledi. Rusya, tahıl ihracat vergilerini 1 Eylül'den geçerli olmak üzere 31 Aralık'a kadar sıfırladı.",
+      src: [4, 5],
+      impact: "Teslim edilebilir Rus kargosu bulan ithalatçı için belirgin maliyet avantajı var, ama teslim riski yüksek. Aynı fark Mısır gibi alıcıları Fransız buğdayına yöneltiyor.",
+      isrc: [10]
+    },
+    {
+      h: "CBOT buğdayı Eylül başından geri çekildi; gözler Cuma'daki WASDE'de",
+      p: "Aralık kontratı 1 Eylül'deki 782,5 ¢ uzlaşmasından 30 Eylül'de 698,5 ¢'e indi; bir gün önce altı haftanın dibini görmüştü. Ekim WASDE raporu 9 Ekim Cuma 19:00 TSİ'de yayımlanacak.",
+      src: [1, 2, 15],
+      impact: "İç piyasa rahat: rekor 23 Mt üstü hasat, TMO satışları 1 Ekim'de 18.500 TL/t'dan başladı ve ekmeklik buğday ihracatı 29 Temmuz'dan beri açık.",
+      isrc: [13, 11, 12]
+    }
+  ];
+
+  var RISKS = [
+    { cat: "Lojistik", t: "Karadeniz ve Novorossiysk", b: "Ana tahıl terminalleri kapalı; Azak Denizi'nde 10 Temmuz'dan beri seyir kısıtlaması var.", sev: "high", src: [8] },
+    { cat: "Hava", t: "Güney Rusya kışlık ekimi", b: "Güz ekimi ikinci yıl üst üste düşük toprak nemiyle başlıyor; 2027 hasadı için erken uyarı.", sev: "high", src: [17] },
+    { cat: "Fiyat", t: "WASDE öncesi oynaklık", b: "CBOT buğday altı haftalık dibin ardından tepki veriyor; Cuma raporu yön belirleyebilir.", sev: "mid", src: [2] },
+    { cat: "Politika", t: "Rus ihracat vergisi muafiyeti", b: "Tahıl vergisi yıl sonuna kadar sıfır; ihracat yolu açılırsa Rus fiyatlarını destekler.", sev: "pos", src: [5] },
+    { cat: "Hava", t: "Türkiye yeni sezon", b: "2026 su yılı yağışı son 66 yılın en yükseği oldu; yaygın kuraklık riski bildirilmiyor.", sev: "low", src: [18] }
+  ];
+  var SEV = {
+    high: { l: "Yüksek", icon: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1 11 10H1z" fill="currentColor"/></svg>' },
+    mid: { l: "Orta", icon: '<svg viewBox="0 0 12 12" aria-hidden="true"><rect x="1.5" y="1.5" width="9" height="9" rx="1" transform="rotate(45 6 6)" fill="currentColor"/></svg>' },
+    low: { l: "Düşük", icon: '<svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="currentColor"/></svg>' },
+    pos: { l: "Lehte", icon: '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 1.5v9M1.5 6h9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>' }
+  };
+
+  var SD = [
+    { k: "Dünya buğday bitiş stoku 2026/27", v: "276,3 Mt", c: "▲ Ağu 273,3", src: [14] },
+    { k: "Dünya buğday bitiş stoku 2025/26", v: "280,6 Mt", c: "Ağu 280,2", src: [14] },
+    { k: "ABD mısır üretimi 2026/27", v: "15,80 mlr bu", c: "▼ Ağu 16,01", src: [14] },
+    { k: "ABD buğday bitiş stoku 2026/27", v: "717 mn bu", c: "Ağu 717", src: [14] },
+    { k: "Rusya tahıl ihracatı 2026/27 (SovEcon)", v: "44,7 Mt", c: "▼ önceki 49,4", src: [2] },
+    { k: "Türkiye buğday üretimi 2026", v: "23 Mt üstü", c: "rekor", src: [13] }
+  ];
+
+  var POLICY = [
+    { d: "30 Eyl", f: "RU", t: "SovEcon ihracat tahminini düşürdü", b: "2026/27 Rus tahıl ihracatı 49,4 Mt'tan 44,7 Mt'a; gerekçe güney limanlarındaki aksama.", sev: "mid", src: [2] },
+    { d: "1 Eki", f: "TR", t: "TMO hububat satışları başladı", b: "Ekmeklik ve makarnalık buğday 18.500 TL/t, arpa 14.000 TL/t (2. grup).", sev: "mid", src: [11] },
+    { d: "19–22 Eyl", f: "RU", t: "Tahıl ihracat vergisi yıl sonuna kadar sıfır", b: "Buğday, arpa ve mısır; 1 Eylül'den geriye dönük. Ayçiçek yağı vergisi 7.748 RUB/t'da sabitlendi.", sev: "high", src: [5, 6] },
+    { d: "12 Ağu", f: "RU", t: "Novorossiysk'te üç ana terminal durdu", b: "KSK, NZT ve NKHP, Rusya'nın Karadeniz tahıl terminal kapasitesinin yaklaşık %75'i.", sev: "high", src: [8, 10] },
+    { d: "29 Tem", f: "TR", t: "Ekmeklik buğday ihracatı yeniden açıldı", b: "Mart 2025'ten beri kapalıydı. Başvurular OAİB üzerinden, TMO onayıyla.", sev: "mid", src: [12] },
+    { d: "Haz", f: "TR", t: "TMO 2026 alım fiyatları", b: "Buğday 16.500 TL/t, arpa 12.750 TL/t; desteklerle buğdayda 19.514 TL/t.", sev: "low", src: [11] }
+  ];
+
+  var CAL = [
+    { w: "9 Eki", s: "Cuma · 19:00", t: "USDA WASDE (Ekim)", b: "Dünya ve ABD arz-talep tahminleri", soon: true, count: "2 gün", src: [15] },
+    { w: "Her Pzt", s: "23:00", t: "USDA Crop Progress", b: "ABD ekim ve hasat ilerlemesi, 30 Kasım'a kadar", src: [22] },
+    { w: "Her Per", s: "15:30", t: "USDA haftalık ihracat satışları", b: "ABD buğday, mısır ve soya satışları", src: [22] },
+    { w: "10 Kas", s: "Salı · 20:00", t: "USDA WASDE (Kasım)", b: "ABD'de yaz saati bittiği için saat 20:00", src: [15] },
+    { w: "31 Ara", s: "Perşembe", t: "Rus tahıl vergisi muafiyeti bitiyor", b: "Uzatma kararı takip edilecek", src: [5] }
+  ];
+
+  var SRC_ROWS = [
+    { n: "USDA AMS günlük raporları", d: "CBOT, KC, MGEX uzlaşma fiyatları", fr: "Günlük", m: "PDF ayrıştırma", c: "Ücretsiz", st: "used", ref: 1 },
+    { n: "Reuters (haber akışı)", d: "Seans öncesi beklenti, tahmin revizyonları", fr: "Günlük", m: "RSS / haber", c: "Özet ücretsiz", st: "used", ref: 2 },
+    { n: "Rusya Tarım Bakanlığı, Interfax", d: "İhracat vergisi ve kararnameler", fr: "Haftalık / olay", m: "Web (Rusça) + LLM özeti", c: "Ücretsiz", st: "used", ref: 5 },
+    { n: "IKAR, SovEcon, Rus Tahıl Birliği", d: "FOB fiyatları, ihracat tahminleri", fr: "Haftalık", m: "Haber kaynakları üzerinden", c: "Ham veri ücretli", st: "used", ref: 4 },
+    { n: "TMO duyuruları", d: "Alım ve satış fiyatları, ihracat izinleri", fr: "Olay bazlı", m: "Web tarama", c: "Ücretsiz", st: "used", ref: 11 },
+    { n: "USDA WASDE ve FAS", d: "Arz-talep, ihracat satışları", fr: "Aylık / haftalık", m: "Metin, XML", c: "Ücretsiz", st: "used", ref: 14 },
+    { n: "Sektör haberleri", d: "Liman olayları, lojistik", fr: "Sürekli", m: "RSS", c: "Bazıları abonelikli", st: "used", ref: 10 },
+    { n: "Resmi Gazete", d: "Gümrük vergisi, Dahilde İşleme Rejimi", fr: "Günlük", m: "Web tarama + anahtar kelime", c: "Ücretsiz", st: "plan", ref: null },
+    { n: "TCMB EVDS", d: "Döviz kurları", fr: "Günlük", m: "REST API (anahtar gerekli)", c: "Ücretsiz", st: "plan", ref: null },
+    { n: "Open-Meteo", d: "Yağış ve sıcaklık sapmaları", fr: "Günlük", m: "REST API", c: "Ticari olmayan kullanımda ücretsiz", st: "plan", ref: null },
+    { n: "Databento (CME Globex)", d: "CBOT vadeli fiyatları", fr: "Günlük / anlık", m: "REST API", c: "Kullandıkça öde; 125 $ deneme kredisi", st: "plan", ref: 20 },
+    { n: "Euronext", d: "Paris değirmenlik buğday", fr: "Günlük", m: "Lisanslı veri", c: "Lisans gerekli", st: "lic", ref: null }
+  ];
+
+  var FLOW = [
+    { t: "Topla", time: "06:30", p: "Zamanlanmış n8n akışı her kaynağı çeker; değişmeyen sayfa atlanır.", chips: ["HTTP", "RSS", "PDF", "API"] },
+    { t: "Normalize et", time: "06:45", p: "Her kayıt tek şemaya çevrilir: değer, birim, tarih, kaynak. Birimler dönüştürülür (¢/bu → $/t, TL → $).", chips: ["Supabase", "birim tablosu"] },
+    { t: "Yorumla", time: "07:00", p: "LLM yalnızca toplanan kayıtlardan özet ve Türkiye etkisi yazar. Kaynak numarası olmayan cümle reddedilir.", chips: ["LLM", "kaynak kontrolü"] },
+    { t: "Dağıt", time: "08:00", p: "Dashboard güncellenir; üç maddelik özet ve bağlantı e-postaya ya da WhatsApp'a gider.", chips: ["Dashboard", "E-posta", "WhatsApp"] }
+  ];
+
+  var SERIES = [
+    ["2026-01-26", 579.25, "AMS uzlaşma"], ["2026-01-27", 577.00, "AMS uzlaşma"], ["2026-01-29", 592.00, "AMS uzlaşma"],
+    ["2026-05-06", 654.00, "AMS uzlaşma"], ["2026-05-12", 710.25, "AMS uzlaşma"], ["2026-05-14", 691.00, "AMS uzlaşma"],
+    ["2026-05-18", 696.25, "AMS uzlaşma"], ["2026-05-19", 698.75, "AMS uzlaşma"], ["2026-05-20", 692.25, "AMS uzlaşma"],
+    ["2026-06-03", 620.50, "AMS uzlaşma"], ["2026-06-10", 617.25, "AMS uzlaşma"], ["2026-06-12", 612.00, "AMS uzlaşma"],
+    ["2026-07-27", 677.50, "AMS uzlaşma"], ["2026-08-03", 669.25, "AMS uzlaşma"], ["2026-08-21", 699.25, "Kapanış (top agrar)"],
+    ["2026-08-26", 748.25, "AMS uzlaşma"], ["2026-09-01", 782.50, "AMS uzlaşma"], ["2026-09-04", 734.00, "AMS uzlaşma"],
+    ["2026-09-08", 747.00, "AMS uzlaşma"], ["2026-09-30", 698.50, "Seans içi (Reuters)"]
+  ];
+
+  /* ---------- Helpers ---------- */
+  var MONTHS = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function srcLinks(ids) { return (ids || []).map(function (i) { return '<a class="src" href="#s' + i + '">[' + i + ']</a>'; }).join(" "); }
+  function fmt(n, d) { return n.toLocaleString("tr-TR", { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function day(s) { return new Date(s + "T12:00:00Z"); }
+  function trDate(d) { return d.getUTCDate() + " " + MONTHS[d.getUTCMonth()]; }
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- Ticker ---------- */
+  $("ticker").innerHTML = KPIS.map(function (k) {
+    return '<div class="kpi">' +
+      '<div class="kpi-label">' + esc(k.label) + '</div>' +
+      '<div class="kpi-value"><b>' + esc(k.value) + '</b>' + (k.unit ? '<span>' + esc(k.unit) + '</span>' : '') + '</div>' +
+      (k.delta ? '<div class="kpi-delta">' + esc(k.delta) + ' <i>' + esc(k.ref) + '</i></div>' : '') +
+      (k.sub ? '<div class="kpi-sub">' + esc(k.sub) + '</div>' : '') +
+      '<div class="kpi-foot"><span>' + esc(k.asOf) + '</span><span>' + srcLinks(k.src) + '</span></div>' +
+      '</div>';
+  }).join("");
+
+  /* ---------- Brief ---------- */
+  $("brief").innerHTML = BRIEF.map(function (b, i) {
+    return '<li><span class="n">' + (i + 1) + '</span><div>' +
+      '<h3>' + esc(b.h) + '</h3>' +
+      '<p>' + esc(b.p) + ' ' + srcLinks(b.src) + '</p>' +
+      '<div class="impact"><b>Türkiye etkisi:</b> ' + esc(b.impact) + ' ' + srcLinks(b.isrc) + '</div>' +
+      '</div></li>';
+  }).join("");
+
+  /* ---------- Risks ---------- */
+  function sevBadge(s) { return '<span class="sev sev-' + s + '">' + SEV[s].icon + SEV[s].l + '</span>'; }
+  $("risks").innerHTML = RISKS.map(function (r) {
+    return '<li class="risk"><span class="stripe sev-' + r.sev + '"></span><div>' +
+      '<div class="risk-top"><span class="risk-cat">' + esc(r.cat) + '</span>' + sevBadge(r.sev) + '</div>' +
+      '<div class="risk-title">' + esc(r.t) + '</div>' +
+      '<div class="risk-body">' + esc(r.b) + ' ' + srcLinks(r.src) + '</div>' +
+      '</div></li>';
+  }).join("");
+
+  /* ---------- Supply / demand ---------- */
+  $("sd").innerHTML = '<caption class="sr" style="position:absolute;left:-9999px">WASDE ve tahmin özetleri</caption>' + SD.map(function (r) {
+    return '<tr><th scope="row">' + esc(r.k) + ' ' + srcLinks(r.src) + '</th><td>' + esc(r.v) + '<small>' + esc(r.c) + '</small></td></tr>';
+  }).join("");
+
+  /* ---------- Policy ---------- */
+  $("policy").innerHTML = '<thead><tr><th>Tarih</th><th>Ülke</th><th>Gelişme</th><th>Etki</th></tr></thead><tbody>' +
+    POLICY.map(function (p) {
+      return '<tr><td class="date">' + esc(p.d) + '</td><td><span class="flag">' + esc(p.f) + '</span></td>' +
+        '<td class="what"><b>' + esc(p.t) + '</b><div>' + esc(p.b) + ' ' + srcLinks(p.src) + '</div></td>' +
+        '<td>' + sevBadge(p.sev) + '</td></tr>';
+    }).join("") + '</tbody>';
+
+  /* ---------- Calendar ---------- */
+  $("cal").innerHTML = CAL.map(function (c) {
+    return '<li' + (c.soon ? ' class="soon"' : '') + '><div class="when">' + esc(c.w) + '<small>' + esc(c.s) + '</small></div>' +
+      '<div class="ev"><b>' + esc(c.t) + '</b>' + (c.count ? '<span class="count">' + esc(c.count) + '</span>' : '') +
+      '<div>' + esc(c.b) + ' ' + srcLinks(c.src) + '</div></div></li>';
+  }).join("");
+
+  /* ---------- Sources ---------- */
+  var ST = { used: '<span class="st used"><i></i>Kullanıldı</span>', plan: '<span class="st plan"><i></i>Canlı sürümde</span>', lic: '<span class="st lic"><i></i>Lisans gerekli</span>' };
+  function renderSources(filter) {
+    var rows = SRC_ROWS.filter(function (r) { return filter === "all" || (filter === "used" ? r.st === "used" : r.st !== "used"); });
+    $("sources").innerHTML = '<thead><tr><th>Kaynak</th><th>Veri</th><th>Sıklık</th><th>Erişim</th><th>Maliyet</th><th>Durum</th></tr></thead><tbody>' +
+      rows.map(function (r) {
+        return '<tr><td class="what"><b>' + esc(r.n) + '</b>' + (r.ref ? ' ' + srcLinks([r.ref]) : '') + '</td>' +
+          '<td>' + esc(r.d) + '</td><td class="date">' + esc(r.fr) + '</td><td>' + esc(r.m) + '</td>' +
+          '<td class="cost">' + esc(r.c) + '</td><td>' + ST[r.st] + '</td></tr>';
+      }).join("") + '</tbody>';
+  }
+  var nUsed = SRC_ROWS.filter(function (r) { return r.st === "used"; }).length;
+  var nFree = SRC_ROWS.filter(function (r) { return /^Ücretsiz/.test(r.c); }).length;
+  $("srcSummary").innerHTML = '<span><b>' + SRC_ROWS.length + '</b> kaynak</span><span><b>' + nUsed + '</b> tanesi bu bültende kullanıldı</span><span><b>' + nFree + '</b> tanesi tamamen ücretsiz</span><span><b>1</b> lisans gerektiriyor</span>';
+  renderSources("all");
+  Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (btn) {
+    btn.addEventListener("click", function () {
+      Array.prototype.forEach.call(document.querySelectorAll(".seg button"), function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+      renderSources(btn.getAttribute("data-f"));
+    });
+  });
+
+  /* ---------- Flow + schema ---------- */
+  $("flow").innerHTML = FLOW.map(function (s, i) {
+    return '<div class="step"><div class="step-h"><span class="step-n">' + (i + 1) + '</span><b>' + esc(s.t) + '</b><span class="step-time">' + esc(s.time) + '</span></div>' +
+      '<p>' + esc(s.p) + '</p><div class="chips">' + s.chips.map(function (c) { return '<span class="chip">' + esc(c) + '</span>'; }).join("") + '</div></div>';
+  }).join("");
+  $("schema").textContent = JSON.stringify({
+    bulletin_date: "2026-10-07",
+    prices: [{ id: "cbot_wheat_z26", label: "CBOT buğday · Ara-26", value: 698.5, unit: "c/bu", as_of: "2026-09-30", kind: "intraday", source_id: 2 }],
+    events: [{ date: "2026-09-21", country: "RU", title: "Tahıl ihracat vergisi yıl sonuna kadar sıfır", impact: "high", source_ids: [5, 6] }],
+    risks: [{ category: "logistics", title: "Karadeniz ve Novorossiysk", level: "high", source_ids: [8] }],
+    brief: [{ headline: "...", body: "...", turkey_impact: "...", source_ids: [8, 4, 2] }],
+    sources: [{ id: 2, title: "Reuters, CBOT Trends, 30 Eylül 2026", url: "https://..." }]
+  }, null, 2);
+
+  /* ---------- References ---------- */
+  $("refs").innerHTML = SOURCES.map(function (s) {
+    return '<li id="s' + s.id + '"><a href="' + esc(s.u) + '" target="_blank" rel="noopener">' + esc(s.t) + '</a></li>';
+  }).join("");
+
+  /* ---------- Tooltip helper ---------- */
+  function makeTip(container) {
+    var t = document.createElement("div"); t.className = "tip"; t.hidden = true; container.appendChild(t);
+    return {
+      show: function (html, x, y) {
+        t.innerHTML = html; t.hidden = false;
+        var cw = container.clientWidth, tw = t.offsetWidth, th = t.offsetHeight;
+        var left = Math.min(Math.max(x + 12, 0), cw - tw);
+        if (x + 12 + tw > cw) left = Math.max(x - tw - 12, 0);
+        t.style.left = left + "px"; t.style.top = Math.max(y - th - 10, 0) + "px";
+      },
+      hide: function () { t.hidden = true; }
+    };
+  }
+
+  /* ---------- Line chart ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function drawLine() {
+    var host = $("lineChart");
+    host.innerHTML = "";
+    var W = Math.max(host.clientWidth, 280), narrow = W < 520;
+    var H = narrow ? 230 : 270;
+    var m = { l: 40, r: narrow ? 52 : 64, t: 22, b: 26 };
+    var x0 = day("2026-01-01").getTime(), x1 = day("2026-10-12").getTime();
+    var yMin = 550, yMax = 800;
+    function X(t) { return m.l + (t - x0) / (x1 - x0) * (W - m.l - m.r); }
+    function Y(v) { return m.t + (yMax - v) / (yMax - yMin) * (H - m.t - m.b); }
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, "aria-hidden": "true" }, host);
+
+    [550, 600, 650, 700, 750, 800].forEach(function (v) {
+      el("line", { x1: m.l, x2: W - m.r, y1: Y(v), y2: Y(v), stroke: "var(--line)", "stroke-width": 1 }, svg);
+      var tx = el("text", { x: m.l - 8, y: Y(v) + 3.5, "text-anchor": "end", "class": "axis-t" }, svg); tx.textContent = v;
+    });
+    for (var mo = 0; mo < 10; mo++) {
+      if (narrow && mo % 2) continue;
+      var t = Date.UTC(2026, mo, 1, 12);
+      var xx = X(t);
+      el("line", { x1: xx, x2: xx, y1: H - m.b, y2: H - m.b + 4, stroke: "var(--line-strong)", "stroke-width": 1 }, svg);
+      var lt = el("text", { x: xx, y: H - m.b + 16, "text-anchor": "middle", "class": "axis-t" }, svg); lt.textContent = MONTHS[mo];
+    }
+
+    var pts = SERIES.map(function (s) { var d = day(s[0]); return { d: d, x: X(d.getTime()), y: Y(s[1]), v: s[1], k: s[2] }; });
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1], b = pts[i];
+      var gap = (b.d - a.d) / 864e5 > 14;
+      el("line", {
+        x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+        stroke: gap ? "var(--muted)" : "var(--accent)", "stroke-width": gap ? 1.5 : 2,
+        "stroke-dasharray": gap ? "1.5 4" : "none", "stroke-linecap": "round"
+      }, svg);
+    }
+    pts.forEach(function (p, i) {
+      var last = i === pts.length - 1;
+      el("circle", { cx: p.x, cy: p.y, r: last ? 5 : 4, fill: "var(--accent)", stroke: "var(--surface)", "stroke-width": 2 }, svg);
+    });
+    // labels: max and last
+    var maxP = pts.reduce(function (a, b) { return b.v > a.v ? b : a; });
+    var mt = el("text", { x: maxP.x, y: maxP.y - 11, "text-anchor": "middle", "class": "lbl-t" }, svg); mt.textContent = fmt(maxP.v, 1);
+    var lastP = pts[pts.length - 1];
+    var l1 = el("text", { x: lastP.x + 9, y: lastP.y - 2, "class": "lbl-t" }, svg); l1.textContent = fmt(lastP.v, 1);
+    var l2 = el("text", { x: lastP.x + 9, y: lastP.y + 11, "class": "lbl-s" }, svg); l2.textContent = trDate(lastP.d);
+
+    var cross = el("line", { x1: 0, x2: 0, y1: m.t, y2: H - m.b, stroke: "var(--ink-2)", "stroke-width": 1, opacity: 0 }, svg);
+    var ring = el("circle", { cx: 0, cy: 0, r: 7, fill: "none", stroke: "var(--accent)", "stroke-width": 2, opacity: 0 }, svg);
+    var hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r + 30, height: H - m.t - m.b, fill: "transparent" }, svg);
+    var tip = makeTip(host);
+    function onMove(ev) {
+      var r = svg.getBoundingClientRect();
+      var mx = (ev.clientX - r.left) * (W / r.width);
+      var best = pts[0];
+      pts.forEach(function (p) { if (Math.abs(p.x - mx) < Math.abs(best.x - mx)) best = p; });
+      cross.setAttribute("x1", best.x); cross.setAttribute("x2", best.x); cross.setAttribute("opacity", 0.35);
+      ring.setAttribute("cx", best.x); ring.setAttribute("cy", best.y); ring.setAttribute("opacity", 1);
+      var idx = pts.indexOf(best), prev = pts[idx - 1];
+      var chg = prev ? (best.v - prev.v) / prev.v * 100 : null;
+      tip.show('<div class="t-s">' + best.d.getUTCDate() + " " + MONTHS[best.d.getUTCMonth()] + ' 2026 · ' + esc(best.k) + '</div><b>' + fmt(best.v, 2) + ' ¢/bu</b>' +
+        '<div class="t-s">≈ ' + fmt(best.v * 0.367437, 0) + ' $/t' + (chg !== null ? ' · önceki gözleme göre ' + (chg >= 0 ? "+" : "−") + fmt(Math.abs(chg), 1) + '%' : '') + '</div>',
+        best.x * (r.width / W), best.y * (r.height / H));
+    }
+    function onLeave() { cross.setAttribute("opacity", 0); ring.setAttribute("opacity", 0); tip.hide(); }
+    hit.addEventListener("pointermove", onMove);
+    hit.addEventListener("pointerdown", onMove);
+    hit.addEventListener("pointerleave", onLeave);
+  }
+
+  /* ---------- HTML bars ---------- */
+  function drawBars(id, rows, max, unit) {
+    var host = $(id);
+    host.innerHTML = "";
+    host.style.position = "relative";
+    var tip = makeTip(host);
+    rows.forEach(function (r) {
+      var row = document.createElement("div"); row.className = "bar-row";
+      row.innerHTML = '<div class="bar-lab"><span>' + esc(r.label) + '</span>' + (r.tag ? '<em>' + esc(r.tag) + '</em>' : '') + '</div>';
+      var track = document.createElement("div"); track.className = "bar-track base";
+      var bar = document.createElement("div"); bar.className = "bar" + (r.est ? " est" : "");
+      bar.style.width = (r.v / max * 78) + "%";
+      track.appendChild(bar);
+      if (r.hi) {
+        var wsk = document.createElement("div"); wsk.className = "whisker";
+        wsk.style.left = (r.v / max * 78) + "%"; wsk.style.width = ((r.hi - r.v) / max * 78) + "%";
+        track.appendChild(wsk);
+      }
+      var val = document.createElement("span"); val.className = "bar-val"; val.textContent = r.disp;
+      if (r.hi) val.style.marginLeft = "calc(" + ((r.hi - r.v) / max * 78) + "% + 8px)";
+      track.appendChild(val);
+      var hitEl = document.createElement("div"); hitEl.className = "bar-hit"; track.appendChild(hitEl);
+      function show(ev) {
+        var hr = host.getBoundingClientRect();
+        tip.show('<div class="t-s">' + esc(r.label) + '</div><b>' + esc(r.disp) + ' ' + esc(unit) + '</b>' + (r.note ? '<div class="t-s">' + esc(r.note) + '</div>' : ''),
+          ev.clientX - hr.left, ev.clientY - hr.top);
+      }
+      hitEl.addEventListener("pointermove", show);
+      hitEl.addEventListener("pointerdown", show);
+      hitEl.addEventListener("pointerleave", function () { tip.hide(); });
+      row.appendChild(track);
+      host.appendChild(row);
+    });
+  }
+
+  function drawAll() {
+    drawLine();
+    drawBars("expBars", [
+      { label: "Eylül 2025", v: 5.7, disp: "5,7", note: "Geçen yılın aynı ayı" },
+      { label: "Ağustos 2026", v: 1.3, disp: "1,3", note: "Rus Tahıl Birliği" },
+      { label: "Eylül 2026", tag: "tahmin", v: 1.0, hi: 1.75, est: true, disp: "≈1,0", note: "Rus Tahıl Birliği ≈1,0 · Rusagrotrans 1,75" }
+    ], 6, "Mt");
+    drawBars("ladder", [
+      { label: "Rus buğdayı FOB Novorossiysk", v: 212, disp: "212", note: "%12,5 protein · Eylül sonu" },
+      { label: "CBOT buğday, Ara-26", tag: "hesaplanan", v: 256.7, disp: "≈257", note: "698,5 ¢/bu × 36,74 bu/t · 30 Eyl seans içi" },
+      { label: "AB buğdayı", v: 289, disp: "≈289", note: "Eylül sonu" },
+      { label: "TMO satış, ekmeklik buğday", tag: "hesaplanan", v: 376.5, disp: "≈376", note: "18.500 TL/t ÷ 49,14 · yurt içi teslim" }
+    ], 400, "$/t");
+  }
+  drawAll();
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawLine, 120); });
+})();
+</script>
+</body>
+</html>
