@@ -1,7 +1,8 @@
-# Sayfayı GitHub Pages'e yayınlar. Veri çek ve Sabah bülteni bitince, ayrıca main'e yapılan
-# her push'ta çalışır. (GITHUB_TOKEN ile yapılan push'lar başka iş akışını tetiklemediği için
-# veri iş akışlarının bitişi ayrıca dinleniyor.)
-# Pages ayarlarında kaynak "GitHub Actions" seçilmemişse yayın adımı atlanır.
+# Sayfayı yayınlar. Veri çek ve Sabah bülteni bitince, ayrıca main'e yapılan her push'ta çalışır.
+# (GITHUB_TOKEN ile yapılan push'lar başka iş akışını tetiklemediği için veri iş akışlarının
+# bitişi ayrıca dinleniyor.) İki hedef var; hangisi ayarlıysa o çalışır, diğeri atlanır:
+#   Cloudflare Workers: CLOUDFLARE_API_TOKEN ve CLOUDFLARE_ACCOUNT_ID sırları; alan adı ALAN_ADI değişkeni
+#   GitHub Pages: Settings → Pages → Source: GitHub Actions
 name: Yayın
 
 on:
@@ -12,18 +13,55 @@ on:
     types: [completed]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  group: yayin
   cancel-in-progress: true
 
 jobs:
-  yayin:
+  cloudflare:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Cloudflare anahtarları var mı
+        id: cf
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          HESAP: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$TOKEN" ] || [ -z "$HESAP" ]; then
+            echo "::notice::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID sırları yok; Cloudflare yayını atlandı."
+            echo "var=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "var=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v6
+        if: steps.cf.outputs.var == 'true'
+        with:
+          ref: main
+      - name: Yayın klasörü ve alan adı
+        if: steps.cf.outputs.var == 'true'
+        env:
+          ALAN_ADI: ${{ vars.ALAN_ADI }}
+        run: |
+          mkdir _site && cp index.html app.js tazelik.js data.js _site/
+          if [ -n "$ALAN_ADI" ]; then
+            node -e 'const fs=require("fs");const c=JSON.parse(fs.readFileSync("wrangler.json","utf8"));c.routes=[{pattern:process.env.ALAN_ADI,custom_domain:true}];fs.writeFileSync("wrangler.json",JSON.stringify(c,null,2))'
+            echo "Alan adı: $ALAN_ADI"
+          fi
+      - uses: cloudflare/wrangler-action@v4
+        if: steps.cf.outputs.var == 'true'
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+  pages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.dagit.outputs.page_url }}
@@ -36,7 +74,7 @@ jobs:
           tip=$(gh api "repos/${{ github.repository }}/pages" --jq .build_type 2>/dev/null || echo yok)
           echo "Pages kaynağı: $tip"
           if [ "$tip" != "workflow" ]; then
-            echo "::notice::GitHub Pages kaynağı 'GitHub Actions' değil ($tip); yayın atlandı. Settings → Pages → Source: GitHub Actions."
+            echo "::notice::GitHub Pages kaynağı 'GitHub Actions' değil ($tip); Pages yayını atlandı."
             echo "hazir=false" >> "$GITHUB_OUTPUT"
           else
             echo "hazir=true" >> "$GITHUB_OUTPUT"

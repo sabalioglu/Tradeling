@@ -8,7 +8,7 @@ Türkiye'deki bir hububat ticaret masası için sabah bülteni dashboard'u. Stat
 
 ## Nasıl açılır
 
-- Canlı: GitHub Pages üzerinden, kendi alan adınızla (kurulum aşağıda, "Canlı yayın ve otomasyon").
+- Canlı: Cloudflare Workers (ya da GitHub Pages) üzerinden, kendi alan adınızla. Kurulum aşağıda, "Canlı yayın ve otomasyon" bölümünde.
 - Yerel: `index.html` dosyasını tarayıcıda açın. `data.js`, `tazelik.js` ve `app.js` aynı klasörde olmalıdır.
 
 USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt gelmezse ExchangeRate-API). İkisi de yanıt vermezse bültendeki değer kalır.
@@ -29,7 +29,8 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 | `.claude/settings.json` | Rutinin izin istemine takılmadan çalışması için gereken komut izinleri |
 | `.github/workflows/veri.yml` | "Veri çek": hafta içi 13:07, 15:45, 23:20 TSİ'de API'li kaynakları çeker (yapay zekâ yok) |
 | `.github/workflows/sabah-bulteni.yml` | "Sabah bülteni": her gün 06:29 TSİ'de Claude prosedürü uygular |
-| `.github/workflows/yayin.yml` | "Yayın": her güncellemeden sonra sayfayı GitHub Pages'e yayınlar |
+| `.github/workflows/yayin.yml` | "Yayın": her güncellemeden sonra sayfayı Cloudflare Workers'a ya da GitHub Pages'e yayınlar |
+| `wrangler.json` | Cloudflare Workers yapılandırması (yalnızca statik dosyalar; alan adı yayın sırasında `ALAN_ADI` değişkeninden eklenir) |
 
 ## Canlı yayın ve otomasyon
 
@@ -37,19 +38,20 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 |---|---|---|---|
 | Veri çek | Hafta içi 13:07, 15:45, 23:20 | CBOT/KC uzlaşmaları, kur, Konya borsası, AB Rouen, CFTC COT; değiştiyse `main`'e gönderir | Yok, ücretsiz |
 | Sabah bülteni | Her gün 06:29 | `SKILL.md` prosedürü: araştırma, bülten metni, doğrulama, gönderim | Claude (aboneliğinizden) |
-| Yayın | Her güncellemeden sonra | `index.html`, `app.js`, `tazelik.js`, `data.js`'i GitHub Pages'e yayınlar | Yok |
+| Yayın | Her güncellemeden sonra | `index.html`, `app.js`, `tazelik.js`, `data.js`'i Cloudflare Workers'a ya da GitHub Pages'e yayınlar (hangisi ayarlıysa) | Yok |
 
 Bir iş akışı başarısız olursa GitHub e-postayla haber verir. Elle çalıştırmak için: *Actions → iş akışı → Run workflow*.
 
 **Bir kerelik kurulum (repo sahibi yapar):**
 
 1. **Claude jetonu.** Bilgisayarınızda `claude setup-token` çalıştırın ve çıkan jetonu *Settings → Secrets and variables → Actions → New repository secret* ile `CLAUDE_CODE_OAUTH_TOKEN` adıyla ekleyin. Jeton yokken "Sabah bülteni" kendini atlar.
-2. **GitHub Pages.** *Settings → Pages → Build and deployment → Source: GitHub Actions*.
-3. **Alan adı.** Aynı sayfada *Custom domain* kutusuna alan adını yazın (ör. `hububat.sirketiniz.com`) ve *Enforce HTTPS*'i açın. Alan adınızın DNS panelinde bir kayıt ekleyin:
-   - Alt alan adı için: `CNAME` kaydı, ad `hububat`, değer `sabalioglu.github.io`
-   - Kök alan adı için: `A` kayıtları `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-
-   DNS'in yayılması birkaç dakikadan birkaç saate kadar sürebilir; HTTPS sertifikası ardından kendiliğinden gelir.
+2. **Yayın hedefi.** Birini seçin:
+   - **Cloudflare Workers (önerilen).** Alan adınız Cloudflare'de ise DNS kaydı ve HTTPS sertifikası kendiliğinden kurulur.
+     1. Cloudflare panelinde *My Profile → API Tokens → Create Token → "Edit Cloudflare Workers"* şablonunu seçin; *Zone Resources* kısmında alan adınızı seçip jetonu oluşturun.
+     2. Hesap kimliğini (*Account ID*) Cloudflare panelinin Workers sayfasından kopyalayın.
+     3. GitHub'da *Settings → Secrets and variables → Actions*: `CLOUDFLARE_API_TOKEN` ve `CLOUDFLARE_ACCOUNT_ID` sırlarını ekleyin; *Variables* sekmesinde `ALAN_ADI` değişkenine yayın adresini yazın (ör. `hububat.sirketiniz.com`). Bu adda mevcut bir CNAME kaydı olmamalıdır.
+     4. *Actions → Yayın → Run workflow*. Sayfa birkaç dakika içinde `https://<ALAN_ADI>` ve `hububat-masasi.<hesap>.workers.dev` adreslerinde açılır.
+   - **GitHub Pages.** *Settings → Pages → Build and deployment → Source: GitHub Actions*; aynı sayfada *Custom domain* kutusuna alan adını yazıp *Enforce HTTPS*'i açın. DNS panelinizde alt alan adı için `CNAME` kaydı (`hububat` → `sabalioglu.github.io`), kök alan adı için `A` kayıtları (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) ekleyin.
 
 **Yedek rutin:** claude.ai'deki "Hububat Masası sabah güncellemesi" rutini her gün 08:13 TSİ'de kalıcı "Hububat Masası · sabah rutini" oturumunu uyandırır. O günün bülteni zaten yayınlandıysa hiçbir şey yapmadan durur; GitHub tarafı çalışmadıysa bülteni o yazar. Bu oturumu arşivlemeyin. Yedeğe gerek kalmazsa claude.ai → Routines'ten kapatılabilir.
 
