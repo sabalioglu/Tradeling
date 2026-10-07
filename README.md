@@ -30,7 +30,7 @@ Türkiye'deki bir hububat ticaret masası için hazırlanmış sabah bülteni da
 | CBOT fiyatları | 30 Eylül 2026, seans içi (Reuters); seri USDA AMS uzlaşma fiyatlarından |
 | Rus ve AB buğdayı FOB | Eylül 2026 sonu |
 | Rus ihracat vergisi | 19–22 Eylül 2026 kararnamesi |
-| USD/TRY, EUR/TRY | 2 Ekim 2026, 09:29 |
+| USD/TRY, EUR/TRY | 7 Ekim 2026, 09:26 |
 | TMO fiyatları | Haziran 2026 (alım), 1 Ekim 2026 (satış) |
 | WASDE | 11 Eylül 2026 |
 
