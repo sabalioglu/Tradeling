@@ -157,10 +157,10 @@ window.HUBUBAT = {
   ],
   "brief": [
     {
-      "headline": "Batı Karadeniz'de iki günde üç Türk işletmeli gemi vuruldu",
-      "body": "5 Ekim'de Ukrayna mısırı taşıyan Royad Mammadov Romanya açıklarında drone saldırısıyla battı; iki kişi öldü. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, Byala'nın yaklaşık 70 mil açığında Alfa Watan battı ve mürettebatı bulunamadı; buğday taşıyan Able yandı, 18 kişi kurtarıldı. Bulgaristan aramayı 7 Ekim'de durdurdu. Ukrayna saldırılardan Rusya'yı sorumlu tutuyor.",
+      "headline": "Batı Karadeniz'de iki günde üç ticari gemi vuruldu, ikisi battı",
+      "body": "5 Ekim'de Ukrayna'nın İzmail limanından İtalya'ya mısır taşıyan Royad Mammadov Romanya açıklarında yanarak battı; iki kişi öldü. Zelenskiy'e göre gemi Türk sahipli ve Rus İHA'larıyla vuruldu. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, kıyıdan yaklaşık 70 deniz mili açıkta hava ve deniz İHA'larıyla iki gemi vuruldu: Togo bayraklı Alfa Watan battı, tahıl yüklü Palau bayraklı Able yandı ve 18 mürettebatı kurtarıldı. Bulgaristan Alfa Watan mürettebatı için aramayı 7 Ekim'de sonuçsuz bitirdi.",
       "src": [31, 32, 38],
-      "impact": "Saldırıların ikisi NATO üyesi Romanya ve Bulgaristan açıklarında, Boğaz'a giden rotada oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Tuna ve Ukrayna çıkışlı yüklerde navlun ve savaş riski primi yükselebilir; açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
+      "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Batı Karadeniz yüklemelerinde navlun ve savaş riski primi yükselebilir; açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
       "impactSrc": [33, 31]
     },
     {
@@ -182,7 +182,7 @@ window.HUBUBAT = {
     {
       "category": "Lojistik",
       "title": "Batı Karadeniz'de gemi saldırıları",
-      "body": "5–6 Ekim'de Romanya ve Bulgaristan açıklarında üç Türk işletmeli gemi vuruldu; ikisi battı. Saldırılar ilk kez NATO üyesi bir ülkenin ekonomik bölgesine uzandı.",
+      "body": "5–6 Ekim'de Romanya ve Bulgaristan açıklarında üç ticari gemi vuruldu, ikisi battı; Zelenskiy'e göre biri Türk sahipli. Denizcilik kaynaklarına göre Bulgaristan sularındaki ilk saldırı.",
       "level": "high",
       "src": [31, 32]
     },
