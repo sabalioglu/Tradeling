@@ -23,7 +23,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [28]
     },
     {
@@ -37,7 +37,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [28]
     },
     {
@@ -52,7 +52,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [28]
     },
     {
@@ -67,7 +67,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [28]
     },
     {
@@ -110,7 +110,7 @@ window.HUBUBAT = {
       "asOfNote": "21.09–27.09 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [30]
     },
     {
@@ -123,7 +123,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-07T17:37:00+03:00",
       "src": [29],
       "sub": "1. grup beyaz sert 21.461 · 2. grup kırmızı sert 19.554"
     },
@@ -275,7 +275,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-09-29",
-    "checked": "2026-10-07T17:36:00+03:00",
+    "checked": "2026-10-07T17:37:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -467,7 +467,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 28,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "lastChecked": "2026-10-07T17:37:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -515,7 +515,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "lastChecked": "2026-10-07T17:37:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -527,7 +527,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-09-27",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "lastChecked": "2026-10-07T17:37:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -587,7 +587,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-09-29",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "lastChecked": "2026-10-07T17:37:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
