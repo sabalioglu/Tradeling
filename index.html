@@ -151,6 +151,16 @@ h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
 .brief p { margin: 4px 0 0; color: var(--ink-2); max-width: 70ch; }
 .impact { margin-top: 8px; padding: 8px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); font-size: 13px; }
 .impact b { font-weight: 600; }
+/* Açılır ayrıntı (özet, risk, politika) */
+details.more { border-top: 0; padding-top: 0; margin-top: 6px; font-size: 12.5px; }
+details.more summary { font-size: 12px; font-weight: 600; color: var(--accent); list-style: none; display: inline-flex; align-items: center; gap: 4px; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "▸"; font-size: 10px; }
+details.more[open] summary::before { content: "▾"; }
+details.more p { margin: 6px 0 0; color: var(--ink-2); max-width: 70ch; }
+.news { margin: 6px 0 0; padding-left: 16px; color: var(--ink-2); }
+.brief .news li, .news li { display: list-item; margin: 2px 0; padding: 0; border: 0; overflow-wrap: anywhere; }
+.news a { color: var(--ink); }
 
 /* Risk radar */
 .risks { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }

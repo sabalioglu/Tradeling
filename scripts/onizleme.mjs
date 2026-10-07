@@ -37,8 +37,8 @@ for (const [name, width] of [["masaustu", 1280], ["mobil", 390]]) {
   const got = await page.evaluate(() => ({
     fonts: [...new Set([...document.fonts].filter((f) => f.status === "loaded").map((f) => f.family.replace(/"/g, "")))],
     kpis: document.querySelectorAll("#ticker .kpi").length,
-    brief: document.querySelectorAll("#brief li").length,
-    risks: document.querySelectorAll("#risks li").length,
+    brief: document.querySelectorAll("#brief > li").length,
+    risks: document.querySelectorAll("#risks > li").length,
     chart: document.querySelectorAll("#lineChart svg circle").length,
     refs: document.querySelectorAll("#refs li").length,
     projects: document.querySelectorAll("#oss tbody tr").length,

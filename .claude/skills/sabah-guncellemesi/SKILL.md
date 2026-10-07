@@ -50,6 +50,8 @@ Her gösterge için kaynak sırası, yayın saati (TSİ) ve notlar aşağıdaki 
 
 ### 5. Bülten metni
 - `brief`: tam 3 madde. En önemli üç gelişme, her biri için somut "Türkiye etkisi". Gelişme yoksa mevcut maddeleri güncel rakam ve tarihle yenile; dünkü metni olduğu gibi bırakma.
+- `brief[].detail`: sayfada "Ayrıntılar ve haberler" altında açılan 2–3 kısa paragraf. Özette sığmayan somut ayrıntıları yaz: kim, nerede, ne zaman, rakamlar, resmi açıklamalar. Özeti tekrar etme. Kaynakları `detailSrc`'ye yaz; açılan kutuda bu kaynakların başlığı, tarihi ve bağlantısı da listelenir.
+- `risks[]` ve `policy[]` için `detail` ve `detailSrc` isteğe bağlı; yoksa açılan kutu yalnız ilgili haberlerin listesini gösterir.
 - `risks`: 3–7 madde, seviye `high`, `mid`, `low` ya da `pos`.
 - `policy`: son 90 gün. Yeni gelişmeyi ekle, 90 günü geçenleri sil.
 - `calendar`: geçmiş tek seferlik olayları sil. Önümüzdeki 6–8 haftanın kritik olaylarını tut (WASDE, büyük USDA raporları, Rus vergi kararı tarihleri, TMO ihaleleri, kontrat FND'leri). En yakın kritik olaylarda `key: true` ve kısa ad (`short`).

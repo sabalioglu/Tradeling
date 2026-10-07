@@ -161,21 +161,38 @@ window.HUBUBAT = {
       "body": "5 Ekim'de Ukrayna'nın İzmail limanından İtalya'ya mısır taşıyan Royad Mammadov Romanya açıklarında yanarak battı; iki kişi öldü. Zelenskiy'e göre gemi Türk sahipli ve Rus İHA'larıyla vuruldu. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, kıyıdan yaklaşık 70 deniz mili açıkta hava ve deniz İHA'larıyla iki gemi vuruldu: Togo bayraklı Alfa Watan battı, tahıl yüklü Palau bayraklı Able yandı ve 18 mürettebatı kurtarıldı. Bulgaristan Alfa Watan mürettebatı için aramayı 7 Ekim'de sonuçsuz bitirdi.",
       "src": [31, 32, 38],
       "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Batı Karadeniz yüklemelerinde navlun ve savaş riski primi yükselebilir; açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
-      "impactSrc": [33, 31]
+      "impactSrc": [33, 31],
+      "detail": [
+        "Royad Mammadov, Saint Kitts ve Nevis bayraklı, Türk işletmeli bir kuru yük gemisi. Ukrayna'nın İzmail limanından mısırla İtalya'nın Ravenna limanına gidiyordu; 5 Ekim'de Romanya karasuları dışında, bir OMV Petrom platformu yakınında vuruldu ve battı. İki kişi öldü, 11 mürettebat kurtarıldı. Rusya Savunma Bakanlığı iki kargo gemisini vurduğunu açıkladı.",
+        "6 Ekim'de Togo bayraklı Alfa Watan ile Palau bayraklı Able, Bulgaristan'ın Byala kıyısının yaklaşık 70 mil açığında hava ve deniz dronlarıyla vuruldu. Alfa Watan battı; Bulgaristan mürettebat aramasını 7 Ekim'de sonuçsuz durdurdu. Buğday taşıyan Able yandı; 18 mürettebatın tamamı tahliye edildi, ikisi ağır yaralı.",
+        "Bulgaristan Başbakanı Radev saldırıyı uluslararası hukukun ağır ihlali olarak nitelendirdi. Zelenskiy, Bulgar donanmasıyla yapılan ortak incelemenin Rusya'yı işaret ettiğini söyledi; Rusya yorum yapmadı. Bulgaristan beş ek karadan havaya füze sistemi alacağını açıkladı."
+      ],
+      "detailSrc": [31, 32, 33, 38]
     },
     {
       "headline": "Rus buğday ihracatı Eylül'de dörtte bire indi, yük Baltık'a kaydı",
       "body": "Rus Tahıl Birliği'ne göre Eylül'de 1,36 Mt buğday ihraç edildi (geçen yıl 5,4 Mt); Ust-Luga ve Vysotsk başı çekti, alıcı ülke sayısı 37'den 12'ye düştü. Piyasa analistleri Eylül'ü 2,3–2,4 Mt, Ekim'i 2,5 Mt'a kadar tahmin ediyor. SovEcon 2026/27 buğday ihracat tahminini 4,7 Mt indirerek 36,7 Mt'a çekti. IKAR'a göre Baltık FOB 266 $/t.",
       "src": [35, 27, 36],
       "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi. Novorossiysk yerine Baltık'tan yükleme yolu uzatıyor; Rus kargosunda teslim süresi ve navlun riski sürüyor. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor: vergi muafiyetinin yıl sonunda bitmesi bekleniyor.",
-      "impactSrc": [35, 37]
+      "impactSrc": [35, 37],
+      "detail": [
+        "Rus Tahıl Birliği'ne göre Eylül'de toplam tahıl ihracatı yaklaşık 1,7 Mt'a indi (geçen yıla göre 3,8 kat az); arpa 215,5 bin t, mısır 103 bin t. Sezon başından (1 Temmuz) bu yana tahıl ihracatı 5,4 Mt (geçen yıl 14,4), buğday 4,5 Mt (12,1). En çok yükleme Ust-Luga (530 bin t), Vysotsk (342 bin t) ve Astrahan'dan (281 bin t) yapıldı. Başlıca alıcılar Mısır, Kenya, Suudi Arabistan, Libya ve İran.",
+        "SovEcon'a göre ihracatçılar Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor; Novorossiysk ve Tuapse'deki tahıl terminalleri düşük kapasitede çalışıyor. Demiryolu, Baltık ve Hazar rotaları ayda ancak yüz binlerce ton ekleyebiliyor, eksik Karadeniz hacmi ise milyonlarca ton. Arpa ve mısır ihracat tahminleri 3'er Mt'da değişmedi.",
+        "Rus bütçe taslağının gerekçesine göre 2026 tahıl ihracat vergisi geliri 135,8 milyar rubleden 12,0 milyar rubleye indirildi. 2027 için 60,3 milyar (önceki plan 152,4), 2028 için 58,6 milyar, 2029 için 90,1 milyar ruble öngörülüyor."
+      ],
+      "detailSrc": [35, 36, 37]
     },
     {
       "headline": "TMO 5 Ekim'den 5,5 Mt buğday satıyor; Konya borsası TMO'nun üstünde",
       "body": "TMO ekmeklik ve makarnalık buğdayı 17.750–18.500 TL/t'dan (düşük vasıflı 16.750) satışa açtı; ödeme 5–23 Ekim, teslim 31 Ekim'e kadar. Fiyatlar hasat döneminde açıklananla aynı. Konya Ticaret Borsası'nda 6 Ekim'de 1. grup kırmızı sert buğday ortalaması 20.684 TL/t oldu.",
       "src": [34, 29],
       "impact": "Borsa fiyatı TMO'nun 18.500 TL/t'luk üst fiyatının ≈2.200 TL/t (≈%12) üstünde. 5,5 Mt'luk arz Ekim'de iç piyasa fiyatlarını TMO seviyesine doğru çekebilir; un sanayicisi için TMO kanalı daha ucuz.",
-      "impactSrc": [34, 29]
+      "impactSrc": [34, 29],
+      "detail": [
+        "TMO satış listesi: beyaz ve kırmızı ekmeklik buğday 17.750–18.500 TL/t, düşük vasıflı ekmeklik 16.750 TL/t; yerli makarnalık 17.750–18.500 TL/t, düşük vasıflı makarnalık 16.750 TL/t. Arpa 14.000 TL/t, ELÜS kapalı depo arpası 14.300 TL/t. Fiyatlara KDV ve manipülasyon ücreti dahil değil; kapalı depolarda 150 TL/t manipülasyon ücreti alınıyor.",
+        "Konya Ticaret Borsası'nda 6 Ekim ortalamaları: 1. grup kırmızı sert 20.684, 1. grup beyaz sert 21.461, 2. grup kırmızı sert 19.554 TL/t. Borsadaki en düşük sınıf bile TMO'nun üst fiyatının ≈1.050 TL/t üstünde."
+      ],
+      "detailSrc": [34, 29]
     }
   ],
   "risks": [

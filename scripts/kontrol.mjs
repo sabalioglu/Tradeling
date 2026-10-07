@@ -108,12 +108,20 @@ try {
 } catch { /* ilk yayın ya da git yok */ }
 
 /* ---------- Metin bölümleri ---------- */
+// İsteğe bağlı açılır ayrıntı: detail[] paragrafları, detailSrc[] kaynakları.
+function detail(x, at) {
+  if (x.detail == null) { req(x.detailSrc == null, `${at}: detailSrc var ama detail yok`); return; }
+  req(Array.isArray(x.detail) && x.detail.length > 0 && x.detail.every(isStr), `${at}: detail dolu metin dizisi olmalı`);
+  if (x.detailSrc != null) src(x.detailSrc, at + ".detail");
+}
 req(Array.isArray(D.brief) && D.brief.length === 3, "brief tam 3 madde olmalı");
 D.brief.forEach((b, i) => {
   const at = `brief[${i}]`;
   req(isStr(b.headline) && isStr(b.body) && isStr(b.impact), `${at}: headline, body ve impact dolu olmalı`);
   src(b.src, at);
   src(b.impactSrc, at + ".impact");
+  detail(b, at);
+  if (b.detail == null) warns.push(`${at}: açılır ayrıntı (detail) yok`);
 });
 req(D.risks.length >= 3 && D.risks.length <= 7, "risks 3–7 madde olmalı");
 D.risks.forEach((r, i) => {
@@ -121,6 +129,7 @@ D.risks.forEach((r, i) => {
   req(isStr(r.category) && isStr(r.title) && isStr(r.body), `${at}: category, title ve body dolu olmalı`);
   req(LEVEL.includes(r.level), `${at}: level şunlardan biri olmalı: ${LEVEL.join(", ")}`);
   src(r.src, at);
+  detail(r, at);
 });
 
 const SD = D.supplyDemand;
@@ -155,6 +164,7 @@ D.policy.forEach((p, i) => {
   req(isStr(p.title) && isStr(p.body), `${at}: title ve body dolu olmalı`);
   req(LEVEL.includes(p.level), `${at}: level geçersiz`);
   src(p.src, at);
+  detail(p, at);
   if (isDate(p.date) && today - T.tsiDay(p.date) > 90) warns.push(`${at}: 90 günden eski (${p.date}); panel "son 90 gün" diyor, kaldırmayı düşün`);
 });
 

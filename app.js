@@ -14,6 +14,22 @@
   var DAYS = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function srcLinks(ids) { return (ids || []).map(function (i) { return '<a class="src" href="#s' + i + '">[' + i + ']</a>'; }).join(" "); }
+  // Açılır ayrıntı: isteğe bağlı detail[] paragrafları ve ilgili haberlerin başlık, tarih, bağlantısı.
+  var REFS = {};
+  (D.refs || []).forEach(function (r) { REFS[r.id] = r; });
+  function more(item, ids, label) {
+    var seen = {}, refs = [];
+    ids.concat(item.detailSrc || []).forEach(function (i) { if (!seen[i] && REFS[i]) { seen[i] = 1; refs.push(REFS[i]); } });
+    var d = item.detail || [];
+    var paras = d.map(function (t, k) { return '<p>' + esc(t) + (k === d.length - 1 && item.detailSrc ? ' ' + srcLinks(item.detailSrc) : '') + '</p>'; }).join("");
+    if (!paras && !refs.length) return "";
+    var news = refs.map(function (r) {
+      return '<li><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.title) + '</a>' +
+        (r.published ? ' <span class="muted">· ' + esc(when(r.published, true)) + '</span>' : '') + '</li>';
+    }).join("");
+    return '<details class="more"><summary>' + esc(label || (paras ? "Ayrıntılar ve haberler" : "Haberler")) + '</summary>' + paras +
+      (news ? '<ul class="news">' + news + '</ul>' : '') + '</details>';
+  }
   function fmt(n, d) { return n.toLocaleString("tr-TR", { minimumFractionDigits: d, maximumFractionDigits: d }); }
   function day(s) { return new Date(s + "T12:00:00Z"); }
   function hm(p) { return String(p.hh).padStart(2, "0") + ":" + String(p.mm).padStart(2, "0"); }
@@ -100,6 +116,7 @@
       '<h3>' + esc(b.headline) + '</h3>' +
       '<p>' + esc(b.body) + ' ' + srcLinks(b.src) + '</p>' +
       '<div class="impact"><b>Türkiye etkisi:</b> ' + esc(b.impact) + ' ' + srcLinks(b.impactSrc) + '</div>' +
+      more(b, (b.src || []).concat(b.impactSrc || [])) +
       '</div></li>';
   }).join("");
 
@@ -116,6 +133,7 @@
       '<div class="risk-top"><span class="risk-cat">' + esc(r.category) + '</span>' + sevBadge(r.level) + '</div>' +
       '<div class="risk-title">' + esc(r.title) + '</div>' +
       '<div class="risk-body">' + esc(r.body) + ' ' + srcLinks(r.src) + '</div>' +
+      more(r, r.src || []) +
       '</div></li>';
   }).join("");
 
@@ -130,7 +148,7 @@
   $("policy").innerHTML = '<thead><tr><th>Tarih</th><th>Ülke</th><th>Gelişme</th><th>Etki</th></tr></thead><tbody>' +
     policy.map(function (p) {
       return '<tr><td class="date">' + esc(p.dateLabel || when(p.date)) + '</td><td><span class="flag">' + esc(p.country) + '</span></td>' +
-        '<td class="what"><b>' + esc(p.title) + '</b><div>' + esc(p.body) + ' ' + srcLinks(p.src) + '</div></td>' +
+        '<td class="what"><b>' + esc(p.title) + '</b><div>' + esc(p.body) + ' ' + srcLinks(p.src) + '</div>' + more(p, p.src || []) + '</td>' +
         '<td>' + sevBadge(p.level) + '</td></tr>';
     }).join("") + '</tbody>';
 

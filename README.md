@@ -98,13 +98,13 @@ Yayın gecikmesi bilinen serilerde göstergeye özel `maxAge` sınırı kullanı
 |---|---|
 | `meta` | `bulletinDate`, `generatedAt`, `generatedBy`, `projectsCheckedAt` |
 | `kpis[]` | `id`, `label`, `value`, `decimals`, `unit`, `asOf`, `asOfNote`, `cadence`, `checked`, `src[]`; isteğe bağlı `maxAge`, `base {value,label}` (% değişim), `perTonne` (¢/bu → $/t), `fx` (TL → $), `eur` (€/t → $/t, EUR/USD çaprazı kur göstergesinden), `spread {kpi,label}`, `secondary {label,value}`, `sub`, `approx`, `staleReason` |
-| `brief[]` | Tam 3 madde: `headline`, `body`, `src[]`, `impact`, `impactSrc[]` |
-| `risks[]` | `category`, `title`, `body`, `level` (`high`, `mid`, `low`, `pos`), `src[]` |
+| `brief[]` | Tam 3 madde: `headline`, `body`, `src[]`, `impact`, `impactSrc[]`; açılır ayrıntı için `detail[]` (paragraflar) ve isteğe bağlı `detailSrc[]` |
+| `risks[]` | `category`, `title`, `body`, `level` (`high`, `mid`, `low`, `pos`), `src[]`; isteğe bağlı `detail[]`, `detailSrc[]` |
 | `supplyDemand` | `source`, `asOf`, `rows[] {label, value, change, src[]}` |
 | `exports` | `note`, `unit`, `max`, `footnote`, `src[]`, `rows[] {label, value, display, note, tag, hi, estimate}` |
 | `ladder[]` | `label`, `kpi`, `note`. Değerler göstergelerden hesaplanır |
 | `positioning` | CFTC COT fon pozisyonları: `title`, `source`, `cadence`, `maxAge`, `asOf`, `checked`, `src[]`, `rows[] {label, code, long, short, changeLong, changeShort, oi}`. `scripts/cek.mjs cot` doldurur |
-| `policy[]` | `date`, `dateLabel`, `country`, `title`, `body`, `level`, `src[]` |
+| `policy[]` | `date`, `dateLabel`, `country`, `title`, `body`, `level`, `src[]`; isteğe bağlı `detail[]`, `detailSrc[]` |
 | `calendar[]` | Tek seferlik: `date`, `time`, `title`, `short`, `body`, `key`, `src[]`. Tekrarlayan: `recurring`, `time`, `until` |
 | `chart` | `title`, `contract`, `unit`, `perTonne`, `src[]`, `points[] ["YYYY-AA-GG", değer, "tür"]` |
 | `feeds[]` | Veri kaynakları tablosu: `name`, `data`, `freq`, `cadence`, `method`, `cost`, `status` (`used`, `plan`, `lic`), `ref`, `latest`, `lastChecked` |
