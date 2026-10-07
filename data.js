@@ -8,50 +8,53 @@ window.HUBUBAT = {
     "bulletinDate": "2026-10-07",
     "generatedAt": "2026-10-07T08:00:00+03:00",
     "generatedBy": "Elle derlendi (prototip)",
-    "projectsCheckedAt": null
+    "projectsCheckedAt": "2026-10-07"
   },
   "kpis": [
     {
       "id": "cbot_wheat",
       "label": "CBOT buğday · Ara-26",
-      "value": 698.5,
-      "decimals": 1,
+      "contract": "Dec 26",
+      "value": 704.25,
+      "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 747, "label": "8 Eyl uzlaşmasına göre" },
+      "base": { "value": 698.5, "label": "30 Eyl seans içi fiyatına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-09-30",
-      "asOfNote": "seans içi",
+      "asOf": "2026-10-06",
+      "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [1, 2]
+      "checked": "2026-10-07T16:59:00+03:00",
+      "src": [26]
     },
     {
       "id": "cbot_corn",
       "label": "CBOT mısır · Ara-26",
-      "value": 524.75,
+      "contract": "Dec 26",
+      "value": 508,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 533.5, "label": "8 Eyl'e göre" },
+      "base": { "value": 524.75, "label": "30 Eyl seans içi fiyatına göre" },
       "perTonne": 39.368,
-      "asOf": "2026-09-30",
-      "asOfNote": "seans içi",
+      "asOf": "2026-10-06",
+      "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [1, 2]
+      "checked": "2026-10-07T16:59:00+03:00",
+      "src": [26]
     },
     {
       "id": "cbot_soy",
       "label": "CBOT soya · Kas-26",
-      "value": 1305.25,
+      "contract": "Nov 26",
+      "value": 1303,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 1316.25, "label": "8 Eyl'e göre" },
+      "base": { "value": 1305.25, "label": "30 Eyl seans içi fiyatına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-09-30",
-      "asOfNote": "seans içi",
+      "asOf": "2026-10-06",
+      "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [1, 2]
+      "checked": "2026-10-07T16:59:00+03:00",
+      "src": [26]
     },
     {
       "id": "ru_fob",
@@ -99,10 +102,10 @@ window.HUBUBAT = {
       "value": 49.1978,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.0173, "decimals": 2 },
-      "asOf": "2026-10-07T16:53:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.0239, "decimals": 2 },
+      "asOf": "2026-10-07T16:59:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-07T16:53:00+03:00",
+      "checked": "2026-10-07T16:59:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 7 Eki 15:30: 49,15",
       "asOfNote": "piyasa"
@@ -225,7 +228,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-09-29",
-    "checked": "2026-10-07T16:53:00+03:00",
+    "checked": "2026-10-07T16:59:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -361,6 +364,7 @@ window.HUBUBAT = {
   ],
   "chart": {
     "title": "CBOT buğday, Aralık 2026 kontratı",
+    "kpi": "cbot_wheat",
     "contract": "Ara-26",
     "unit": "¢/bushel",
     "perTonne": 36.7437,
@@ -385,7 +389,8 @@ window.HUBUBAT = {
       ["2026-09-01", 782.5, "AMS uzlaşma"],
       ["2026-09-04", 734, "AMS uzlaşma"],
       ["2026-09-08", 747, "AMS uzlaşma"],
-      ["2026-09-30", 698.5, "Seans içi (Reuters)"]
+      ["2026-09-30", 698.5, "Seans içi (Reuters)"],
+      ["2026-10-06", 704.25, "AMS uzlaşma"]
     ]
   },
   "feeds": [
@@ -397,9 +402,9 @@ window.HUBUBAT = {
       "method": "PDF ayrıştırma",
       "cost": "Ücretsiz",
       "status": "used",
-      "ref": 1,
-      "latest": "2026-09-08",
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "ref": 26,
+      "latest": "2026-10-06",
+      "lastChecked": "2026-10-07T16:59:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -471,7 +476,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-07T16:53:00+03:00"
+      "lastChecked": "2026-10-07T16:59:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -482,8 +487,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-07T16:53:00+03:00",
-      "lastChecked": "2026-10-07T16:53:00+03:00"
+      "latest": "2026-10-07T16:59:00+03:00",
+      "lastChecked": "2026-10-07T16:59:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -495,7 +500,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-09-29",
-      "lastChecked": "2026-10-07T16:53:00+03:00"
+      "lastChecked": "2026-10-07T16:59:00+03:00"
     },
     {
       "name": "Sektör haberleri",
@@ -546,7 +551,248 @@ window.HUBUBAT = {
       "ref": null
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "name": "OpenBB ODP (openbb-cftc + openbb-commodity)",
+      "url": "https://github.com/OpenBB-finance/OpenBB",
+      "category": "Pozisyon (COT) + temel veri (USDA PSD)",
+      "what": "Python veri platformu. cftc eklentisi COT raporlarını (legacy/disaggregated), 0-100 COT endeksini ve pozisyon skorlarını; commodity eklentisi USDA FAS PSD tablolarını ve USDA hava bültenlerini getirir.",
+      "use": "Managed money net pozisyonu ve 52 haftalık endeks uçlarda kalabalık işlemi gösterir: aşırı net short = short-covering (yukarı) riski, aşırı net long = likidasyon riski. PSD stok/kullanım revizyonları temel yönü teyit eder.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-02",
+      "maintained": true,
+      "caveat": "CFTC/USDA verisi ABD kamu malı; platformdaki bazı sağlayıcılar (ör. yfinance) kısıtlı. V5 yeni çıktı, sürüm sabitleyin. Managed money için report_type='disaggregated' kullanın.",
+      "effort": "orta",
+      "recommendation": "hemen",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "CFTC Public Reporting API + sodapy",
+      "url": "https://github.com/afeld/sodapy",
+      "category": "Pozisyon (COT)",
+      "what": "Socrata açık veri API'si için hafif Python istemcisi; CFTC'nin anahtarsız COT veri setlerini (72hh-3qpy Disaggregated, 6dca-aqww Legacy) filtreli sorgular.",
+      "use": "Her cuma SRW, HRW, mısır ve soya için fonların net pozisyonunu ve haftalık değişimini çeker. Bu bültendeki 'Fon pozisyonları' paneli aynı API'yi kütüphanesiz kullanıyor.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2026-07-06",
+      "maintained": true,
+      "caveat": "COT verisi ABD federal kamu malı. PyPI sürümü eski (2.2.0); düz HTTPS isteği de çalışıyor.",
+      "effort": "dusuk",
+      "recommendation": "hemen",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "TradingView Lightweight Charts",
+      "url": "https://github.com/tradingview/lightweight-charts",
+      "category": "Grafik (statik HTML)",
+      "what": "Canvas tabanlı finansal grafik kütüphanesi; çizgi, mum, histogram ve çoklu fiyat ekseni. Tek dosyalık sürümü statik sayfada çalışır.",
+      "use": "Fiyat ile fon net pozisyonunu, kalendar spread'i ve FOB farklarını aynı zaman ekseninde göstermek; uyumsuzlukları (fiyat düşerken short'ların azalması gibi) görsel yakalamak.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-09-30",
+      "maintained": true,
+      "caveat": "Lisans, sayfada TradingView atıf notu ve tradingview.com bağlantısı ister (attributionLogo seçeneği yeterli).",
+      "effort": "dusuk",
+      "recommendation": "hemen",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "evds (TCMB EVDS istemcisi)",
+      "url": "https://github.com/fatihmete/evds",
+      "category": "Kur ve makro veri",
+      "what": "TCMB EVDS serilerini (gösterge kurlar, faiz, enflasyon) pandas tablosu olarak çeker; 0.4 sürümü yeni EVDS3 ile uyumlu.",
+      "use": "TMO TL fiyatlarını ve ithalat paritesini resmi TCMB kuruyla dolara çevirmek; kur şokunda iç fiyat ile ithal buğday farkının açılması ithalat zamanlamasını değiştirir.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2026-02-18",
+      "maintained": true,
+      "caveat": "Ücretsiz EVDS API anahtarı gerekir. Resmi olmayan topluluk paketi.",
+      "effort": "dusuk",
+      "recommendation": "hemen",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "Meteostat (Python)",
+      "url": "https://github.com/meteostat/meteostat",
+      "category": "Hava gözlemi (istasyon)",
+      "what": "Dünya genelindeki istasyonların saatlik ve günlük gözlemlerini ve iklim normallerini nokta ya da istasyon bazında getirir.",
+      "use": "Konya, Rostov-na-Donu, Krasnodar gibi istasyonlarda gerçekleşen yağış ve sıcaklığı normalle kıyaslamak; risk radarına hızlı hava göstergesi.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2026-09-25",
+      "maintained": true,
+      "caveat": "Veri CC BY 4.0: ticari kullanım serbest, atıf şart. Rusya'da istasyon kapsamı değişken; bölge ortalaması için ERA5 daha sağlam.",
+      "effort": "dusuk",
+      "recommendation": "hemen",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "Herbie",
+      "url": "https://github.com/blaylockbk/Herbie",
+      "category": "Hava tahmini",
+      "what": "NOAA (GFS, GEFS, CFS) ve ECMWF açık veri (IFS, AIFS) sayısal tahmin dosyalarını indirir; yalnız gereken değişkenleri (yağış, sıcaklık) çekebilir.",
+      "use": "Güney Rusya ve Orta Anadolu için 10-15 günlük yağış ve sıcaklık sapması: kuraklık ya da don riski artıyorsa buğdayda long, belirgin iyileşme short lehine. Tahmin değişimi çoğu zaman fiyattan önce gelir.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2026-09-27",
+      "maintained": true,
+      "caveat": "NOAA verisi kamu malı; ECMWF açık verisi CC BY 4.0 (atıf şart). GRIB2 için eccodes/cfgrib gerekir.",
+      "effort": "orta",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "earthkit-data + cdsapi (ERA5)",
+      "url": "https://github.com/ecmwf/earthkit-data",
+      "category": "Hava ve iklim geçmişi",
+      "what": "ECMWF'nin veri arayüzü; Copernicus CDS (ERA5), ECMWF açık verisi ve GRIB/NetCDF dosyalarını tek API ile getirir.",
+      "use": "Bölgesel 30 yıllık normali ve güncel sezon sapmasını üretip tahminleri bağlama oturtmak; ekim yağışı normalin çok altındaysa Rus kışlık buğday riski long tezini destekler.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-09-30",
+      "maintained": true,
+      "caveat": "ERA5 CC BY 4.0 (atıf şart); CDS hesabı gerekir, veri birkaç gün gecikmeli.",
+      "effort": "orta",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "xclim",
+      "url": "https://github.com/Ouranosinc/xclim",
+      "category": "Ürün-iklim göstergeleri",
+      "what": "İklim göstergeleri hesaplar: büyüme derece-günü, ardışık kurak gün, sıcak ve don günü sayısı, SPI/SPEI kuraklık endeksleri.",
+      "use": "Ham hava verisini buğday ve mısır stres skoruna çevirir; skorun sezon normaline göre kötüleşmesi long, iyileşmesi short lehine okunur.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-02",
+      "maintained": true,
+      "caveat": null,
+      "effort": "orta",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "StatsForecast (Nixtla)",
+      "url": "https://github.com/Nixtla/statsforecast",
+      "category": "Tahmin ve mevsimsellik",
+      "what": "AutoARIMA, AutoETS, MSTL, Theta gibi istatistiksel modelleri çok sayıda seride hızlı çalıştırır; tahmin aralığı ve çapraz doğrulama içerir.",
+      "use": "Fiyat, spread, FOB farkı ve USD/TRY için mevsimsel normal bant üretmek; bant dışına taşma ortalamaya dönüş ya da trend kırılımı adayı.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-01",
+      "maintained": true,
+      "caveat": null,
+      "effort": "dusuk",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "bt",
+      "url": "https://github.com/pmorissette/bt",
+      "category": "Backtest",
+      "what": "Ağırlık tabanlı backtest kütüphanesi; +1/−1 hedef ağırlıkla long/short, periyodik yeniden dengeleme ve strateji karşılaştırması.",
+      "use": "COT uçları, mevsimsellik ve hava skoru kurallarının long/short getirisini geçmişte sınamak; masanın sezgisel sinyallerini sayıya dökmek.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-02",
+      "maintained": true,
+      "caveat": "Vadeli marj ve roll modeli yok. Varsayılan veri Yahoo (kişisel kullanım şartı); üretimde lisanslı veri verin.",
+      "effort": "orta",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "Chronos-2 (chronos-forecasting)",
+      "url": "https://github.com/amazon-science/chronos-forecasting",
+      "category": "Tahmin (foundation model)",
+      "what": "Amazon'un önceden eğitilmiş zaman serisi modelleri; eğitim gerektirmeden olasılıksal (kantil) tahmin yapar, ek değişken kabul eder.",
+      "use": "Buğday ve mısır için 1-4 haftalık P10-P90 bantları; ek değişken olarak USD/TRY, fon net pozisyonu ve hava skoru. Bant asimetrisi pozisyon boyutu ve stop seviyesine girdi olur.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-09-17",
+      "maintained": true,
+      "caveat": "Kod ve chronos-2 ağırlıkları Apache-2.0. Fiyat yönünde isabet sınırlı olabilir; geriye dönük test edilmeden karar girdisi yapmayın.",
+      "effort": "orta",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "pysystemtrade",
+      "url": "https://github.com/pst-group/pysystemtrade",
+      "category": "Vadeli veri (roll, carry) + sistematik çerçeve",
+      "what": "Rob Carver'ın sistematik vadeli işlem çerçevesi: roll takvimleri, carry kontratlı fiyatlar, geri ayarlı sürekli seri, carry ve trend kuralları.",
+      "use": "Vade yapısını (backwardation/contango) ve carry'yi tahıllarda sinyale çevirmek; trend ve carry birleşik long/short skoru.",
+      "license": "GPL-3.0",
+      "commercial": "copyleft",
+      "lastActivity": "2026-09-30",
+      "maintained": true,
+      "caveat": "GPL-3.0: şirket içi kullanım serbest; değiştirilmiş kodu üçüncü kişilere dağıtırsanız kaynak açma yükümlülüğü doğar.",
+      "effort": "yuksek",
+      "recommendation": "degerlendir",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "openEO Python client (Copernicus)",
+      "url": "https://github.com/Open-EO/openeo-python-client",
+      "category": "Uydu ve NDVI ile ürün izleme",
+      "what": "Copernicus Data Space Ecosystem üzerinde Sentinel-2 verisiyle bulutta işlem yapar; NDVI zaman serisi ve bölge ortalaması üretir.",
+      "use": "Güney Rusya ve Orta Anadolu buğday alanlarında NDVI'yı geçmiş yıllarla kıyaslayıp verim beklentisini resmi tahminlerden önce güncellemek.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-02",
+      "maintained": true,
+      "caveat": "Sentinel verisi açık; ayda 10.000 ücretsiz kredi, yoğun ticari kullanımda ücretli kota gerekebilir. Ekin maskesi ayrıca gerekir.",
+      "effort": "yuksek",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "deberta-v3-large-zeroshot-v2.0-c",
+      "url": "https://huggingface.co/MoritzLaurer/deberta-v3-large-zeroshot-v2.0-c",
+      "category": "Haber sınıflandırma (NLP)",
+      "what": "Eğitim gerektirmeyen metin sınıflandırma modeli; -c sürümü yalnızca ticari kullanıma uygun verilerle eğitildi.",
+      "use": "Haber başlıklarını ihracat kısıtı, liman saldırısı, vergi ve kota değişikliği, hasat hasarı gibi etiketlerle sınıflayıp risk radarına arz yönlü olay akışı vermek.",
+      "license": "MIT",
+      "commercial": "serbest",
+      "lastActivity": "2024-04-04",
+      "maintained": false,
+      "caveat": "Statik ağırlık, güncellenmiyor; İngilizce odaklı. Rutin zaten Claude kullandığı için ek fayda sınırlı.",
+      "effort": "orta",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "TimesFM (Google Research)",
+      "url": "https://github.com/google-research/timesfm",
+      "category": "Tahmin (foundation model)",
+      "what": "Google'ın zaman serisi temel modeli; eğitimsiz nokta ve kantil tahmini yapar.",
+      "use": "Chronos-2'ye ikinci görüş: iki model bandı aynı yöne kaydırıyorsa sinyal güveni artar.",
+      "license": "Apache-2.0 (kod, ≤2.5 ağırlıkları); 3.0 ağırlıkları ticari olmayan",
+      "commercial": "kisitli",
+      "lastActivity": "2026-09-29",
+      "maintained": true,
+      "caveat": "Varsayılan TimesFM 3.0 ağırlıkları yalnız ticari olmayan kullanım içindir. Şirkette yalnız timesfm-2.5-200m (Apache-2.0) kullanılabilir.",
+      "effort": "orta",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    },
+    {
+      "name": "QuantConnect LEAN",
+      "url": "https://github.com/QuantConnect/Lean",
+      "category": "Backtest (olay tabanlı)",
+      "what": "C#/Python olay tabanlı işlem motoru; sürekli vadeli kontratlarda roll eşleme ve geri ayarlama modları var.",
+      "use": "Roll, marj ve komisyonla gerçekçi vadeli long/short simülasyonu; bt'de bulunan sinyal kalıcıysa üretime yakın doğrulama.",
+      "license": "Apache-2.0",
+      "commercial": "serbest",
+      "lastActivity": "2026-10-01",
+      "maintained": true,
+      "caveat": "Motor serbest; QuantConnect bulut verisi ayrı ve ücretli. Docker/.NET kurulumu ağır.",
+      "effort": "yuksek",
+      "recommendation": "izle",
+      "checked": "2026-10-07"
+    }
+  ],
   "refs": [
     {
       "id": 1,
@@ -686,6 +932,12 @@ window.HUBUBAT = {
       "title": "CFTC: Commitments of Traders, disaggregated futures-only",
       "url": "https://publicreporting.cftc.gov/Commitments-of-Traders/Disaggregated-Futures-Only/72hh-3qpy",
       "published": "2026-10-02"
+    },
+    {
+      "id": 26,
+      "title": "USDA AMS: Oklahoma Daily Grain Bids, vadeli uzlaşma fiyatları (Final)",
+      "url": "https://www.ams.usda.gov/mnreports/ams_3100.pdf",
+      "published": "2026-10-06"
     }
   ]
 };

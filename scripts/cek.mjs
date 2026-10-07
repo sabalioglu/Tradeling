@@ -3,6 +3,10 @@
 //   node scripts/cek.mjs --yaz     → değerleri data.js'e işler (gösterge, kaynak kaydı, kaynak tablosu)
 //   node scripts/cek.mjs kur cot   → yalnızca adı verilen çekicileri çalıştırır
 // Bir kaynak yanıt vermezse o kalem atlanır ve rutin araştırmayla yedek kaynağa geçer.
+import { execFileSync } from "node:child_process";
+import { mkdtempSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import { readData, writeData, loadTazelik } from "./veri.mjs";
 
 const T = loadTazelik();
@@ -12,8 +16,9 @@ const only = args.filter((a) => !a.startsWith("--"));
 const UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36";
 
 async function get(url, as = "text") {
-  const res = await fetch(url, { headers: { "user-agent": UA, accept: "*/*" }, signal: AbortSignal.timeout(20000) });
+  const res = await fetch(url, { headers: { "user-agent": UA, accept: "*/*" }, signal: AbortSignal.timeout(30000) });
   if (!res.ok) throw new Error(`HTTP ${res.status} ${url}`);
+  if (as === "buffer") return Buffer.from(await res.arrayBuffer());
   return as === "json" ? res.json() : res.text();
 }
 function isoTSI(d) {
@@ -27,6 +32,48 @@ const fmtTR = (n, d) => n.toLocaleString("tr-TR", { minimumFractionDigits: d, ma
 /* ---------- Çekiciler ----------
    Her çekici { kpi | section, values, refs[{title,url,published}], feeds[{name,latest,ref}] } listesi döndürür. */
 const FETCHERS = {
+  // CBOT uzlaşma fiyatları: USDA AMS günlük tahıl raporu (kamu verisi). mnreports adresi hep son raporu verir.
+  // Göstergedeki "contract" alanı (ör. "Dec 26") hangi vadenin okunacağını belirler.
+  async cbot() {
+    const url = "https://www.ams.usda.gov/mnreports/ams_3100.pdf";
+    const dir = mkdtempSync(join(tmpdir(), "ams-"));
+    writeFileSync(join(dir, "r.pdf"), await get(url, "buffer"));
+    let text;
+    try {
+      text = execFileSync("pdftotext", ["-layout", join(dir, "r.pdf"), "-"]).toString();
+    } catch (e) {
+      throw new Error("pdftotext çalışmadı (poppler-utils gerekli): " + e.message);
+    }
+    const hdr = /Closing Settlement Prices \(¢\/bu\) as of (\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(text);
+    if (!hdr) throw new Error("AMS raporunda uzlaşma tablosu bulunamadı");
+    const asOf = `${hdr[3]}-${hdr[1].padStart(2, "0")}-${hdr[2].padStart(2, "0")}`;
+    const status = (/Grain Report for [\d/]+ - (\w+)/.exec(text) || [])[1] || "";
+    const table = {};
+    for (const line of text.split("\n")) {
+      const m = /^\s*(CBOT|KCBT|MGE)\s+(Corn|Soybeans|Wheat|White Oats)\s+(.*)$/.exec(line);
+      if (!m) continue;
+      const row = (table[`${m[1]} ${m[2]}`] = {});
+      for (const c of m[3].matchAll(/(\d+\.\d+)\s+\((\w{3} \d{2})\)/g)) row[c[2]] = parseFloat(c[1]);
+    }
+    const D = readData();
+    const ROWS = { cbot_wheat: "CBOT Wheat", cbot_corn: "CBOT Corn", cbot_soy: "CBOT Soybeans" };
+    const ref = { title: `USDA AMS: Oklahoma Daily Grain Bids, vadeli uzlaşma fiyatları (${status || "rapor"})`, url, published: asOf };
+    return Object.entries(ROWS).map(([id, row]) => {
+      const k = D.kpis.find((x) => x.id === id);
+      if (!k || !k.contract) throw new Error(`${id} göstergesinde contract alanı yok`);
+      const v = table[row] && table[row][k.contract];
+      if (!(v > 0)) throw new Error(`AMS raporunda ${row} ${k.contract} yok`);
+      return {
+        kpi: id,
+        values: { value: v, asOf, asOfNote: status === "Final" ? "uzlaşma" : "ön uzlaşma" },
+        baseFromPrevious: true,
+        chartPoint: [asOf, v, "AMS uzlaşma"],
+        refs: [ref],
+        feeds: [{ name: "USDA AMS günlük raporları", latest: asOf, ref: url }]
+      };
+    });
+  },
+
   // USD/TRY ve EUR/TRY: değer piyasa kuru (rutin saatinde), alt satırda TCMB gösterge kuru.
   async kur() {
     const xml = await get("https://www.tcmb.gov.tr/kurlar/today.xml");
@@ -119,9 +166,19 @@ function apply(D, res, nowISO) {
     target = D[res.section];
     if (!target) throw new Error(`data.js içinde ${res.section} bölümü yok`);
   }
+  // Yeni günün verisi geldiyse eski değer % değişimin tabanı olur.
+  if (res.baseFromPrevious && T.tsiDay(res.values.asOf) > T.tsiDay(target.asOf)) {
+    const how = target.asOfNote === "uzlaşma" ? "uzlaşmasına" : target.asOfNote ? target.asOfNote + " fiyatına" : "değerine";
+    target.base = { value: target.value, label: `${when(target.asOf)} ${how} göre` };
+  }
   for (const [k, v] of Object.entries(res.values)) {
     if (v === null) delete target[k];
     else target[k] = v;
+  }
+  if (res.chartPoint && D.chart.kpi === res.kpi) {
+    const pts = D.chart.points.filter((p) => p[0] !== res.chartPoint[0]);
+    pts.push(res.chartPoint);
+    D.chart.points = pts.sort((a, b) => (a[0] < b[0] ? -1 : 1));
   }
   target.checked = nowISO;
   target.src = src;
