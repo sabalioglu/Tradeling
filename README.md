@@ -1,49 +1,84 @@
 # Türkiye Hububat Masası
 
-Türkiye'deki bir hububat ticaret masası için hazırlanmış sabah bülteni dashboard'u. Tek bir HTML dosyasıdır; sunucu veya kurulum gerektirmez.
+Türkiye'deki bir hububat ticaret masası için sabah bülteni dashboard'u. Statik bir sayfadır; sunucu, veritabanı ya da kurulum gerektirmez.
 
-**Durum:** Prototip. Veriler canlı değildir; aşağıdaki tarihlerde yayımlanmış kaynaklardan elle derlenmiştir.
+**Nasıl güncellenir:** Her gün 06:29 TSİ'de bir Claude rutini yeni bir oturum açar, verileri kaynaklarından yeniden toplar, `data.js` dosyasını günceller, doğrulamadan geçirir ve `main` dalına gönderir. n8n ya da başka bir otomasyon aracı kullanılmaz.
+
+**Tazelik:** Her rakam tarihli ve kaynaklıdır. Sayfa açıldığında her göstergenin tazeliği tarayıcıda yeniden hesaplanır: yeşil güncel, sarı gecikmiş, kırmızı eski. Rutin bir gün çalışmazsa noktalar kendiliğinden sararır ve sayfanın üstünde uyarı çıkar.
 
 ## Nasıl açılır
 
-- `index.html` dosyasını tarayıcıda açın.
-- Ya da GitHub Pages'i açın: *Settings → Pages → Source: Deploy from a branch → main / (root)*. Sayfa birkaç dakika içinde `https://sabalioglu.github.io/Tradeling/` adresinde yayına çıkar.
+- `index.html` dosyasını tarayıcıda açın. `data.js`, `tazelik.js` ve `app.js` aynı klasörde olmalıdır.
+- GitHub Pages için: *Settings → Pages → Source: Deploy from a branch → main / (root)*. Sayfa birkaç dakika içinde `https://sabalioglu.github.io/Tradeling/` adresinde yayına çıkar. Rutin her sabah `main`'e gönderdiği için Pages kendiliğinden yenilenir.
 
-**Canlı kur:** GitHub Pages'te veya tarayıcıda açıldığında USD/TRY ve EUR/TRY anlık olarak Coinbase'in açık kur servisinden çekilir (yanıt gelmezse ExchangeRate-API'nin günlük kuru, o da gelmezse sayfadaki sabit değer). Fiyat şeridinde "Canlı · saat" etiketi görünür. Diğer veriler şimdilik sabittir.
+USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt gelmezse ExchangeRate-API). İkisi de yanıt vermezse bültendeki değer kalır.
 
-## İçerik
+## Dosyalar
 
-| Bölüm | Ne gösteriyor |
+| Dosya | Görevi |
 |---|---|
-| Fiyat şeridi | CBOT buğday, mısır, soya; Rus ve AB buğdayı; Rus ihracat vergisi; USD/TRY; TMO satış fiyatı |
-| Bugünün özeti | Üç madde ve her biri için "Türkiye etkisi" |
-| Risk radarı | Lojistik, hava, politika ve fiyat riskleri, seviye etiketiyle |
-| CBOT grafiği | Aralık 2026 buğday kontratının 2026 seyri |
-| Arz ve talep | USDA WASDE Eylül özetleri |
-| Rusya ihracatı ve fiyat merdiveni | Aylık ihracat çöküşü; $/t karşılaştırması |
-| Politika takibi ve takvim | Türkiye ve Karadeniz kararları; WASDE ve USDA rapor saatleri (TSİ) |
-| Veri kaynakları | 12 kaynak: kullanım durumu, erişim yöntemi, maliyet |
-| Akış | Canlı sürüm için önerilen otomasyon (topla → normalize et → yorumla → dağıt) |
+| `index.html` | Sayfa yapısı ve stil |
+| `app.js` | Sayfayı `data.js`'ten çizer; hesaplanan değerler ($/t, TL→$, % değişim) burada üretilir |
+| `tazelik.js` | Tazelik kuralları. Sayfa ve doğrulama betiği aynı dosyayı kullanır |
+| `data.js` | Günlük veri. Rutin yalnızca bu dosyayı değiştirir |
+| `scripts/kontrol.mjs` | Doğrulama: yapı, kaynak numaraları, makul aralıklar, tazelik |
+| `scripts/onizleme.mjs` | Sayfayı başsız Chromium'da açar, hata arar, ekran görüntüsü alır |
+| `scripts/cek.mjs` | API'si olan kaynaklardan (TCMB, CFTC vb.) mekanik veri çekimi |
+| `scripts/veri.mjs` | `data.js` okuma, yazma, biçimleme |
+| `.claude/skills/sabah-guncellemesi/SKILL.md` | Rutinin izlediği güncelleme prosedürü ve kaynak sırası |
+| `.claude/settings.json` | Rutinin izin istemine takılmadan çalışması için gereken komut izinleri |
 
-## Veri tarihleri
+## Sabah rutini
 
-| Veri | Tarih |
+- **Ad:** Hububat Masası sabah güncellemesi
+- **Zaman:** Her gün 06:29 TSİ (hafta sonu da çalışır; piyasa verisi yoksa haber, politika ve hava kısmını yeniler)
+- **Yönetim:** claude.ai/code → Routines. Saat, istem ya da durdurma buradan değiştirilir.
+- **Ne yapar:** Önce resmi ve ücretsiz kaynaklara bakar, fiyatları iki kaynakla çapraz kontrol eder, özet ve risk metinlerini yalnızca topladığı kaynaklardan yazar, `node scripts/kontrol.mjs --sabah` geçmeden push etmez.
+- **Pazartesileri** ayrıca açık kaynak araç listesini yeniler: lisans değişikliği, son etkinlik, yeni adaylar.
+
+Prosedürün tamamı `.claude/skills/sabah-guncellemesi/SKILL.md` dosyasındadır. Prosedürü değiştirmek için rutini değil bu dosyayı düzenleyin.
+
+## Tazelik kuralları
+
+| Sıklık | Güncel | Gecikmiş | Eski |
+|---|---|---|---|
+| Günlük (`gunluk`) | en fazla 1 iş günü geriden | 2 iş günü | daha fazla |
+| Haftalık (`haftalik`) | 8 güne kadar | 15 güne kadar | daha fazla |
+| Aylık (`aylik`) | 35 güne kadar | 45 güne kadar | daha fazla |
+| Olay bazlı (`olay`) | yalnızca son kontrole bakılır | | |
+
+Yayın gecikmesi bilinen serilerde göstergeye özel `maxAge` sınırı kullanılır: CFTC COT Salı verisini Cuma yayımladığı için 10 gün. Ayrıca her göstergenin son kontrolü 30 saatten eskiyse gecikmiş, 54 saatten eskiyse eski sayılır. Kaynak yeni veri yayımlamadıysa (tatil, haftalık seri) rutin değeri korur ve `staleReason` alanına gerekçeyi yazar; gerekçe sayfada noktanın üzerine gelince görünür.
+
+## Veri sözleşmesi (`data.js`)
+
+`window.HUBUBAT = { ... }` biçiminde saf JSON. Tarihler `YYYY-AA-GG`, zamanlar saat dilimli ISO 8601 (`2026-10-08T06:52:00+03:00`). Sayılar JSON sayısıdır; Türkçe biçimlendirmeyi sayfa yapar.
+
+| Bölüm | Alanlar |
 |---|---|
-| CBOT fiyatları | 30 Eylül 2026, seans içi (Reuters); seri USDA AMS uzlaşma fiyatlarından |
-| Rus ve AB buğdayı FOB | Eylül 2026 sonu |
-| Rus ihracat vergisi | 19–22 Eylül 2026 kararnamesi |
-| USD/TRY, EUR/TRY | 7 Ekim 2026, 09:26 |
-| TMO fiyatları | Haziran 2026 (alım), 1 Ekim 2026 (satış) |
-| WASDE | 11 Eylül 2026 |
+| `meta` | `bulletinDate`, `generatedAt`, `generatedBy`, `projectsCheckedAt` |
+| `kpis[]` | `id`, `label`, `value`, `decimals`, `unit`, `asOf`, `asOfNote`, `cadence`, `checked`, `src[]`; isteğe bağlı `maxAge`, `base {value,label}` (% değişim), `perTonne` (¢/bu → $/t), `fx` (TL → $), `spread {kpi,label}`, `secondary {label,value}`, `sub`, `approx`, `staleReason` |
+| `brief[]` | Tam 3 madde: `headline`, `body`, `src[]`, `impact`, `impactSrc[]` |
+| `risks[]` | `category`, `title`, `body`, `level` (`high`, `mid`, `low`, `pos`), `src[]` |
+| `supplyDemand` | `source`, `asOf`, `rows[] {label, value, change, src[]}` |
+| `exports` | `note`, `unit`, `max`, `footnote`, `src[]`, `rows[] {label, value, display, note, tag, hi, estimate}` |
+| `ladder[]` | `label`, `kpi`, `note`. Değerler göstergelerden hesaplanır |
+| `positioning` | CFTC COT fon pozisyonları: `title`, `source`, `cadence`, `maxAge`, `asOf`, `checked`, `src[]`, `rows[] {label, code, long, short, changeLong, changeShort, oi}`. `scripts/cek.mjs cot` doldurur |
+| `policy[]` | `date`, `dateLabel`, `country`, `title`, `body`, `level`, `src[]` |
+| `calendar[]` | Tek seferlik: `date`, `time`, `title`, `short`, `body`, `key`, `src[]`. Tekrarlayan: `recurring`, `time`, `until` |
+| `chart` | `title`, `contract`, `unit`, `perTonne`, `src[]`, `points[] ["YYYY-AA-GG", değer, "tür"]` |
+| `feeds[]` | Veri kaynakları tablosu: `name`, `data`, `freq`, `cadence`, `method`, `cost`, `status` (`used`, `plan`, `lic`), `ref`, `latest`, `lastChecked` |
+| `projects[]` | Açık kaynak araçlar: `name`, `url`, `category`, `what`, `use`, `license`, `commercial` (`serbest`, `copyleft`, `kisitli`), `lastActivity`, `maintained`, `caveat`, `effort`, `recommendation`, `checked` |
+| `refs[]` | Numaralı kaynaklar: `id`, `title`, `url`, `published` |
 
-Tüm kaynak linkleri sayfanın altında numaralı olarak listelenir; her rakamın yanında kaynak numarası vardır.
+## Elle güncelleme
 
-## Yol haritası
-
-1. Verileri `index.html` içinden ayrı bir `data.json` dosyasına taşımak (veri sözleşmesi sayfada tanımlı).
-2. Her iş günü 07:30'da çalışan zamanlanmış bir güncelleme ile `data.json`'ı yenilemek.
-3. Açık kaynakların yanına lisanslı veri eklemek (Databento ile CBOT, Euronext).
+```sh
+# data.js'i düzenledikten sonra
+node scripts/veri.mjs bicimle      # standart biçim
+node scripts/kontrol.mjs           # yapı ve tazelik raporu (rutin --sabah kullanır)
+node scripts/onizleme.mjs          # başsız tarayıcıda çizim kontrolü ve ekran görüntüsü
+```
 
 ## Uyarı
 
-Bu sayfa işlem kararı için kullanılmamalıdır. Hesaplanan değerler sayfada ≈ ile işaretlidir.
+Bu sayfa işlem kararı için tek başına kullanılmamalıdır. Hesaplanan değerler ≈ ile işaretlidir. Haber kaynaklarından alınan fiyatlar ilgili kurumların lisans koşullarına tabidir.
