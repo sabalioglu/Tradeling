@@ -44,7 +44,7 @@ jobs:
         env:
           ALAN_ADI: ${{ vars.ALAN_ADI }}
         run: |
-          mkdir _site && cp index.html app.js tazelik.js data.js _site/
+          mkdir _site && cp -r index.html app.js tazelik.js data.js fonts.css fonts robots.txt _site/
           if [ -n "$ALAN_ADI" ]; then
             node -e 'const fs=require("fs");const c=JSON.parse(fs.readFileSync("wrangler.json","utf8"));c.routes=[{pattern:process.env.ALAN_ADI,custom_domain:true}];fs.writeFileSync("wrangler.json",JSON.stringify(c,null,2))'
             echo "Alan adı: $ALAN_ADI"
@@ -85,7 +85,7 @@ jobs:
           ref: main
       - name: Yayın klasörü
         if: steps.pages.outputs.hazir == 'true'
-        run: mkdir _site && cp index.html app.js tazelik.js data.js _site/
+        run: mkdir _site && cp -r index.html app.js tazelik.js data.js fonts.css fonts robots.txt _site/
       - uses: actions/configure-pages@v5
         if: steps.pages.outputs.hazir == 'true'
       - uses: actions/upload-pages-artifact@v4

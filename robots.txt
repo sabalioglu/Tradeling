@@ -1,0 +1,10 @@
+# Arama motorları sayfayı okuyabilir: sayfadaki "noindex" etiketini görüp dizine eklemezler.
+# (robots.txt ile tamamen engellenen sayfa, başka yerden bağlantı alırsa adresiyle dizine girebilir.)
+# Diğer tüm tarayıcılar, yapay zekâ veri toplayıcıları dahil, engellidir.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: YandexBot
+Allow: /
+
+User-agent: *
+Disallow: /

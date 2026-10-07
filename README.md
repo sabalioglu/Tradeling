@@ -8,7 +8,7 @@ Türkiye'deki bir hububat ticaret masası için sabah bülteni dashboard'u. Stat
 
 ## Nasıl açılır
 
-- Canlı: Cloudflare Workers (ya da GitHub Pages) üzerinden, kendi alan adınızla. Kurulum aşağıda, "Canlı yayın ve otomasyon" bölümünde.
+- Canlı: https://trade.agentized.io (GitHub Pages). Kurulum aşağıda, "Canlı yayın ve otomasyon" bölümünde.
 - Yerel: `index.html` dosyasını tarayıcıda açın. `data.js`, `tazelik.js` ve `app.js` aynı klasörde olmalıdır.
 
 USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt gelmezse ExchangeRate-API). İkisi de yanıt vermezse bültendeki değer kalır.
@@ -17,10 +17,12 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 
 | Dosya | Görevi |
 |---|---|
-| `index.html` | Sayfa yapısı ve stil |
+| `index.html` | Sayfa yapısı, stil ve içerik güvenlik politikası (CSP) |
 | `app.js` | Sayfayı `data.js`'ten çizer; hesaplanan değerler ($/t, TL→$, % değişim) burada üretilir |
 | `tazelik.js` | Tazelik kuralları. Sayfa ve doğrulama betiği aynı dosyayı kullanır |
 | `data.js` | Günlük veri. Rutin yalnızca bu dosyayı değiştirir |
+| `fonts.css`, `fonts/` | Yazı tipleri (Archivo, IBM Plex; SIL OFL 1.1). Siteden sunulur, Google'a istek gitmez |
+| `robots.txt` | Arama motoru ve veri toplayıcı kuralları (bkz. "Gizlilik") |
 | `scripts/kontrol.mjs` | Doğrulama: yapı, kaynak numaraları, makul aralıklar, tazelik |
 | `scripts/onizleme.mjs` | Sayfayı başsız Chromium'da açar, hata arar, ekran görüntüsü alır |
 | `scripts/cek.mjs` | API'si olan kaynaklardan (TCMB, CFTC vb.) mekanik veri çekimi |
@@ -38,24 +40,44 @@ USD/TRY ve EUR/TRY sayfa açılırken ayrıca canlı çekilir (Coinbase, yanıt 
 |---|---|---|---|
 | Veri çek | Hafta içi 13:07, 15:45, 23:20 | CBOT/KC uzlaşmaları, kur, Konya borsası, AB Rouen, CFTC COT; değiştiyse `main`'e gönderir | Yok, ücretsiz |
 | Sabah bülteni | Her gün 06:29 | `SKILL.md` prosedürü: araştırma, bülten metni, doğrulama, gönderim | Claude (aboneliğinizden) |
-| Yayın | Her güncellemeden sonra | `index.html`, `app.js`, `tazelik.js`, `data.js`'i Cloudflare Workers'a ya da GitHub Pages'e yayınlar (hangisi ayarlıysa) | Yok |
+| Yayın | Her güncellemeden sonra | Sayfa dosyalarını GitHub Pages'e ya da Cloudflare Workers'a yayınlar (hangisi ayarlıysa) | Yok |
 
 Bir iş akışı başarısız olursa GitHub e-postayla haber verir. Elle çalıştırmak için: *Actions → iş akışı → Run workflow*.
 
 **Bir kerelik kurulum (repo sahibi yapar):**
 
 1. **Claude jetonu.** Bilgisayarınızda `claude setup-token` çalıştırın ve çıkan jetonu *Settings → Secrets and variables → Actions → New repository secret* ile `CLAUDE_CODE_OAUTH_TOKEN` adıyla ekleyin. Jeton yokken "Sabah bülteni" kendini atlar.
-2. **Yayın hedefi.** Birini seçin:
-   - **Cloudflare Workers (önerilen).** Alan adınız Cloudflare'de ise DNS kaydı ve HTTPS sertifikası kendiliğinden kurulur.
-     1. Cloudflare panelinde *My Profile → API Tokens → Create Token → "Edit Cloudflare Workers"* şablonunu seçin; *Zone Resources* kısmında alan adınızı seçip jetonu oluşturun.
-     2. Hesap kimliğini (*Account ID*) Cloudflare panelinin Workers sayfasından kopyalayın.
-     3. GitHub'da *Settings → Secrets and variables → Actions*: `CLOUDFLARE_API_TOKEN` ve `CLOUDFLARE_ACCOUNT_ID` sırlarını ekleyin; *Variables* sekmesinde `ALAN_ADI` değişkenine yayın adresini yazın (ör. `hububat.sirketiniz.com`). Bu adda mevcut bir CNAME kaydı olmamalıdır.
-     4. *Actions → Yayın → Run workflow*. Sayfa birkaç dakika içinde `https://<ALAN_ADI>` ve `hububat-masasi.<hesap>.workers.dev` adreslerinde açılır.
-   - **GitHub Pages.** *Settings → Pages → Build and deployment → Source: GitHub Actions*; aynı sayfada *Custom domain* kutusuna alan adını yazıp *Enforce HTTPS*'i açın. DNS panelinizde alt alan adı için `CNAME` kaydı (`hububat` → `sabalioglu.github.io`), kök alan adı için `A` kayıtları (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) ekleyin.
+2. **Yayın: GitHub Pages ve `trade.agentized.io`.** agentized.io'nun DNS'i Hostinger'da olduğu için bu yol kullanılır.
+   1. GitHub'da *Settings → Pages → Build and deployment → Source: GitHub Actions*. Aynı sayfada *Custom domain* kutusuna `trade.agentized.io` yazıp *Save*. Önce burayı kaydedin, sonra DNS kaydını ekleyin; sıra tersine olursa alt alan adı bir süre başka bir GitHub hesabına açık kalır.
+   2. Hostinger hPanel → *Alan Adları → agentized.io → DNS / Ad Sunucuları → DNS kayıtları*: yeni kayıt, Tür `CNAME`, Ad `trade`, Hedef `sabalioglu.github.io`, TTL varsayılan. Mevcut kayıtlara (Vercel'e giden `@` ve `www`, Google e-postası için `MX`) dokunmayın.
+   3. DNS yayıldığında (genelde birkaç dakika, en geç birkaç saat) *Settings → Pages* sayfasında *Enforce HTTPS*'i açın.
+   4. *Actions → Yayın → Run workflow*. Sayfa `https://trade.agentized.io` adresinde açılır.
+   5. Önerilen: GitHub profil ayarlarında *Pages → Add a domain* ile `agentized.io`'yu doğrulayın; GitHub'ın verdiği `TXT` kaydını (`_github-pages-challenge-sabalioglu`) Hostinger'a ekleyip *Verify*'a basın. Doğrulanan alan adının alt alan adlarını başka hesap kullanamaz.
+
+   GitHub Pages ücretsiz planda herkese açık repo ister. Site her durumda herkese açıktır.
+3. **Alternatif: Cloudflare Workers.** Özel alan adı yalnızca alan adı Cloudflare'de ise (ad sunucuları Cloudflare'e taşınmışsa) bağlanır; o zaman DNS kaydı ve HTTPS sertifikası kendiliğinden kurulur.
+   1. Cloudflare panelinde *My Profile → API Tokens → Create Token → "Edit Cloudflare Workers"* şablonunu seçin; *Zone Resources* kısmında alan adınızı seçip jetonu oluşturun.
+   2. Hesap kimliğini (*Account ID*) Cloudflare panelinin Workers sayfasından kopyalayın.
+   3. GitHub'da *Settings → Secrets and variables → Actions*: `CLOUDFLARE_API_TOKEN` ve `CLOUDFLARE_ACCOUNT_ID` sırlarını ekleyin; *Variables* sekmesinde `ALAN_ADI` değişkenine yayın adresini yazın. Bu adda mevcut bir CNAME kaydı olmamalıdır.
+   4. *Actions → Yayın → Run workflow*. Sayfa birkaç dakika içinde `https://<ALAN_ADI>` ve `hububat-masasi.<hesap>.workers.dev` adreslerinde açılır.
 
 **Yedek rutin:** claude.ai'deki "Hububat Masası sabah güncellemesi" rutini her gün 08:13 TSİ'de kalıcı "Hububat Masası · sabah rutini" oturumunu uyandırır. O günün bülteni zaten yayınlandıysa hiçbir şey yapmadan durur; GitHub tarafı çalışmadıysa bülteni o yazar. Bu oturumu arşivlemeyin. Yedeğe gerek kalmazsa claude.ai → Routines'ten kapatılabilir.
 
 Prosedürün tamamı `.claude/skills/sabah-guncellemesi/SKILL.md` dosyasındadır. Prosedürü değiştirmek için iş akışını değil bu dosyayı düzenleyin. Pazartesileri prosedür açık kaynak araç listesini de yeniler.
+
+## Gizlilik
+
+Sayfa herkese açıktır; adresi bilen herkes görebilir. Alınan önlemler:
+
+- **Arama motorları:** sayfada `noindex, nofollow, noarchive` etiketi var. `robots.txt` yalnızca Google, Bing ve Yandex'in sayfayı okumasına izin verir; bu etiketi görüp sayfayı dizine eklememeleri için gereklidir. Yapay zekâ veri toplayıcıları dahil diğer tarayıcılar engellidir.
+- **Üçüncü taraf yok:** çerez, analiz ya da takip kodu yok; yazı tipleri sitenin kendisinden sunulur. `index.html`'deki içerik güvenlik politikası (CSP) sayfanın yalnızca kendi dosyalarını yüklemesine ve yalnızca iki kur servisine bağlanmasına izin verir. Metin alanlarına karışabilecek kod çalışmaz.
+- **Yönlendiren bilgisi:** `no-referrer`. Sayfadaki bir bağlantıya tıklandığında karşı site ziyaretçinin nereden geldiğini görmez.
+
+Sonra karar verilecekler:
+
+- **Canlı kur:** ziyaretçinin tarayıcısı Coinbase'e (yanıt yoksa ExchangeRate-API'ye) bağlanır; bu servisler ziyaretçinin IP adresini ve sitenin adresini görür. İstenirse kapatılır; kur günde üç kez repo tarafında zaten çekiliyor.
+- **Repo herkese açık:** kod ve `data.js` geçmişi GitHub'da görünür. Özel repodan Pages yayını ücretli plan (GitHub Pro) ister; site yine herkese açık olur.
+- **Giriş isteyen sayfa:** Cloudflare Access gerekir (50 kullanıcıya kadar ücretsiz). Bunun için ya agentized.io'nun ad sunucuları Cloudflare'e taşınır (Vercel ve Google e-posta kayıtları aynen kopyalanır) ya da sayfa Cloudflare Workers'ın `workers.dev` adresinden yayınlanır.
 
 ## Tazelik kuralları
 

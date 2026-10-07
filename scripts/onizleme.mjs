@@ -1,6 +1,6 @@
 // Sayfayı başsız Chromium'da açar, çizim hatalarını yakalar ve ekran görüntüsü alır.
 //   node scripts/onizleme.mjs [çıktı-klasörü]
-// Dış istekler (yazı tipleri, canlı kur) engellenir; sayfa yalnızca repodaki dosyalarla çizilmelidir.
+// Dış istekler (canlı kur) engellenir; sayfa yalnızca repodaki dosyalarla çizilmelidir.
 import { createRequire } from "node:module";
 import { execSync } from "node:child_process";
 import { mkdirSync } from "node:fs";
@@ -32,8 +32,10 @@ for (const [name, width] of [["masaustu", 1280], ["mobil", 390]]) {
   await page.route("**/*", (r) => (r.request().url().startsWith("file:") ? r.continue() : r.abort()));
   await page.goto(pathToFileURL(join(ROOT, "index.html")).href);
   await page.waitForTimeout(400);
+  await page.evaluate(() => document.fonts.ready);
 
   const got = await page.evaluate(() => ({
+    fonts: [...new Set([...document.fonts].filter((f) => f.status === "loaded").map((f) => f.family.replace(/"/g, "")))],
     kpis: document.querySelectorAll("#ticker .kpi").length,
     brief: document.querySelectorAll("#brief li").length,
     risks: document.querySelectorAll("#risks li").length,
@@ -49,6 +51,7 @@ for (const [name, width] of [["masaustu", 1280], ["mobil", 390]]) {
   if (got.chart < 1) problems.push(`[${name}] grafik çizilmedi`);
   if (got.loadError) problems.push(`[${name}] data.js yüklenemedi`);
   if (got.overflow) problems.push(`[${name}] sayfa yatayda taşıyor`);
+  for (const f of ["Archivo", "IBM Plex Sans", "IBM Plex Mono"]) if (!got.fonts.includes(f)) problems.push(`[${name}] yazı tipi yüklenmedi: ${f} (fonts/)`);
   console.log(`${name}: ${got.kpis} gösterge, ${got.brief} özet, ${got.refs} kaynak, ${got.projects} proje satırı · ${got.pill}`);
 
   const file = join(out, `${name}.png`);
