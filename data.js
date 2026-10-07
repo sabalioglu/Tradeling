@@ -23,8 +23,22 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T16:59:00+03:00",
-      "src": [26]
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [28]
+    },
+    {
+      "id": "kc_wheat",
+      "label": "KC buğday (HRW) · Ara-26",
+      "contract": "Dec 26",
+      "value": 756.25,
+      "decimals": 2,
+      "unit": "¢/bu",
+      "perTonne": 36.7437,
+      "asOf": "2026-10-06",
+      "asOfNote": "uzlaşma",
+      "cadence": "gunluk",
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [28]
     },
     {
       "id": "cbot_corn",
@@ -38,8 +52,8 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T16:59:00+03:00",
-      "src": [26]
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [28]
     },
     {
       "id": "cbot_soy",
@@ -53,62 +67,65 @@ window.HUBUBAT = {
       "asOf": "2026-10-06",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T16:59:00+03:00",
-      "src": [26]
-    },
-    {
-      "id": "ru_fob",
-      "label": "Rus buğdayı FOB · %12,5",
-      "value": 212,
-      "decimals": 0,
-      "unit": "$/t",
-      "sub": "Novorossiysk · işlem az, fiyat nominal",
-      "asOf": "2026-09-30",
-      "asOfNote": "Eylül sonu",
-      "cadence": "haftalik",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [4]
-    },
-    {
-      "id": "eu_wheat",
-      "label": "AB buğdayı",
-      "value": 289,
-      "decimals": 0,
-      "approx": true,
-      "unit": "$/t",
-      "spread": { "kpi": "ru_fob", "label": "Rus FOB ile fark" },
-      "asOf": "2026-09-30",
-      "asOfNote": "Eylül sonu",
-      "cadence": "gunluk",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [4]
-    },
-    {
-      "id": "ru_duty",
-      "label": "Rus ihracat vergisi · buğday",
-      "value": 0,
-      "decimals": 0,
-      "unit": "RUB/t",
-      "sub": "31 Ara'ya kadar · önceki 787,5",
-      "asOf": "2026-09-19",
-      "asOfNote": "kararname",
-      "cadence": "olay",
-      "checked": "2026-10-07T08:00:00+03:00",
-      "src": [5, 7]
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.1978,
+      "value": 49.1825,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.0239, "decimals": 2 },
-      "asOf": "2026-10-07T16:59:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 54.99, "decimals": 2 },
+      "asOf": "2026-10-07T17:10:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-07T16:59:00+03:00",
+      "checked": "2026-10-07T17:10:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 7 Eki 15:30: 49,15",
       "asOfNote": "piyasa"
+    },
+    {
+      "id": "ru_fob",
+      "label": "Rus buğdayı FOB · %12,5 · Baltık",
+      "value": 266,
+      "decimals": 0,
+      "unit": "$/t",
+      "base": { "value": 267, "label": "önceki haftaya göre" },
+      "sub": "Vysotsk, Ust-Luga · Kasım 2. yarı teslim · Novorossiysk'te işlem yok (nominal 212, RGU)",
+      "asOf": "2026-10-02",
+      "asOfNote": "IKAR, haftalık",
+      "cadence": "haftalik",
+      "checked": "2026-10-07T17:30:00+03:00",
+      "src": [27]
+    },
+    {
+      "id": "eu_wheat",
+      "label": "AB buğdayı · Rouen fiziki",
+      "value": 244.36,
+      "decimals": 2,
+      "unit": "€/t",
+      "eur": true,
+      "spread": { "kpi": "ru_fob", "label": "Rus Baltık FOB ile fark" },
+      "asOf": "2026-09-27",
+      "asOfNote": "21.09–27.09 haftası",
+      "cadence": "haftalik",
+      "maxAge": 14,
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [30]
+    },
+    {
+      "id": "konya_wheat",
+      "label": "Konya TB · 1. grup kırmızı sert",
+      "value": 20684,
+      "decimals": 0,
+      "unit": "TL/t",
+      "fx": "usdtry",
+      "asOf": "2026-10-06",
+      "asOfNote": "borsa ortalaması",
+      "cadence": "gunluk",
+      "checked": "2026-10-07T17:10:00+03:00",
+      "src": [29],
+      "sub": "1. grup beyaz sert 21.461 · 2. grup kırmızı sert 19.554"
     },
     {
       "id": "tmo_sell",
@@ -122,6 +139,19 @@ window.HUBUBAT = {
       "cadence": "olay",
       "checked": "2026-10-07T08:00:00+03:00",
       "src": [11]
+    },
+    {
+      "id": "ru_duty",
+      "label": "Rus ihracat vergisi · buğday",
+      "value": 0,
+      "decimals": 0,
+      "unit": "RUB/t",
+      "sub": "31 Ara'ya kadar · önceki 787,5",
+      "asOf": "2026-09-19",
+      "asOfNote": "kararname",
+      "cadence": "olay",
+      "checked": "2026-10-07T08:00:00+03:00",
+      "src": [5]
     }
   ],
   "brief": [
@@ -217,10 +247,12 @@ window.HUBUBAT = {
     ]
   },
   "ladder": [
-    { "label": "Rus buğdayı FOB Novorossiysk", "kpi": "ru_fob", "note": "%12,5 protein" },
+    { "label": "Rus buğdayı FOB Baltık", "kpi": "ru_fob", "note": "%12,5 protein" },
+    { "label": "AB buğdayı, Rouen fiziki", "kpi": "eu_wheat", "note": "limana teslim" },
     { "label": "CBOT buğday, Ara-26", "kpi": "cbot_wheat" },
-    { "label": "AB buğdayı", "kpi": "eu_wheat" },
-    { "label": "TMO satış, ekmeklik buğday", "kpi": "tmo_sell", "note": "yurt içi teslim" }
+    { "label": "KC buğday (HRW), Ara-26", "kpi": "kc_wheat" },
+    { "label": "TMO satış, ekmeklik buğday", "kpi": "tmo_sell", "note": "yurt içi teslim" },
+    { "label": "Konya TB, 1. grup kırmızı sert", "kpi": "konya_wheat", "note": "borsa ortalaması" }
   ],
   "positioning": {
     "title": "Fon pozisyonları",
@@ -228,7 +260,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-09-29",
-    "checked": "2026-10-07T16:59:00+03:00",
+    "checked": "2026-10-07T17:10:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -402,9 +434,9 @@ window.HUBUBAT = {
       "method": "PDF, otomatik (cek.mjs cbot)",
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
-      "ref": 26,
+      "ref": 28,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T16:59:00+03:00"
+      "lastChecked": "2026-10-07T17:10:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -432,15 +464,39 @@ window.HUBUBAT = {
     },
     {
       "name": "IKAR, SovEcon, Rus Tahıl Birliği",
-      "data": "FOB fiyatları, ihracat tahminleri",
+      "data": "Baltık ve Karadeniz FOB fiyatları, ihracat tahminleri",
       "freq": "Haftalık",
       "cadence": "haftalik",
-      "method": "Haber kaynakları üzerinden",
+      "method": "Haber (Reuters RU, Interfax)",
       "cost": "Ham veri ücretli",
       "status": "used",
-      "ref": 4,
-      "latest": "2026-09-30",
-      "lastChecked": "2026-10-07T08:00:00+03:00"
+      "ref": 27,
+      "latest": "2026-10-02",
+      "lastChecked": "2026-10-07T17:30:00+03:00"
+    },
+    {
+      "name": "Konya Ticaret Borsası",
+      "data": "Ekmeklik buğday işlem fiyatları (sınıf bazında)",
+      "freq": "İş günü",
+      "cadence": "gunluk",
+      "method": "JSON, otomatik (cek.mjs konya)",
+      "cost": "Ücretsiz",
+      "status": "used",
+      "ref": 29,
+      "latest": "2026-10-06",
+      "lastChecked": "2026-10-07T17:10:00+03:00"
+    },
+    {
+      "name": "AB Komisyonu tarım veri portalı",
+      "data": "Fransa değirmenlik buğdayı, Rouen (limana teslim)",
+      "freq": "Haftalık",
+      "cadence": "haftalik",
+      "method": "REST API, otomatik (cek.mjs ab)",
+      "cost": "Ücretsiz, CC BY 4.0",
+      "status": "used",
+      "ref": 30,
+      "latest": "2026-09-27",
+      "lastChecked": "2026-10-07T17:10:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -476,7 +532,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-07T16:59:00+03:00"
+      "lastChecked": "2026-10-07T17:10:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -487,8 +543,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-07T16:59:00+03:00",
-      "lastChecked": "2026-10-07T16:59:00+03:00"
+      "latest": "2026-10-07T17:10:00+03:00",
+      "lastChecked": "2026-10-07T17:10:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -500,7 +556,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-09-29",
-      "lastChecked": "2026-10-07T16:59:00+03:00"
+      "lastChecked": "2026-10-07T17:10:00+03:00"
     },
     {
       "name": "Sektör haberleri",
@@ -552,9 +608,9 @@ window.HUBUBAT = {
     },
     {
       "name": "Euronext",
-      "data": "Paris değirmenlik buğday",
+      "data": "Paris değirmenlik buğday vadelisi",
       "freq": "Günlük",
-      "method": "Lisanslı veri",
+      "method": "Koşulları otomatik çekmeyi ve izinsiz yayını yasaklıyor",
       "cost": "Lisans gerekli",
       "status": "lic",
       "ref": null
@@ -870,12 +926,6 @@ window.HUBUBAT = {
       "published": "2026-09-22"
     },
     {
-      "id": 7,
-      "title": "Biofuels Digest: buğday vergisi 787,5 RUB/t",
-      "url": "https://biofuelsdigest.com/?p=1006793",
-      "published": "2026-09-05"
-    },
-    {
       "id": 8,
       "title": "Baird Maritime: Novorossiysk terminalleri durdu",
       "url": "https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/port-shutdowns-push-russia-into-deeper-grain-export-slowdown",
@@ -973,10 +1023,28 @@ window.HUBUBAT = {
       "published": "2026-10-02"
     },
     {
-      "id": 26,
-      "title": "USDA AMS: Oklahoma Daily Grain Bids, vadeli uzlaşma fiyatları (Final)",
-      "url": "https://www.ams.usda.gov/mnreports/ams_3100.pdf",
+      "id": 27,
+      "title": "Reuters / The Moscow Times: Rus buğdayı ihraç fiyatları (IKAR, Baltık FOB)",
+      "url": "https://ru.themoscowtimes.com/2026/10/05/eksportnye-tseny-na-pshenitsu-rf-prodolzhili-legkoe-snizhenie-analitiki-zhdut-rosta-otgruzok-v-oktyabre-a207806",
+      "published": "2026-10-05"
+    },
+    {
+      "id": 28,
+      "title": "USDA AMS: Kansas City Daily Grain Bids, vadeli uzlaşma fiyatları",
+      "url": "https://www.ams.usda.gov/mnreports/ams_3223.pdf",
       "published": "2026-10-06"
+    },
+    {
+      "id": 29,
+      "title": "Konya Ticaret Borsası: günlük bülten",
+      "url": "https://www.ktb.org.tr/",
+      "published": "2026-10-06"
+    },
+    {
+      "id": 30,
+      "title": "AB Komisyonu tarım veri portalı: Fransa değirmenlik buğdayı, Rouen (limana teslim)",
+      "url": "https://agridata.ec.europa.eu/extensions/DataPortal/cereals.html",
+      "published": "2026-10-01"
     }
   ]
 };

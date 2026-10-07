@@ -66,7 +66,7 @@ req(D.meta.projectsCheckedAt == null || isDate(D.meta.projectsCheckedAt), "meta.
 
 /* ---------- Göstergeler ---------- */
 // Birim hatasını yakalamak için geniş aralıklar. Gerçek bir piyasa hareketi aralığı aşarsa gerekçesiyle genişletin.
-const RANGE = { cbot_wheat: [300, 2000], cbot_corn: [250, 1200], cbot_soy: [700, 2500], ru_fob: [120, 600], eu_wheat: [100, 600], ru_duty: [0, 10000], usdtry: [20, 150], tmo_sell: [5000, 100000] };
+const RANGE = { cbot_wheat: [300, 2000], kc_wheat: [300, 2000], konya_wheat: [5000, 100000], cbot_corn: [250, 1200], cbot_soy: [700, 2500], ru_fob: [120, 600], eu_wheat: [100, 600], ru_duty: [0, 10000], usdtry: [20, 150], tmo_sell: [5000, 100000] };
 const kpiIds = new Set();
 D.kpis.forEach((k, i) => {
   const at = `kpis[${i}] ${k.id || "?"}`;

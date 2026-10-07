@@ -32,46 +32,97 @@ const fmtTR = (n, d) => n.toLocaleString("tr-TR", { minimumFractionDigits: d, ma
 /* ---------- Çekiciler ----------
    Her çekici { kpi | section, values, refs[{title,url,published}], feeds[{name,latest,ref}] } listesi döndürür. */
 const FETCHERS = {
-  // CBOT uzlaşma fiyatları: USDA AMS günlük tahıl raporu (kamu verisi). mnreports adresi hep son raporu verir.
+  // CBOT ve KC uzlaşma fiyatları: USDA AMS günlük tahıl raporları (kamu verisi). mnreports adresi her raporun
+  // son sürümünü verir. Üç rapor aynı "Futures Settlements" tablosunu taşır; en yeni tarihlisi kullanılır.
   // Göstergedeki "contract" alanı (ör. "Dec 26") hangi vadenin okunacağını belirler.
   async cbot() {
-    const url = "https://www.ams.usda.gov/mnreports/ams_3100.pdf";
-    const dir = mkdtempSync(join(tmpdir(), "ams-"));
-    writeFileSync(join(dir, "r.pdf"), await get(url, "buffer"));
-    let text;
-    try {
-      text = execFileSync("pdftotext", ["-layout", join(dir, "r.pdf"), "-"]).toString();
-    } catch (e) {
-      throw new Error("pdftotext çalışmadı (poppler-utils gerekli): " + e.message);
+    const REPORTS = [
+      ["3223", "Kansas City Daily Grain Bids"],
+      ["2886", "Kansas Daily Grain Bids"],
+      ["3100", "Oklahoma Daily Grain Bids"]
+    ];
+    const reports = [];
+    for (const [id, name] of REPORTS) {
+      try {
+        reports.push({ id, name, ...parseAms(await pdfText(`https://www.ams.usda.gov/mnreports/ams_${id}.pdf`)) });
+      } catch (e) {
+        console.log(`  (AMS ${id} okunamadı: ${e.message})`);
+      }
     }
-    const hdr = /Closing Settlement Prices \(¢\/bu\) as of (\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(text);
-    if (!hdr) throw new Error("AMS raporunda uzlaşma tablosu bulunamadı");
-    const asOf = `${hdr[3]}-${hdr[1].padStart(2, "0")}-${hdr[2].padStart(2, "0")}`;
-    const status = (/Grain Report for [\d/]+ - (\w+)/.exec(text) || [])[1] || "";
-    const table = {};
-    for (const line of text.split("\n")) {
-      const m = /^\s*(CBOT|KCBT|MGE)\s+(Corn|Soybeans|Wheat|White Oats)\s+(.*)$/.exec(line);
-      if (!m) continue;
-      const row = (table[`${m[1]} ${m[2]}`] = {});
-      for (const c of m[3].matchAll(/(\d+\.\d+)\s+\((\w{3} \d{2})\)/g)) row[c[2]] = parseFloat(c[1]);
-    }
+    if (!reports.length) throw new Error("hiçbir AMS raporu okunamadı");
+    // En yeni tarih, aynı tarihte kesinleşmiş (Final) rapor öncelikli
+    reports.sort((a, b) => (b.asOf > a.asOf ? 1 : b.asOf < a.asOf ? -1 : (b.status === "Final") - (a.status === "Final")));
+    const best = reports[0];
+    const url = `https://www.ams.usda.gov/mnreports/ams_${best.id}.pdf`;
+    const ref = { title: `USDA AMS: ${best.name}, vadeli uzlaşma fiyatları`, url, published: best.asOf };
     const D = readData();
-    const ROWS = { cbot_wheat: "CBOT Wheat", cbot_corn: "CBOT Corn", cbot_soy: "CBOT Soybeans" };
-    const ref = { title: `USDA AMS: Oklahoma Daily Grain Bids, vadeli uzlaşma fiyatları (${status || "rapor"})`, url, published: asOf };
-    return Object.entries(ROWS).map(([id, row]) => {
+    const ROWS = { cbot_wheat: "CBOT Wheat", kc_wheat: "KCBT Wheat", cbot_corn: "CBOT Corn", cbot_soy: "CBOT Soybeans" };
+    return Object.entries(ROWS).filter(([id]) => D.kpis.some((k) => k.id === id)).map(([id, row]) => {
       const k = D.kpis.find((x) => x.id === id);
-      if (!k || !k.contract) throw new Error(`${id} göstergesinde contract alanı yok`);
-      const v = table[row] && table[row][k.contract];
-      if (!(v > 0)) throw new Error(`AMS raporunda ${row} ${k.contract} yok`);
+      if (!k.contract) throw new Error(`${id} göstergesinde contract alanı yok`);
+      const v = best.table[row] && best.table[row][k.contract];
+      if (!(v > 0)) throw new Error(`AMS ${best.id} raporunda ${row} ${k.contract} yok`);
       return {
         kpi: id,
-        values: { value: v, asOf, asOfNote: status === "Final" ? "uzlaşma" : "ön uzlaşma" },
+        values: { value: v, asOf: best.asOf, asOfNote: best.status === "Final" ? "uzlaşma" : "ön uzlaşma" },
         baseFromPrevious: true,
-        chartPoint: [asOf, v, "AMS uzlaşma"],
+        chartPoint: [best.asOf, v, "AMS uzlaşma"],
         refs: [ref],
-        feeds: [{ name: "USDA AMS günlük raporları", latest: asOf, ref: url }]
+        feeds: [{ name: "USDA AMS günlük raporları", latest: best.asOf, ref: url }]
       };
     });
+  },
+
+  // Konya Ticaret Borsası günlük bülteni (TL/kg). Bugünün bülteni seans kapanınca dolar; sabah bir önceki iş günü okunur.
+  async konya() {
+    const CLASS = "1.GRUP KIRMIZI SERT EKMEKLİK BUĞDAYLAR";
+    const num = (x) => parseFloat(String(x).replace(/\./g, "").replace(",", "."));
+    for (let back = 0; back < 7; back++) {
+      const day = T.tsiDate(new Date(Date.now() - back * 864e5));
+      const url = `https://www.ktb.org.tr/api/v1/Alpha.WebPanel/OnlineKullaniciBulten/GetGunlukBulten/${day}`;
+      const rows = await get(url, "json");
+      if (!Array.isArray(rows) || !rows.length) continue;
+      const r = rows.find((x) => x.SinifAdi === CLASS);
+      if (!r) throw new Error(`KTB ${day} bülteninde "${CLASS}" yok`);
+      const white = rows.find((x) => x.SinifAdi === "1.GRUP BEYAZ SERT EKMEKLİK BUĞDAYLAR");
+      const red2 = rows.find((x) => x.SinifAdi === "2.GRUP KIRMIZI SERT EKMEKLİK BUĞDAYLAR");
+      const t = (x) => fmtTR(Math.round(num(x.OrtFiyat) * 1000), 0);
+      return [{
+        kpi: "konya_wheat",
+        values: {
+          value: Math.round(num(r.OrtFiyat) * 1000), asOf: day, asOfNote: "borsa ortalaması",
+          sub: [white && `1. grup beyaz sert ${t(white)}`, red2 && `2. grup kırmızı sert ${t(red2)}`].filter(Boolean).join(" · ") || null
+        },
+        baseFromPrevious: true,
+        refs: [{ title: "Konya Ticaret Borsası: günlük bülten", url: "https://www.ktb.org.tr/", published: day }],
+        feeds: [{ name: "Konya Ticaret Borsası", latest: day, ref: "https://www.ktb.org.tr/" }]
+      }];
+    }
+    throw new Error("KTB son 7 günde bülten vermedi");
+  },
+
+  // AB Komisyonu tarım veri portalı: Fransa değirmenlik buğdayı, limana teslim (haftalık, CC BY 4.0).
+  async ab() {
+    const z = (n) => String(n).padStart(2, "0");
+    const dmy = (d) => `${z(d.getUTCDate())}/${z(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`;
+    const now = new Date();
+    const q = `memberStateCodes=FR&productCodes=BLTPAN&beginDate=${dmy(new Date(now - 42 * 864e5))}&endDate=${dmy(now)}`;
+    const rows = await get("https://ec.europa.eu/agrifood/api/cereal/prices?" + q, "json");
+    const rouen = rows.filter((r) => /rouen/i.test(r.marketName));
+    if (!rouen.length) throw new Error("AB Komisyonu yanıtında Rouen fiyatı yok");
+    const iso = (s) => s.split("/").reverse().join("-");
+    rouen.sort((a, b) => (iso(b.endDate) > iso(a.endDate) ? 1 : -1));
+    const r = rouen[0];
+    const value = parseFloat(r.price.replace(/[^\d,.-]/g, "").replace(/\./g, "").replace(",", "."));
+    if (!(value > 0)) throw new Error("AB Komisyonu fiyatı okunamadı: " + r.price);
+    const asOf = iso(r.endDate);
+    return [{
+      kpi: "eu_wheat",
+      values: { value, asOf, asOfNote: `${r.beginDate.slice(0, 5).replace("/", ".")}–${r.endDate.slice(0, 5).replace("/", ".")} haftası` },
+      baseFromPrevious: true,
+      refs: [{ title: "AB Komisyonu tarım veri portalı: Fransa değirmenlik buğdayı, Rouen (limana teslim)", url: "https://agridata.ec.europa.eu/extensions/DataPortal/cereals.html", published: iso(r.referencePeriod) }],
+      feeds: [{ name: "AB Komisyonu tarım veri portalı", latest: asOf, ref: "https://agridata.ec.europa.eu/extensions/DataPortal/cereals.html" }]
+    }];
   },
 
   // USD/TRY ve EUR/TRY: değer piyasa kuru (rutin saatinde), alt satırda TCMB gösterge kuru.
@@ -140,6 +191,29 @@ const FETCHERS = {
     }];
   }
 };
+
+async function pdfText(url) {
+  const dir = mkdtempSync(join(tmpdir(), "ams-"));
+  writeFileSync(join(dir, "r.pdf"), await get(url, "buffer"));
+  try {
+    return execFileSync("pdftotext", ["-layout", join(dir, "r.pdf"), "-"]).toString();
+  } catch (e) {
+    throw new Error("pdftotext çalışmadı (poppler-utils gerekli): " + e.message);
+  }
+}
+function parseAms(text) {
+  const hdr = /Closing Settlement Prices \(¢\/bu\) as of (\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(text);
+  if (!hdr) throw new Error("uzlaşma tablosu yok");
+  const status = (/Grain Report for [\d/]+ - (\w+)/.exec(text) || [])[1] || "";
+  const table = {};
+  for (const line of text.split("\n")) {
+    const m = /^\s*(CBOT|KCBT|MGE)\s+(Corn|Soybeans|Wheat|White Oats)\s+(.*)$/.exec(line);
+    if (!m) continue;
+    const row = (table[`${m[1]} ${m[2]}`] = {});
+    for (const c of m[3].matchAll(/(\d+\.\d+)\s+\((\w{3} \d{2})\)/g)) row[c[2]] = parseFloat(c[1]);
+  }
+  return { asOf: `${hdr[3]}-${hdr[1].padStart(2, "0")}-${hdr[2].padStart(2, "0")}`, status, table };
+}
 
 function when(day) {
   const p = T.tsiParts(day);

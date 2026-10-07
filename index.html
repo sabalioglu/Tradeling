@@ -101,13 +101,13 @@ h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
 .pill.next { border-color: transparent; background: var(--accent-soft); color: var(--ink); }
 
 /* Ticker */
+/* Tile dividers are right/bottom shadows; the ones on the outer edge are clipped by overflow,
+   so the grid works for any tile count and column count. */
 .ticker {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
 }
-.kpi { padding: 14px 16px 13px; display: grid; gap: 3px; align-content: start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
-.kpi:nth-child(4n) { border-right: 0; }
-.kpi:nth-last-child(-n+4) { border-bottom: 0; }
+.kpi { padding: 14px 16px 13px; display: grid; gap: 3px; align-content: start; box-shadow: 1px 0 0 var(--line), 0 1px 0 var(--line); min-width: 0; }
 .kpi-label { font-size: 12px; color: var(--ink-2); font-weight: 500; }
 .kpi-value { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
 .kpi-value b { font-family: var(--f-display); font-stretch: 85%; font-weight: 700; font-size: 26px; letter-spacing: -.01em; line-height: 1.1; }
@@ -296,6 +296,9 @@ footer li { break-inside: avoid; margin-bottom: 4px; }
 footer li:target { background: var(--accent-soft); border-radius: 4px; }
 .disc { color: var(--muted); max-width: 90ch; }
 
+@media (max-width: 1100px) {
+  .ticker { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
   .row, .row.even, .row.three { grid-template-columns: minmax(0, 1fr); }
   .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -304,10 +307,6 @@ footer li:target { background: var(--accent-soft); border-radius: 4px; }
 }
 @media (max-width: 720px) {
   .ticker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kpi:nth-child(4n) { border-right: 1px solid var(--line); }
-  .kpi:nth-child(2n) { border-right: 0; }
-  .kpi:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
-  .kpi:nth-last-child(-n+2) { border-bottom: 0; }
   footer ol { columns: 1; }
 }
 @media (max-width: 520px) {
