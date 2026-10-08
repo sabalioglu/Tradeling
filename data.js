@@ -5,8 +5,8 @@
 window.HUBUBAT = {
   "schema": 1,
   "meta": {
-    "bulletinDate": "2026-10-07",
-    "generatedAt": "2026-10-07T17:15:00+03:00",
+    "bulletinDate": "2026-10-08",
+    "generatedAt": "2026-10-08T08:16:00+03:00",
     "generatedBy": "Claude rutini",
     "projectsCheckedAt": "2026-10-07"
   },
@@ -15,71 +15,72 @@ window.HUBUBAT = {
       "id": "cbot_wheat",
       "label": "CBOT buğday · Ara-26",
       "contract": "Dec 26",
-      "value": 704.25,
+      "value": 686.5,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 698.5, "label": "30 Eyl seans içi fiyatına göre" },
+      "base": { "value": 704.25, "label": "6 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-06",
+      "asOf": "2026-10-07",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:37:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [28]
     },
     {
       "id": "kc_wheat",
       "label": "KC buğday (HRW) · Ara-26",
       "contract": "Dec 26",
-      "value": 756.25,
+      "value": 738.5,
       "decimals": 2,
       "unit": "¢/bu",
       "perTonne": 36.7437,
-      "asOf": "2026-10-06",
+      "asOf": "2026-10-07",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:37:00+03:00",
-      "src": [28]
+      "checked": "2026-10-08T08:14:00+03:00",
+      "src": [28],
+      "base": { "value": 756.25, "label": "6 Eki uzlaşmasına göre" }
     },
     {
       "id": "cbot_corn",
       "label": "CBOT mısır · Ara-26",
       "contract": "Dec 26",
-      "value": 508,
+      "value": 502,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 524.75, "label": "30 Eyl seans içi fiyatına göre" },
+      "base": { "value": 508, "label": "6 Eki uzlaşmasına göre" },
       "perTonne": 39.368,
-      "asOf": "2026-10-06",
+      "asOf": "2026-10-07",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:37:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [28]
     },
     {
       "id": "cbot_soy",
       "label": "CBOT soya · Kas-26",
       "contract": "Nov 26",
-      "value": 1303,
+      "value": 1297.5,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 1305.25, "label": "30 Eyl seans içi fiyatına göre" },
+      "base": { "value": 1303, "label": "6 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-06",
+      "asOf": "2026-10-07",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:37:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.1973,
+      "value": 49.2054,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.0399, "decimals": 2 },
-      "asOf": "2026-10-07T17:36:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.1409, "decimals": 2 },
+      "asOf": "2026-10-08T08:14:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:36:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 7 Eki 15:30: 49,15",
       "asOfNote": "piyasa"
@@ -95,7 +96,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-02",
       "asOfNote": "IKAR, haftalık",
       "cadence": "haftalik",
-      "checked": "2026-10-07T17:15:00+03:00",
+      "checked": "2026-10-08T08:16:00+03:00",
       "src": [27]
     },
     {
@@ -110,22 +111,23 @@ window.HUBUBAT = {
       "asOfNote": "21.09–27.09 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-07T17:37:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [30]
     },
     {
       "id": "konya_wheat",
       "label": "Konya TB · 1. grup kırmızı sert",
-      "value": 20684,
+      "value": 20539,
       "decimals": 0,
       "unit": "TL/t",
       "fx": "usdtry",
-      "asOf": "2026-10-06",
+      "asOf": "2026-10-07",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-07T17:37:00+03:00",
+      "checked": "2026-10-08T08:14:00+03:00",
       "src": [29],
-      "sub": "1. grup beyaz sert 21.461 · 2. grup kırmızı sert 19.554"
+      "sub": "1. grup beyaz sert 21.520 · 2. grup kırmızı sert 20.491",
+      "base": { "value": 20684, "label": "6 Eki borsa ortalaması fiyatına göre" }
     },
     {
       "id": "tmo_sell",
@@ -137,7 +139,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-05",
       "asOfNote": "satış başlangıcı",
       "cadence": "olay",
-      "checked": "2026-10-07T17:15:00+03:00",
+      "checked": "2026-10-08T08:16:00+03:00",
       "src": [34],
       "sub": "5,5 Mt · 5–31 Eki teslim · düşük vasıflı 16.750 · KDV ve manipülasyon hariç"
     },
@@ -151,7 +153,7 @@ window.HUBUBAT = {
       "asOf": "2026-09-19",
       "asOfNote": "kararname",
       "cadence": "olay",
-      "checked": "2026-10-07T17:15:00+03:00",
+      "checked": "2026-10-08T08:16:00+03:00",
       "src": [5, 37]
     }
   ],
@@ -160,39 +162,40 @@ window.HUBUBAT = {
       "headline": "Batı Karadeniz'de iki günde üç ticari gemi vuruldu, ikisi battı",
       "body": "5 Ekim'de Ukrayna'nın İzmail limanından İtalya'ya mısır taşıyan Royad Mammadov Romanya açıklarında yanarak battı; iki kişi öldü. Zelenskiy'e göre gemi Türk sahipli ve Rus İHA'larıyla vuruldu. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, kıyıdan yaklaşık 70 deniz mili açıkta hava ve deniz İHA'larıyla iki gemi vuruldu: Togo bayraklı Alfa Watan battı, tahıl yüklü Palau bayraklı Able yandı ve 18 mürettebatı kurtarıldı. Bulgaristan Alfa Watan mürettebatı için aramayı 7 Ekim'de sonuçsuz bitirdi.",
       "src": [31, 32, 38],
-      "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Batı Karadeniz yüklemelerinde navlun ve savaş riski primi yükselebilir; açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
-      "impactSrc": [33, 31],
+      "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Rusagrotrans'a göre Karadeniz'deki gemi saldırıları buğday vadelilerini kısmen destekledi. Açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
+      "impactSrc": [33, 41],
       "detail": [
-        "Royad Mammadov, Saint Kitts ve Nevis bayraklı, Türk işletmeli bir kuru yük gemisi. Ukrayna'nın İzmail limanından mısırla İtalya'nın Ravenna limanına gidiyordu; 5 Ekim'de Romanya karasuları dışında, bir OMV Petrom platformu yakınında vuruldu ve battı. İki kişi öldü, 11 mürettebat kurtarıldı. Rusya Savunma Bakanlığı iki kargo gemisini vurduğunu açıkladı.",
+        "Royad Mammadov, Saint Kitts ve Nevis bayraklı bir kuru yük gemisi; Zelenskiy'e göre Türk sahipli. Ukrayna'nın İzmail limanından mısırla İtalya'nın Ravenna limanına gidiyordu; 5 Ekim'de Romanya karasuları dışında, bir OMV Petrom platformu yakınında vuruldu ve battı. İki kişi öldü, 11 mürettebat kurtarıldı. Rusya Savunma Bakanlığı iki kargo gemisini vurduğunu açıkladı.",
         "6 Ekim'de Togo bayraklı Alfa Watan ile Palau bayraklı Able, Bulgaristan'ın Byala kıyısının yaklaşık 70 mil açığında hava ve deniz dronlarıyla vuruldu. Alfa Watan battı; Bulgaristan mürettebat aramasını 7 Ekim'de sonuçsuz durdurdu. Buğday taşıyan Able yandı; 18 mürettebatın tamamı tahliye edildi, ikisi ağır yaralı.",
         "Bulgaristan Başbakanı Radev saldırıyı uluslararası hukukun ağır ihlali olarak nitelendirdi. Zelenskiy, Bulgar donanmasıyla yapılan ortak incelemenin Rusya'yı işaret ettiğini söyledi; Rusya yorum yapmadı. Bulgaristan beş ek karadan havaya füze sistemi alacağını açıkladı."
       ],
       "detailSrc": [31, 32, 33, 38]
     },
     {
-      "headline": "Rus buğday ihracatı Eylül'de dörtte bire indi, yük Baltık'a kaydı",
-      "body": "Rus Tahıl Birliği'ne göre Eylül'de 1,36 Mt buğday ihraç edildi (geçen yıl 5,4 Mt); Ust-Luga ve Vysotsk başı çekti, alıcı ülke sayısı 37'den 12'ye düştü. Piyasa analistleri Eylül'ü 2,3–2,4 Mt, Ekim'i 2,5 Mt'a kadar tahmin ediyor. SovEcon 2026/27 buğday ihracat tahminini 4,7 Mt indirerek 36,7 Mt'a çekti. IKAR'a göre Baltık FOB 266 $/t.",
-      "src": [35, 27, 36],
-      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi. Novorossiysk yerine Baltık'tan yükleme yolu uzatıyor; Rus kargosunda teslim süresi ve navlun riski sürüyor. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor: vergi muafiyetinin yıl sonunda bitmesi bekleniyor.",
-      "impactSrc": [35, 37],
+      "headline": "Rus buğdayı Baltık'tan rekor çıktı; Ekim'de ihracatın 3 Mt'a yaklaşması bekleniyor",
+      "body": "IKAR'a göre Eylül'de Baltık'tan yaklaşık 1,4 Mt buğday yüklendi (rekor); toplam buğday ihracatı ≈2,5 Mt. IKAR Ekim'de Baltık'tan 1,8 Mt, toplamda 3 Mt'a yakın ihracat bekliyor. Rusagrotrans Eylül'ü ≈2,7 Mt, Temmuz–Eylül'ü yaklaşık 7 Mt (geçen yıl 11,3 Mt) olarak tahmin ediyor; Rus Tahıl Birliği'nin liman verisi Eylül için 1,36 Mt.",
+      "src": [39, 40, 35],
+      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi; Karadeniz yerine Baltık'tan yükleme yolu ve teslim süresini uzatıyor. IKAR'ın Ekim tahmini koşula bağlı: hava ve lojistik elverişli kalırsa. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor.",
+      "impactSrc": [39, 37],
       "detail": [
-        "Rus Tahıl Birliği'ne göre Eylül'de toplam tahıl ihracatı yaklaşık 1,7 Mt'a indi (geçen yıla göre 3,8 kat az); arpa 215,5 bin t, mısır 103 bin t. Sezon başından (1 Temmuz) bu yana tahıl ihracatı 5,4 Mt (geçen yıl 14,4), buğday 4,5 Mt (12,1). En çok yükleme Ust-Luga (530 bin t), Vysotsk (342 bin t) ve Astrahan'dan (281 bin t) yapıldı. Başlıca alıcılar Mısır, Kenya, Suudi Arabistan, Libya ve İran.",
-        "SovEcon'a göre ihracatçılar Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor; Novorossiysk ve Tuapse'deki tahıl terminalleri düşük kapasitede çalışıyor. Demiryolu, Baltık ve Hazar rotaları ayda ancak yüz binlerce ton ekleyebiliyor, eksik Karadeniz hacmi ise milyonlarca ton. Arpa ve mısır ihracat tahminleri 3'er Mt'da değişmedi.",
-        "Rus bütçe taslağının gerekçesine göre 2026 tahıl ihracat vergisi geliri 135,8 milyar rubleden 12,0 milyar rubleye indirildi. 2027 için 60,3 milyar (önceki plan 152,4), 2028 için 58,6 milyar, 2029 için 90,1 milyar ruble öngörülüyor."
+        "IKAR Başkanı Dmitriy Rylko'ya göre Eylül'deki 1,4 Mt'luk Baltık yüklemesinin 1 Mt'tan fazlası Rus Baltık terminallerinden, yaklaşık 400 bin tonu diğer Baltık ülkelerinin limanlarından yapıldı.",
+        "Rusagrotrans'a göre Temmuz–Eylül'de en büyük alıcılar Mısır (1,2 Mt), Azerbaycan ve Kazakistan (0,5'er Mt), Nijerya (0,45 Mt), Kenya (0,35 Mt) ve Bangladeş (0,3 Mt). Eylül sevkiyatının yaklaşık %80'i Baltık limanları ve Orta Asya ülkeleri üzerinden gitti.",
+        "Rus Tahıl Birliği'nin liman verisine göre Eylül'de 12 ülkeye buğday gönderildi (geçen yıl 37); en çok yükleme Ust-Luga (530 bin t) ve Vysotsk'tan (342 bin t). SovEcon 2026 Rus buğday hasadı tahminini Sibirya ve Merkez bölgedeki revizyonlarla 88,2 Mt'tan 87,5 Mt'a indirdi."
       ],
-      "detailSrc": [35, 36, 37]
+      "detailSrc": [39, 40, 35, 42]
     },
     {
-      "headline": "TMO 5 Ekim'den 5,5 Mt buğday satıyor; Konya borsası TMO'nun üstünde",
-      "body": "TMO ekmeklik ve makarnalık buğdayı 17.750–18.500 TL/t'dan (düşük vasıflı 16.750) satışa açtı; ödeme 5–23 Ekim, teslim 31 Ekim'e kadar. Fiyatlar hasat döneminde açıklananla aynı. Konya Ticaret Borsası'nda 6 Ekim'de 1. grup kırmızı sert buğday ortalaması 20.684 TL/t oldu.",
-      "src": [34, 29],
-      "impact": "Borsa fiyatı TMO'nun 18.500 TL/t'luk üst fiyatının ≈2.200 TL/t (≈%12) üstünde. 5,5 Mt'luk arz Ekim'de iç piyasa fiyatlarını TMO seviyesine doğru çekebilir; un sanayicisi için TMO kanalı daha ucuz.",
-      "impactSrc": [34, 29],
+      "headline": "Dünya buğday fiyatları geriledi; CBOT Aralık 686,5 ¢'e indi",
+      "body": "CBOT Aralık buğdayı 7 Ekim'de 686,5 ¢/bu'dan uzlaştı (6 Ekim 704,25 ¢). Rusagrotrans'a göre 29 Eylül–7 Ekim'de ABD SRW buğdayı 9 $ düşüşle 287 $/t, Fransız buğdayı 2 $ düşüşle 271 $/t; Romanya 286 $/t'da sabit. Suudi Arabistan 683 bin ton buğday aldı.",
+      "src": [28, 41],
+      "impact": "Konya Ticaret Borsası'nda 1. grup kırmızı sert buğday 7 Ekim'de 20.539 TL/t (6 Ekim 20.684). TMO'nun 5,5 Mt'luk satışı 17.750–18.500 TL/t'dan 31 Ekim'e kadar sürüyor. Ekim WASDE raporu 9 Ekim Cuma 19:00'da yayımlanacak.",
+      "impactSrc": [29, 34],
       "detail": [
-        "TMO satış listesi: beyaz ve kırmızı ekmeklik buğday 17.750–18.500 TL/t, düşük vasıflı ekmeklik 16.750 TL/t; yerli makarnalık 17.750–18.500 TL/t, düşük vasıflı makarnalık 16.750 TL/t. Arpa 14.000 TL/t, ELÜS kapalı depo arpası 14.300 TL/t. Fiyatlara KDV ve manipülasyon ücreti dahil değil; kapalı depolarda 150 TL/t manipülasyon ücreti alınıyor.",
-        "Konya Ticaret Borsası'nda 6 Ekim ortalamaları: 1. grup kırmızı sert 20.684, 1. grup beyaz sert 21.461, 2. grup kırmızı sert 19.554 TL/t. Borsadaki en düşük sınıf bile TMO'nun üst fiyatının ≈1.050 TL/t üstünde."
+        "Rusagrotrans analistleri düşüşte ABD'de mısır ve soya hasadının yağışlı hava nedeniyle ortalamanın altında ilerlemesini ve kışlık ekimin seyrini etkili gösterdi. Fiyatlar Suudi Arabistan'ın büyük alımı ve Karadeniz'deki gemi saldırılarıyla kısmen toparlandı. Avustralya buğdayı 10 $ düşüşle 290 $/t, Arjantin 1 $ düşüşle 250 $/t.",
+        "Suudi Arabistan'ın 683 bin tonluk alımında fiyat CnF 334,66–348 $/t, teslim 20 Kasım–31 Aralık. AMS verisine göre CBOT Mart-27 buğdayı 701 ¢, KC Aralık 738,5 ¢ (6 Ekim 756,25 ¢).",
+        "Konya'da 7 Ekim'de 1. grup beyaz sert 21.520, 2. grup kırmızı sert 20.491 TL/t. TMO satışında ödeme süresi 23 Ekim'de doluyor."
       ],
-      "detailSrc": [34, 29]
+      "detailSrc": [41, 28, 29, 34]
     }
   ],
   "risks": [
@@ -206,9 +209,9 @@ window.HUBUBAT = {
     {
       "category": "Lojistik",
       "title": "Novorossiysk ve Rus ihracat kapasitesi",
-      "body": "Rus ihracatçıları Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor; alternatif rotalar ayda ancak yüz binlerce ton ekleyebiliyor.",
+      "body": "Rus ihracatçıları Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor. IKAR'a göre Baltık yüklemeleri Eylül'de rekor 1,4 Mt'a çıktı, Ekim'de 1,8 Mt'a yaklaşabilir.",
       "level": "high",
-      "src": [36]
+      "src": [36, 39]
     },
     {
       "category": "Hava",
@@ -220,9 +223,9 @@ window.HUBUBAT = {
     {
       "category": "Fiyat",
       "title": "WASDE öncesi oynaklık",
-      "body": "Ekim WASDE raporu 9 Ekim 19:00'da; ABD ve dünya stok revizyonları CBOT'ta yön belirleyebilir.",
+      "body": "Ekim WASDE raporu 9 Ekim 19:00'da. CBOT Aralık buğdayı rapordan önce 7 Ekim'de 686,5 ¢'e geriledi.",
       "level": "mid",
-      "src": [15]
+      "src": [15, 28]
     },
     {
       "category": "Politika",
@@ -249,6 +252,7 @@ window.HUBUBAT = {
       { "label": "ABD buğday bitiş stoku 2026/27", "value": "717 mn bu", "change": "Ağu 717", "src": [14] },
       { "label": "Rusya buğday ihracatı 2026/27 (SovEcon)", "value": "36,7 Mt", "change": "▼ 4,7 Mt", "src": [36] },
       { "label": "Rusya tahıl ihracatı 2026/27 (SovEcon)", "value": "44,7 Mt", "change": "▼ önceki 49,4", "src": [36] },
+      { "label": "Rusya buğday üretimi 2026 (SovEcon)", "value": "87,5 Mt", "change": "▼ önceki 88,2", "src": [42] },
       { "label": "Türkiye buğday üretimi 2026", "value": "23 Mt üstü", "change": "rekor", "src": [13] }
     ]
   },
@@ -256,25 +260,25 @@ window.HUBUBAT = {
     "note": "Milyon ton · aylık buğday",
     "unit": "Mt",
     "max": 6,
-    "footnote": "Rus Tahıl Birliği liman verisi. Çizgili çubuk tahmindir; bıyık, piyasa analistlerinin daha yüksek Eylül tahminini (2,3–2,4 Mt) gösterir.",
-    "src": [35, 4, 27],
+    "footnote": "Rus Tahıl Birliği liman verisi. Çizgili çubuk tahmindir; bıyık, analistlerin daha yüksek tahminini gösterir (Eylül: Rusagrotrans ≈2,7 Mt, IKAR ≈2,5 Mt).",
+    "src": [35, 4, 40, 39],
     "rows": [
       { "label": "Eylül 2025", "value": 5.4, "display": "5,4", "note": "Geçen yılın aynı ayı (Rus Tahıl Birliği)" },
       { "label": "Ağustos 2026", "value": 1.3, "display": "1,3", "note": "Rus Tahıl Birliği" },
       {
         "label": "Eylül 2026",
         "value": 1.36,
-        "hi": 2.4,
+        "hi": 2.7,
         "display": "1,36",
-        "note": "Rus Tahıl Birliği · analistler 2,3–2,4"
+        "note": "Rus Tahıl Birliği · IKAR ≈2,5 · Rusagrotrans ≈2,7"
       },
       {
         "label": "Ekim 2026",
         "tag": "tahmin",
-        "value": 2.5,
+        "value": 3,
         "estimate": true,
-        "display": "≤2,5",
-        "note": "Analist tahmini (Reuters)"
+        "display": "≈3",
+        "note": "IKAR tahmini (Baltık ≈1,8)"
       }
     ]
   },
@@ -292,7 +296,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-09-29",
-    "checked": "2026-10-07T17:37:00+03:00",
+    "checked": "2026-10-08T08:14:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -470,7 +474,8 @@ window.HUBUBAT = {
       ["2026-09-04", 734, "AMS uzlaşma"],
       ["2026-09-08", 747, "AMS uzlaşma"],
       ["2026-09-30", 698.5, "Seans içi (Reuters)"],
-      ["2026-10-06", 704.25, "AMS uzlaşma"]
+      ["2026-10-06", 704.25, "AMS uzlaşma"],
+      ["2026-10-07", 686.5, "AMS uzlaşma"]
     ]
   },
   "feeds": [
@@ -483,8 +488,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 28,
-      "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:37:00+03:00"
+      "latest": "2026-10-07",
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -508,7 +513,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 37,
       "latest": "2026-10-01",
-      "lastChecked": "2026-10-07T17:15:00+03:00"
+      "lastChecked": "2026-10-08T08:16:00+03:00"
     },
     {
       "name": "IKAR, SovEcon, Rus Tahıl Birliği",
@@ -519,8 +524,8 @@ window.HUBUBAT = {
       "cost": "Ham veri ücretli",
       "status": "used",
       "ref": 27,
-      "latest": "2026-10-05",
-      "lastChecked": "2026-10-07T17:15:00+03:00"
+      "latest": "2026-10-07",
+      "lastChecked": "2026-10-08T08:16:00+03:00"
     },
     {
       "name": "Konya Ticaret Borsası",
@@ -531,8 +536,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 29,
-      "latest": "2026-10-06",
-      "lastChecked": "2026-10-07T17:37:00+03:00"
+      "latest": "2026-10-07",
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -544,7 +549,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-09-27",
-      "lastChecked": "2026-10-07T17:37:00+03:00"
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -556,7 +561,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 34,
       "latest": "2026-10-02",
-      "lastChecked": "2026-10-07T17:15:00+03:00"
+      "lastChecked": "2026-10-08T08:16:00+03:00"
     },
     {
       "name": "USDA WASDE ve FAS",
@@ -580,7 +585,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -591,8 +596,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-07T17:36:00+03:00",
-      "lastChecked": "2026-10-07T17:36:00+03:00"
+      "latest": "2026-10-08T08:14:00+03:00",
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -604,7 +609,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-09-29",
-      "lastChecked": "2026-10-07T17:37:00+03:00"
+      "lastChecked": "2026-10-08T08:14:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -616,7 +621,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 32,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-07T17:15:00+03:00"
+      "lastChecked": "2026-10-08T08:16:00+03:00"
     },
     {
       "name": "Resmî Gazete",
@@ -1032,7 +1037,7 @@ window.HUBUBAT = {
       "id": 23,
       "title": "Coinbase döviz kurları API (piyasa kuru)",
       "url": "https://api.coinbase.com/v2/exchange-rates?currency=USD",
-      "published": "2026-10-07"
+      "published": "2026-10-08T08:14:00+03:00"
     },
     {
       "id": 24,
@@ -1056,13 +1061,13 @@ window.HUBUBAT = {
       "id": 28,
       "title": "USDA AMS: Kansas City Daily Grain Bids, vadeli uzlaşma fiyatları",
       "url": "https://www.ams.usda.gov/mnreports/ams_3223.pdf",
-      "published": "2026-10-06"
+      "published": "2026-10-07"
     },
     {
       "id": 29,
       "title": "Konya Ticaret Borsası: günlük bülten",
       "url": "https://www.ktb.org.tr/",
-      "published": "2026-10-06"
+      "published": "2026-10-07"
     },
     {
       "id": 30,
@@ -1116,6 +1121,30 @@ window.HUBUBAT = {
       "id": 38,
       "title": "Baird Maritime: Bulgaristan mürettebat aramasını durdurdu",
       "url": "https://www.bairdmaritime.com/security/incidents/no-survivors-found-bulgaria-ends-search-for-crew-of-drone-hit-black-sea-vessel",
+      "published": "2026-10-07"
+    },
+    {
+      "id": 39,
+      "title": "Interfax: IKAR, Eylül'de Baltık'tan rekor buğday sevkiyatı",
+      "url": "https://www.interfax.ru/business/1120817",
+      "published": "2026-10-07"
+    },
+    {
+      "id": 40,
+      "title": "Interfax: Rusagrotrans, Temmuz–Eylül buğday ihracatı ≈7 Mt",
+      "url": "https://www.interfax.ru/business/1120901",
+      "published": "2026-10-07"
+    },
+    {
+      "id": 41,
+      "title": "Interfax: Rusagrotrans, dünya buğday fiyatları (29 Eyl–7 Eki)",
+      "url": "https://www.interfax.ru/business/1120902",
+      "published": "2026-10-07"
+    },
+    {
+      "id": 42,
+      "title": "Interfax: SovEcon Rus buğday hasadı tahminini 87,5 Mt'a indirdi",
+      "url": "https://www.interfax.ru/business/1120927",
       "published": "2026-10-07"
     }
   ]
