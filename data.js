@@ -5,8 +5,8 @@
 window.HUBUBAT = {
   "schema": 1,
   "meta": {
-    "bulletinDate": "2026-10-09",
-    "generatedAt": "2026-10-09T08:16:00+03:00",
+    "bulletinDate": "2026-10-10",
+    "generatedAt": "2026-10-10T08:15:00+03:00",
     "generatedBy": "Claude rutini",
     "projectsCheckedAt": "2026-10-07"
   },
@@ -15,72 +15,72 @@ window.HUBUBAT = {
       "id": "cbot_wheat",
       "label": "CBOT buğday · Ara-26",
       "contract": "Dec 26",
-      "value": 683.25,
+      "value": 671,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 686.5, "label": "7 Eki uzlaşmasına göre" },
+      "base": { "value": 683.25, "label": "8 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-08",
+      "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [28]
     },
     {
       "id": "kc_wheat",
       "label": "KC buğday (HRW) · Ara-26",
       "contract": "Dec 26",
-      "value": 736.25,
+      "value": 719.25,
       "decimals": 2,
       "unit": "¢/bu",
       "perTonne": 36.7437,
-      "asOf": "2026-10-08",
+      "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [28],
-      "base": { "value": 738.5, "label": "7 Eki uzlaşmasına göre" }
+      "base": { "value": 736.25, "label": "8 Eki uzlaşmasına göre" }
     },
     {
       "id": "cbot_corn",
       "label": "CBOT mısır · Ara-26",
       "contract": "Dec 26",
-      "value": 500.25,
+      "value": 479.75,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 502, "label": "7 Eki uzlaşmasına göre" },
+      "base": { "value": 500.25, "label": "8 Eki uzlaşmasına göre" },
       "perTonne": 39.368,
-      "asOf": "2026-10-08",
+      "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [28]
     },
     {
       "id": "cbot_soy",
       "label": "CBOT soya · Kas-26",
       "contract": "Nov 26",
-      "value": 1287.5,
+      "value": 1292,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 1297.5, "label": "7 Eki uzlaşmasına göre" },
+      "base": { "value": 1287.5, "label": "8 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-08",
+      "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.3414,
+      "value": 49.2819,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.2543, "decimals": 2 },
-      "asOf": "2026-10-09T21:31:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.2081, "decimals": 2 },
+      "asOf": "2026-10-10T08:13:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 9 Eki 15:30: 49,17",
       "asOfNote": "piyasa"
@@ -96,7 +96,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-02",
       "asOfNote": "IKAR, haftalık",
       "cadence": "haftalik",
-      "checked": "2026-10-09T08:16:00+03:00",
+      "checked": "2026-10-10T08:15:00+03:00",
       "src": [27]
     },
     {
@@ -111,24 +111,24 @@ window.HUBUBAT = {
       "asOfNote": "28.09–04.10 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [30],
       "base": { "value": 244.36, "label": "27 Eyl 21.09–27.09 haftası fiyatına göre" }
     },
     {
       "id": "konya_wheat",
       "label": "Konya TB · 1. grup kırmızı sert",
-      "value": 21151,
+      "value": 20592,
       "decimals": 0,
       "unit": "TL/t",
       "fx": "usdtry",
-      "asOf": "2026-10-08",
+      "asOf": "2026-10-09",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-09T21:31:00+03:00",
+      "checked": "2026-10-10T08:13:00+03:00",
       "src": [29],
-      "sub": "1. grup beyaz sert 21.437 · 2. grup kırmızı sert 19.703",
-      "base": { "value": 20539, "label": "7 Eki borsa ortalaması fiyatına göre" }
+      "sub": "1. grup beyaz sert 20.783 · 2. grup kırmızı sert 19.957",
+      "base": { "value": 21151, "label": "8 Eki borsa ortalaması fiyatına göre" }
     },
     {
       "id": "tmo_sell",
@@ -140,7 +140,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-05",
       "asOfNote": "satış başlangıcı",
       "cadence": "olay",
-      "checked": "2026-10-09T08:16:00+03:00",
+      "checked": "2026-10-10T08:15:00+03:00",
       "src": [34],
       "sub": "5,5 Mt · 5–31 Eki teslim · düşük vasıflı 16.750 · KDV ve manipülasyon hariç"
     },
@@ -154,11 +154,37 @@ window.HUBUBAT = {
       "asOf": "2026-09-19",
       "asOfNote": "kararname",
       "cadence": "olay",
-      "checked": "2026-10-09T08:16:00+03:00",
+      "checked": "2026-10-10T08:15:00+03:00",
       "src": [5, 37]
     }
   ],
   "brief": [
+    {
+      "headline": "USDA Rus buğday ihracat tahminini 40 Mt'a indirdi; bol ABD arzıyla CBOT geriledi",
+      "body": "Ekim WASDE'de (9 Ekim) USDA 2026/27 Rusya buğday ihracatı tahminini 43 Mt'tan 40 Mt'a düşürdü; üretim 88 Mt'ta kaldı, Rus bitiş stoku 16,1 Mt'tan 19,1 Mt'a çıktı. ABD buğday stoku 717'den 740 milyon buşele, mısır stoku verim artışıyla 1.567'den 1.849 milyon buşele yükseldi. CBOT Aralık buğdayı 671 ¢'e (8 Ekim 683,25), mısır 479,75 ¢'e (500,25) indi.",
+      "src": [44, 28, 45],
+      "impact": "Türkiye'nin ana tedarikçisi Rusya için USDA tahmini artık 40 Mt; SovEcon 36,7 Mt bekliyor. Dünya buğday stoku 276,0 Mt ile Eylül tahminine yakın kaldı. Konya Ticaret Borsası'nda 1. grup kırmızı sert buğday 9 Ekim'de 20.592 TL/t (8 Ekim 21.151); TMO satışı 18.500 TL/t'dan 31 Ekim'e kadar sürüyor.",
+      "impactSrc": [44, 36, 29, 34],
+      "detail": [
+        "WASDE'ye göre ABD buğday üretimi 1.531'den 1.534 milyon buşele, verim 47,8'den 48,1 buşel/akreye çıktı; ihracat tahmini 775'ten 750 milyon buşele indi. Ortalama çiftlik fiyatı 6,40'tan 6,30 $/buşele düşürüldü. AB buğday üretimi 133,8'den 133,0 Mt'a indirildi.",
+        "Mısırda verim 178,5'ten 181,2 buşel/akreye, üretim 15,80'den 16,03 milyar buşele çıktı. DTN'e göre verim piyasa beklentisinin (177,7) üstünde geldi; Aralık mısırı kısa süre limit düşüşe indi ve 20,5 ¢ kayıpla kapandı. KC Aralık buğdayı 17 ¢ düşüşle 719,25 ¢; Kasım soyası rekor verim tahminine rağmen günü artıda bitirdi.",
+        "Konya'da 9 Ekim'de 1. grup beyaz sert 20.783, 2. grup kırmızı sert 19.957 TL/t."
+      ],
+      "detailSrc": [44, 45, 28, 29]
+    },
+    {
+      "headline": "Rus buğdayı Baltık'tan rekor çıktı; USDA ve SovEcon ihracat tahminlerini düşürdü",
+      "body": "IKAR'a göre Eylül'de Baltık'tan yaklaşık 1,4 Mt buğday yüklendi (rekor); toplam buğday ihracatı ≈2,5 Mt. IKAR Ekim'de Baltık'tan 1,8 Mt, toplamda 3 Mt'a yakın ihracat bekliyor. Rusagrotrans Eylül'ü ≈2,7 Mt, Rus Tahıl Birliği'nin liman verisi 1,36 Mt olarak gösteriyor. Sezon tahmini USDA'da 40 Mt, SovEcon'da 36,7 Mt.",
+      "src": [39, 40, 35, 44, 36],
+      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi; Karadeniz yerine Baltık'tan yükleme yolu ve teslim süresini uzatıyor. IKAR'ın Ekim tahmini koşula bağlı: hava ve lojistik elverişli kalırsa. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor.",
+      "impactSrc": [39, 37],
+      "detail": [
+        "IKAR Başkanı Dmitriy Rylko'ya göre Eylül'deki 1,4 Mt'luk Baltık yüklemesinin 1 Mt'tan fazlası Rus Baltık terminallerinden, yaklaşık 400 bin tonu diğer Baltık ülkelerinin limanlarından yapıldı.",
+        "Rusagrotrans'a göre Temmuz–Eylül'de en büyük alıcılar Mısır (1,2 Mt), Azerbaycan ve Kazakistan (0,5'er Mt), Nijerya (0,45 Mt), Kenya (0,35 Mt) ve Bangladeş (0,3 Mt). Eylül sevkiyatının yaklaşık %80'i Baltık limanları ve Orta Asya ülkeleri üzerinden gitti.",
+        "Rus Tahıl Birliği'nin liman verisine göre Eylül'de 12 ülkeye buğday gönderildi (geçen yıl 37); en çok yükleme Ust-Luga (530 bin t) ve Vysotsk'tan (342 bin t). SovEcon 2026 Rus buğday hasadı tahminini Sibirya ve Merkez bölgedeki revizyonlarla 88,2 Mt'tan 87,5 Mt'a indirdi."
+      ],
+      "detailSrc": [39, 40, 35, 42]
+    },
     {
       "headline": "Batı Karadeniz'de iki günde üç ticari gemi vuruldu, ikisi battı",
       "body": "5 Ekim'de Ukrayna'nın İzmail limanından İtalya'ya mısır taşıyan Royad Mammadov Romanya açıklarında yanarak battı; iki kişi öldü. Zelenskiy'e göre gemi Türk sahipli ve Rus İHA'larıyla vuruldu. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, kıyıdan yaklaşık 70 deniz mili açıkta hava ve deniz İHA'larıyla iki gemi vuruldu: Togo bayraklı Alfa Watan battı, tahıl yüklü Palau bayraklı Able yandı ve 18 mürettebatı kurtarıldı. Bulgaristan Alfa Watan mürettebatı için aramayı 7 Ekim'de sonuçsuz bitirdi; saldırıların faili resmi olarak belirlenmedi.",
@@ -171,32 +197,6 @@ window.HUBUBAT = {
         "Bulgaristan Başbakanı Radev saldırıyı uluslararası hukukun ağır ihlali olarak nitelendirdi. Zelenskiy, Bulgar donanmasıyla yapılan ortak incelemenin Rusya'yı işaret ettiğini söyledi; Rusya yorum yapmadı. Bulgaristan beş ek karadan havaya füze sistemi alacağını açıkladı."
       ],
       "detailSrc": [31, 32, 33, 38]
-    },
-    {
-      "headline": "Rus buğdayı Baltık'tan rekor çıktı; Ekim'de ihracatın 3 Mt'a yaklaşması bekleniyor",
-      "body": "IKAR'a göre Eylül'de Baltık'tan yaklaşık 1,4 Mt buğday yüklendi (rekor); toplam buğday ihracatı ≈2,5 Mt. IKAR Ekim'de Baltık'tan 1,8 Mt, toplamda 3 Mt'a yakın ihracat bekliyor. Rusagrotrans Eylül'ü ≈2,7 Mt, Temmuz–Eylül'ü yaklaşık 7 Mt (geçen yıl 11,3 Mt) olarak tahmin ediyor; Rus Tahıl Birliği'nin liman verisi Eylül için 1,36 Mt.",
-      "src": [39, 40, 35],
-      "impact": "Rusya, Türkiye'nin ana buğday tedarikçisi; Karadeniz yerine Baltık'tan yükleme yolu ve teslim süresini uzatıyor. IKAR'ın Ekim tahmini koşula bağlı: hava ve lojistik elverişli kalırsa. Rus bütçe taslağı 2027'de 60,3 milyar ruble tahıl ihracat vergisi geliri öngörüyor.",
-      "impactSrc": [39, 37],
-      "detail": [
-        "IKAR Başkanı Dmitriy Rylko'ya göre Eylül'deki 1,4 Mt'luk Baltık yüklemesinin 1 Mt'tan fazlası Rus Baltık terminallerinden, yaklaşık 400 bin tonu diğer Baltık ülkelerinin limanlarından yapıldı.",
-        "Rusagrotrans'a göre Temmuz–Eylül'de en büyük alıcılar Mısır (1,2 Mt), Azerbaycan ve Kazakistan (0,5'er Mt), Nijerya (0,45 Mt), Kenya (0,35 Mt) ve Bangladeş (0,3 Mt). Eylül sevkiyatının yaklaşık %80'i Baltık limanları ve Orta Asya ülkeleri üzerinden gitti.",
-        "Rus Tahıl Birliği'nin liman verisine göre Eylül'de 12 ülkeye buğday gönderildi (geçen yıl 37); en çok yükleme Ust-Luga (530 bin t) ve Vysotsk'tan (342 bin t). SovEcon 2026 Rus buğday hasadı tahminini Sibirya ve Merkez bölgedeki revizyonlarla 88,2 Mt'tan 87,5 Mt'a indirdi."
-      ],
-      "detailSrc": [39, 40, 35, 42]
-    },
-    {
-      "headline": "WASDE bugün 19:00'da; CBOT ve AB buğdayı geriledi, Konya yükseldi",
-      "body": "CBOT Aralık buğdayı 8 Ekim'de 683,25 ¢/bu'dan uzlaştı (7 Ekim 686,5; 6 Ekim 704,25). AB Komisyonu verisine göre Rouen değirmenlik buğdayı 28 Eylül–4 Ekim haftasında 236,86 €/t (önceki hafta 244,36). Rusagrotrans'a göre 29 Eylül–7 Ekim'de ABD SRW buğdayı 287 $/t'a, Fransız buğdayı 271 $/t'a geriledi.",
-      "src": [28, 30, 41],
-      "impact": "Konya Ticaret Borsası'nda 1. grup kırmızı sert buğday 8 Ekim'de 21.151 TL/t (7 Ekim 20.539). TMO'nun 5,5 Mt'luk satışı 17.750–18.500 TL/t'dan 31 Ekim'e kadar sürüyor. Pro Farmer'a göre analistler Ekim WASDE'de ABD buğday bitiş stokunun yaklaşık 4 milyon buşel artmasını bekliyor.",
-      "impactSrc": [29, 34, 43],
-      "detail": [
-        "AMS verisine göre 8 Ekim uzlaşmaları: KC Aralık buğdayı 736,25 ¢ (7 Ekim 738,5), mısır Aralık 500,25 ¢ (502), soya Kasım 1.287,5 ¢ (1.297,5).",
-        "Rusagrotrans analistleri dünya fiyatlarındaki düşüşte ABD'de mısır ve soya hasadının yağışlı hava nedeniyle ortalamanın altında ilerlemesini ve kışlık ekimin seyrini etkili gösterdi; fiyatlar Suudi Arabistan'ın 683 bin tonluk alımı (CnF 334,66–348 $/t) ve Karadeniz'deki gemi saldırılarıyla kısmen toparlandı.",
-        "Konya'da 8 Ekim'de 1. grup beyaz sert 21.437, 2. grup kırmızı sert 19.703 TL/t. Pro Farmer'a göre USDA ihracat tahminini güçlenen dolar nedeniyle düşürebilir. WASDE ve Crop Production raporları 9 Ekim 19:00 TSİ'de yayımlanacak."
-      ],
-      "detailSrc": [28, 41, 29, 43]
     }
   ],
   "risks": [
@@ -210,9 +210,9 @@ window.HUBUBAT = {
     {
       "category": "Lojistik",
       "title": "Novorossiysk ve Rus ihracat kapasitesi",
-      "body": "Rus ihracatçıları Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor. IKAR'a göre Baltık yüklemeleri Eylül'de rekor 1,4 Mt'a çıktı, Ekim'de 1,8 Mt'a yaklaşabilir.",
+      "body": "Rus ihracatçıları Karadeniz ve Azak sevkiyatlarının 2027'den önce normale dönmesini beklemiyor. USDA Rus buğday ihracat tahminini 40 Mt'a indirdi; IKAR'a göre Baltık yüklemeleri Eylül'de rekor 1,4 Mt oldu.",
       "level": "high",
-      "src": [36, 39]
+      "src": [36, 44, 39]
     },
     {
       "category": "Hava",
@@ -223,10 +223,10 @@ window.HUBUBAT = {
     },
     {
       "category": "Fiyat",
-      "title": "WASDE öncesi oynaklık",
-      "body": "Ekim WASDE raporu 9 Ekim 19:00'da. Pro Farmer'a göre analistler ABD buğday bitiş stokunda yaklaşık 4 milyon buşel artış bekliyor; ihracat tahmini düşürülebilir.",
+      "title": "Bol ABD arzı",
+      "body": "Ekim WASDE ABD buğday ve mısır stoklarını artırdı; CBOT Aralık buğdayı 671 ¢'e, mısır 479,75 ¢'e geriledi.",
       "level": "mid",
-      "src": [43, 28]
+      "src": [44, 45]
     },
     {
       "category": "Politika",
@@ -245,14 +245,14 @@ window.HUBUBAT = {
   ],
   "supplyDemand": {
     "source": "USDA WASDE",
-    "asOf": "2026-09-11",
+    "asOf": "2026-10-09",
     "rows": [
-      { "label": "Dünya buğday bitiş stoku 2026/27", "value": "276,3 Mt", "change": "▲ Ağu 273,3", "src": [14] },
-      { "label": "Dünya buğday bitiş stoku 2025/26", "value": "280,6 Mt", "change": "Ağu 280,2", "src": [14] },
-      { "label": "ABD mısır üretimi 2026/27", "value": "15,80 mlr bu", "change": "▼ Ağu 16,01", "src": [14] },
-      { "label": "ABD buğday bitiş stoku 2026/27", "value": "717 mn bu", "change": "Ağu 717", "src": [14] },
+      { "label": "Dünya buğday bitiş stoku 2026/27", "value": "276,0 Mt", "change": "▼ Eyl 276,3", "src": [44] },
+      { "label": "Dünya buğday bitiş stoku 2025/26", "value": "281,6 Mt", "change": "▲ Eyl 280,6", "src": [44] },
+      { "label": "Rusya buğday ihracatı 2026/27 (USDA)", "value": "40,0 Mt", "change": "▼ Eyl 43,0", "src": [44] },
+      { "label": "ABD buğday bitiş stoku 2026/27", "value": "740 mn bu", "change": "▲ Eyl 717", "src": [44] },
+      { "label": "ABD mısır üretimi 2026/27", "value": "16,03 mlr bu", "change": "▲ Eyl 15,80", "src": [44] },
       { "label": "Rusya buğday ihracatı 2026/27 (SovEcon)", "value": "36,7 Mt", "change": "▼ 4,7 Mt", "src": [36] },
-      { "label": "Rusya tahıl ihracatı 2026/27 (SovEcon)", "value": "44,7 Mt", "change": "▼ önceki 49,4", "src": [36] },
       { "label": "Rusya buğday üretimi 2026 (SovEcon)", "value": "87,5 Mt", "change": "▼ önceki 88,2", "src": [42] },
       { "label": "Türkiye buğday üretimi 2026", "value": "23 Mt üstü", "change": "rekor", "src": [13] }
     ]
@@ -296,45 +296,45 @@ window.HUBUBAT = {
     "source": "CFTC COT · managed money",
     "cadence": "haftalik",
     "maxAge": 10,
-    "asOf": "2026-09-29",
-    "checked": "2026-10-09T21:31:00+03:00",
+    "asOf": "2026-10-06",
+    "checked": "2026-10-10T08:13:00+03:00",
     "src": [25],
     "rows": [
       {
         "label": "CBOT buğday (SRW)",
         "code": "001602",
-        "long": 82747,
-        "short": 104856,
-        "changeLong": -6054,
-        "changeShort": 4039,
-        "oi": 483142
+        "long": 86954,
+        "short": 115784,
+        "changeLong": 4207,
+        "changeShort": 10928,
+        "oi": 497181
       },
       {
         "label": "KC buğday (HRW)",
         "code": "001612",
-        "long": 71011,
-        "short": 40334,
-        "changeLong": -5728,
-        "changeShort": 4230,
-        "oi": 306523
+        "long": 68775,
+        "short": 45522,
+        "changeLong": -2236,
+        "changeShort": 5188,
+        "oi": 312096
       },
       {
         "label": "CBOT mısır",
         "code": "002602",
-        "long": 439843,
-        "short": 58623,
-        "changeLong": -31623,
-        "changeShort": -8746,
-        "oi": 1857317
+        "long": 393249,
+        "short": 63410,
+        "changeLong": -46594,
+        "changeShort": 4787,
+        "oi": 1859993
       },
       {
         "label": "CBOT soya",
         "code": "005602",
-        "long": 280875,
-        "short": 34317,
-        "changeLong": -19867,
-        "changeShort": -1266,
-        "oi": 1090227
+        "long": 289942,
+        "short": 31876,
+        "changeLong": 9067,
+        "changeShort": -2441,
+        "oi": 1121298
       }
     ]
   },
@@ -392,20 +392,11 @@ window.HUBUBAT = {
   ],
   "calendar": [
     {
-      "date": "2026-10-09",
-      "time": "19:00",
-      "title": "USDA WASDE (Ekim)",
-      "short": "WASDE",
-      "body": "Dünya ve ABD arz-talep tahminleri",
-      "key": true,
-      "src": [15]
-    },
-    {
-      "date": "2026-10-09",
+      "date": "2026-10-16",
       "time": "22:30",
       "title": "CFTC COT",
       "short": "COT",
-      "body": "6 Ekim Salı pozisyonları",
+      "body": "13 Ekim Salı pozisyonları",
       "key": true,
       "src": [25]
     },
@@ -423,7 +414,8 @@ window.HUBUBAT = {
       "title": "USDA WASDE (Kasım)",
       "short": "WASDE",
       "body": "ABD'de yaz saati bittiği için saat 20:00",
-      "src": [15]
+      "src": [15],
+      "key": true
     },
     {
       "date": "2026-12-31",
@@ -477,7 +469,8 @@ window.HUBUBAT = {
       ["2026-09-30", 698.5, "Seans içi (Reuters)"],
       ["2026-10-06", 704.25, "AMS uzlaşma"],
       ["2026-10-07", 686.5, "AMS uzlaşma"],
-      ["2026-10-08", 683.25, "AMS uzlaşma"]
+      ["2026-10-08", 683.25, "AMS uzlaşma"],
+      ["2026-10-09", 671, "AMS uzlaşma"]
     ]
   },
   "feeds": [
@@ -490,8 +483,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 28,
-      "latest": "2026-10-08",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "latest": "2026-10-09",
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -515,7 +508,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 37,
       "latest": "2026-10-01",
-      "lastChecked": "2026-10-09T08:16:00+03:00"
+      "lastChecked": "2026-10-10T08:15:00+03:00"
     },
     {
       "name": "IKAR, SovEcon, Rus Tahıl Birliği",
@@ -527,7 +520,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 27,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-09T08:16:00+03:00"
+      "lastChecked": "2026-10-10T08:15:00+03:00"
     },
     {
       "name": "Konya Ticaret Borsası",
@@ -538,8 +531,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 29,
-      "latest": "2026-10-08",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "latest": "2026-10-09",
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -551,7 +544,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-10-04",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -563,7 +556,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 34,
       "latest": "2026-10-02",
-      "lastChecked": "2026-10-09T08:16:00+03:00"
+      "lastChecked": "2026-10-10T08:15:00+03:00"
     },
     {
       "name": "USDA WASDE ve FAS",
@@ -573,9 +566,9 @@ window.HUBUBAT = {
       "method": "Metin, XML",
       "cost": "Ücretsiz",
       "status": "used",
-      "ref": 14,
-      "latest": "2026-09-11",
-      "lastChecked": "2026-10-09T08:16:00+03:00"
+      "ref": 44,
+      "latest": "2026-10-09",
+      "lastChecked": "2026-10-10T08:15:00+03:00"
     },
     {
       "name": "TCMB gösterge kurları",
@@ -587,7 +580,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-09",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -598,8 +591,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-09T21:31:00+03:00",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "latest": "2026-10-10T08:13:00+03:00",
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -610,8 +603,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 25,
-      "latest": "2026-09-29",
-      "lastChecked": "2026-10-09T21:31:00+03:00"
+      "latest": "2026-10-06",
+      "lastChecked": "2026-10-10T08:13:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -623,7 +616,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 32,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-09T08:16:00+03:00"
+      "lastChecked": "2026-10-10T08:15:00+03:00"
     },
     {
       "name": "Resmî Gazete",
@@ -1004,12 +997,6 @@ window.HUBUBAT = {
       "url": "https://www.milliyet.com.tr/haber/7637313/",
       "published": "2026-08-08"
     },
-    {
-      "id": 14,
-      "title": "DTN: Eylül WASDE özeti",
-      "url": "https://www.dtnpf.com/agriculture/web/ag/news/article/2026/09/11/usda-releases-september-crop-wasde",
-      "published": "2026-09-11"
-    },
     { "id": 15, "title": "USDA WASDE 2026 yayın takvimi", "url": "https://usda.gov/wasde", "published": null },
     {
       "id": 17,
@@ -1039,7 +1026,7 @@ window.HUBUBAT = {
       "id": 23,
       "title": "Coinbase döviz kurları API (piyasa kuru)",
       "url": "https://api.coinbase.com/v2/exchange-rates?currency=USD",
-      "published": "2026-10-09"
+      "published": "2026-10-10T08:13:00+03:00"
     },
     {
       "id": 24,
@@ -1051,7 +1038,7 @@ window.HUBUBAT = {
       "id": 25,
       "title": "CFTC: Commitments of Traders, disaggregated futures-only",
       "url": "https://publicreporting.cftc.gov/Commitments-of-Traders/Disaggregated-Futures-Only/72hh-3qpy",
-      "published": "2026-10-02"
+      "published": "2026-10-09"
     },
     {
       "id": 27,
@@ -1063,13 +1050,13 @@ window.HUBUBAT = {
       "id": 28,
       "title": "USDA AMS: Kansas City Daily Grain Bids, vadeli uzlaşma fiyatları",
       "url": "https://www.ams.usda.gov/mnreports/ams_3223.pdf",
-      "published": "2026-10-08"
+      "published": "2026-10-09"
     },
     {
       "id": 29,
       "title": "Konya Ticaret Borsası: günlük bülten",
       "url": "https://www.ktb.org.tr/",
-      "published": "2026-10-08"
+      "published": "2026-10-09"
     },
     {
       "id": 30,
@@ -1150,10 +1137,16 @@ window.HUBUBAT = {
       "published": "2026-10-07"
     },
     {
-      "id": 43,
-      "title": "Pro Farmer: Ekim WASDE önizlemesi",
-      "url": "https://www.profarmer.com/news/agriculture-news/october-wasde-preview-key-metrics-watch-corn-soybeans-wheat-and-cotton",
-      "published": "2026-10-07"
+      "id": 44,
+      "title": "USDA: WASDE, Ekim 2026",
+      "url": "https://www.usda.gov/oce/commodity/wasde/wasde1026.pdf",
+      "published": "2026-10-09"
+    },
+    {
+      "id": 45,
+      "title": "DTN / Northern Ag Network: Ekim WASDE sonrası vadeliler",
+      "url": "https://www.northernag.net/october-wasdes-shocks-grain-futures/",
+      "published": "2026-10-09"
     }
   ]
 };
