@@ -5,10 +5,10 @@
 window.HUBUBAT = {
   "schema": 1,
   "meta": {
-    "bulletinDate": "2026-10-11",
-    "generatedAt": "2026-10-11T08:14:00+03:00",
+    "bulletinDate": "2026-10-12",
+    "generatedAt": "2026-10-12T08:15:00+03:00",
     "generatedBy": "Claude rutini",
-    "projectsCheckedAt": "2026-10-07"
+    "projectsCheckedAt": "2026-10-12"
   },
   "kpis": [
     {
@@ -23,7 +23,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:16:00+03:00",
       "src": [28]
     },
     {
@@ -37,7 +37,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:16:00+03:00",
       "src": [28],
       "base": { "value": 736.25, "label": "8 Eki uzlaşmasına göre" }
     },
@@ -53,7 +53,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:16:00+03:00",
       "src": [28]
     },
     {
@@ -68,19 +68,19 @@ window.HUBUBAT = {
       "asOf": "2026-10-09",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:16:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.2819,
+      "value": 49.3349,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.2081, "decimals": 2 },
-      "asOf": "2026-10-11T08:14:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.2856, "decimals": 2 },
+      "asOf": "2026-10-12T08:14:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:14:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 9 Eki 15:30: 49,17",
       "asOfNote": "piyasa"
@@ -96,9 +96,9 @@ window.HUBUBAT = {
       "asOf": "2026-10-02",
       "asOfNote": "IKAR, haftalık",
       "cadence": "haftalik",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:15:00+03:00",
       "src": [27],
-      "staleReason": "IKAR haftalık notu pazartesi yayımlanır; 9 Eki fiyatı 12 Eki’de gelecek"
+      "staleReason": "IKAR’ın 9 Eki fiyat notu bugün öğlen yayımlanacak; 08:14 itibarıyla yok"
     },
     {
       "id": "eu_wheat",
@@ -112,7 +112,7 @@ window.HUBUBAT = {
       "asOfNote": "28.09–04.10 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:14:00+03:00",
       "src": [30],
       "base": { "value": 244.36, "label": "27 Eyl 21.09–27.09 haftası fiyatına göre" }
     },
@@ -126,7 +126,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-09",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:14:00+03:00",
       "src": [29],
       "sub": "1. grup beyaz sert 20.783 · 2. grup kırmızı sert 19.957",
       "base": { "value": 21151, "label": "8 Eki borsa ortalaması fiyatına göre" }
@@ -141,7 +141,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-05",
       "asOfNote": "satış başlangıcı",
       "cadence": "olay",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:15:00+03:00",
       "src": [34],
       "sub": "5,5 Mt · 5–31 Eki teslim · düşük vasıflı 16.750 · KDV ve manipülasyon hariç"
     },
@@ -155,7 +155,7 @@ window.HUBUBAT = {
       "asOf": "2026-09-19",
       "asOfNote": "kararname",
       "cadence": "olay",
-      "checked": "2026-10-11T08:14:00+03:00",
+      "checked": "2026-10-12T08:15:00+03:00",
       "src": [5, 37]
     }
   ],
@@ -190,8 +190,8 @@ window.HUBUBAT = {
       "headline": "Batı Karadeniz'de iki günde üç ticari gemi vuruldu, ikisi battı",
       "body": "5 Ekim'de Ukrayna'nın İzmail limanından İtalya'ya mısır taşıyan Royad Mammadov Romanya açıklarında yanarak battı; iki kişi öldü. Zelenskiy'e göre gemi Türk sahipli ve Rus İHA'larıyla vuruldu. 6 Ekim'de Bulgaristan'ın münhasır ekonomik bölgesinde, kıyıdan yaklaşık 70 deniz mili açıkta hava ve deniz İHA'larıyla iki gemi vuruldu: Togo bayraklı Alfa Watan battı, tahıl yüklü Palau bayraklı Able yandı ve 18 mürettebatı kurtarıldı. Bulgaristan Alfa Watan mürettebatı için aramayı 7 Ekim'de sonuçsuz bitirdi; saldırıların faili resmi olarak belirlenmedi.",
       "src": [31, 32, 38],
-      "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Rusagrotrans'a göre Karadeniz'deki gemi saldırıları buğday vadelilerini kısmen destekledi. Açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
-      "impactSrc": [33, 41],
+      "impact": "Saldırılar Romanya ve Bulgaristan açıklarında, Ukrayna ve Tuna çıkışlı yüklerin geçtiği hatta oldu. Bulgaristan Başbakanı Radev saldırıların sigorta maliyetini daha da artırdığını söyledi. Romanya, Bulgaristan ve Türkiye bölgesel güvenliği güçlendirmek için koordinasyon yaptıklarını vurguladı; Romanya ile Bulgaristan Köstence ve Varna merkezli bir Karadeniz Denizcilik Güvenliği Merkezi kuruyor. Açık sözleşmelerde teslim ve sigorta maddeleri gözden geçirilmeli.",
+      "impactSrc": [33, 46],
       "detail": [
         "Royad Mammadov, Saint Kitts ve Nevis bayraklı bir kuru yük gemisi; Zelenskiy'e göre Türk sahipli. Ukrayna'nın İzmail limanından mısırla İtalya'nın Ravenna limanına gidiyordu; 5 Ekim'de Romanya karasuları dışında, bir OMV Petrom platformu yakınında vuruldu ve battı. İki kişi öldü, 11 mürettebat kurtarıldı. Rusya Savunma Bakanlığı iki kargo gemisini vurduğunu açıkladı.",
         "6 Ekim'de Togo bayraklı Alfa Watan ile Palau bayraklı Able, Bulgaristan'ın Byala kıyısının yaklaşık 70 mil açığında hava ve deniz dronlarıyla vuruldu. Alfa Watan battı; Bulgaristan mürettebat aramasını 7 Ekim'de sonuçsuz durdurdu. Buğday taşıyan Able yandı; 18 mürettebatın tamamı tahliye edildi, ikisi ağır yaralı.",
@@ -298,7 +298,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-10-06",
-    "checked": "2026-10-11T08:14:00+03:00",
+    "checked": "2026-10-12T08:14:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -485,7 +485,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 28,
       "latest": "2026-10-09",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:16:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -509,7 +509,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 37,
       "latest": "2026-10-01",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:15:00+03:00"
     },
     {
       "name": "IKAR, SovEcon, Rus Tahıl Birliği",
@@ -521,7 +521,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 27,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:15:00+03:00"
     },
     {
       "name": "Konya Ticaret Borsası",
@@ -533,7 +533,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-10-09",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:14:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -545,7 +545,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-10-04",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:14:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -557,7 +557,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 34,
       "latest": "2026-10-02",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:15:00+03:00"
     },
     {
       "name": "USDA WASDE ve FAS",
@@ -581,7 +581,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-09",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:14:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -592,8 +592,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-11T08:14:00+03:00",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "latest": "2026-10-12T08:14:00+03:00",
+      "lastChecked": "2026-10-12T08:14:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -605,7 +605,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-10-06",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:14:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -617,7 +617,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 32,
       "latest": "2026-10-07",
-      "lastChecked": "2026-10-11T08:14:00+03:00"
+      "lastChecked": "2026-10-12T08:15:00+03:00"
     },
     {
       "name": "Resmî Gazete",
@@ -679,7 +679,7 @@ window.HUBUBAT = {
       "caveat": "CFTC/USDA verisi ABD kamu malı; platformdaki bazı sağlayıcılar (ör. yfinance) kısıtlı. V5 yeni çıktı, sürüm sabitleyin. Managed money için report_type='disaggregated' kullanın.",
       "effort": "orta",
       "recommendation": "hemen",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "CFTC Public Reporting API + sodapy",
@@ -694,7 +694,7 @@ window.HUBUBAT = {
       "caveat": "COT verisi ABD federal kamu malı. PyPI sürümü eski (2.2.0); düz HTTPS isteği de çalışıyor.",
       "effort": "dusuk",
       "recommendation": "hemen",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "TradingView Lightweight Charts",
@@ -704,12 +704,12 @@ window.HUBUBAT = {
       "use": "Fiyat ile fon net pozisyonunu, kalendar spread'i ve FOB farklarını aynı zaman ekseninde göstermek; uyumsuzlukları (fiyat düşerken short'ların azalması gibi) görsel yakalamak.",
       "license": "Apache-2.0",
       "commercial": "serbest",
-      "lastActivity": "2026-09-30",
+      "lastActivity": "2026-10-09",
       "maintained": true,
       "caveat": "Lisans, sayfada TradingView atıf notu ve tradingview.com bağlantısı ister (attributionLogo seçeneği yeterli).",
       "effort": "dusuk",
       "recommendation": "hemen",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "evds (TCMB EVDS istemcisi)",
@@ -724,7 +724,7 @@ window.HUBUBAT = {
       "caveat": "Ücretsiz EVDS API anahtarı gerekir. Resmi olmayan topluluk paketi.",
       "effort": "dusuk",
       "recommendation": "hemen",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "Meteostat (Python)",
@@ -739,7 +739,7 @@ window.HUBUBAT = {
       "caveat": "Veri CC BY 4.0: ticari kullanım serbest, atıf şart. Rusya'da istasyon kapsamı değişken; bölge ortalaması için ERA5 daha sağlam.",
       "effort": "dusuk",
       "recommendation": "hemen",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "Herbie",
@@ -754,7 +754,7 @@ window.HUBUBAT = {
       "caveat": "NOAA verisi kamu malı; ECMWF açık verisi CC BY 4.0 (atıf şart). GRIB2 için eccodes/cfgrib gerekir.",
       "effort": "orta",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "earthkit-data + cdsapi (ERA5)",
@@ -764,12 +764,12 @@ window.HUBUBAT = {
       "use": "Bölgesel 30 yıllık normali ve güncel sezon sapmasını üretip tahminleri bağlama oturtmak; ekim yağışı normalin çok altındaysa Rus kışlık buğday riski long tezini destekler.",
       "license": "Apache-2.0",
       "commercial": "serbest",
-      "lastActivity": "2026-09-30",
+      "lastActivity": "2026-10-08",
       "maintained": true,
       "caveat": "ERA5 CC BY 4.0 (atıf şart); CDS hesabı gerekir, veri birkaç gün gecikmeli.",
       "effort": "orta",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "xclim",
@@ -779,12 +779,12 @@ window.HUBUBAT = {
       "use": "Ham hava verisini buğday ve mısır stres skoruna çevirir; skorun sezon normaline göre kötüleşmesi long, iyileşmesi short lehine okunur.",
       "license": "Apache-2.0",
       "commercial": "serbest",
-      "lastActivity": "2026-10-02",
+      "lastActivity": "2026-10-09",
       "maintained": true,
       "caveat": null,
       "effort": "orta",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "StatsForecast (Nixtla)",
@@ -794,12 +794,12 @@ window.HUBUBAT = {
       "use": "Fiyat, spread, FOB farkı ve USD/TRY için mevsimsel normal bant üretmek; bant dışına taşma ortalamaya dönüş ya da trend kırılımı adayı.",
       "license": "Apache-2.0",
       "commercial": "serbest",
-      "lastActivity": "2026-10-01",
+      "lastActivity": "2026-10-10",
       "maintained": true,
       "caveat": null,
       "effort": "dusuk",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "bt",
@@ -814,7 +814,7 @@ window.HUBUBAT = {
       "caveat": "Vadeli marj ve roll modeli yok. Varsayılan veri Yahoo (kişisel kullanım şartı); üretimde lisanslı veri verin.",
       "effort": "orta",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "Chronos-2 (chronos-forecasting)",
@@ -824,12 +824,12 @@ window.HUBUBAT = {
       "use": "Buğday ve mısır için 1-4 haftalık P10-P90 bantları; ek değişken olarak USD/TRY, fon net pozisyonu ve hava skoru. Bant asimetrisi pozisyon boyutu ve stop seviyesine girdi olur.",
       "license": "Apache-2.0",
       "commercial": "serbest",
-      "lastActivity": "2026-09-17",
+      "lastActivity": "2026-10-05",
       "maintained": true,
       "caveat": "Kod ve chronos-2 ağırlıkları Apache-2.0. Fiyat yönünde isabet sınırlı olabilir; geriye dönük test edilmeden karar girdisi yapmayın.",
       "effort": "orta",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "pysystemtrade",
@@ -844,7 +844,7 @@ window.HUBUBAT = {
       "caveat": "GPL-3.0: şirket içi kullanım serbest; değiştirilmiş kodu üçüncü kişilere dağıtırsanız kaynak açma yükümlülüğü doğar.",
       "effort": "yuksek",
       "recommendation": "degerlendir",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "openEO Python client (Copernicus)",
@@ -859,7 +859,7 @@ window.HUBUBAT = {
       "caveat": "Sentinel verisi açık; ayda 10.000 ücretsiz kredi, yoğun ticari kullanımda ücretli kota gerekebilir. Ekin maskesi ayrıca gerekir.",
       "effort": "yuksek",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "deberta-v3-large-zeroshot-v2.0-c",
@@ -874,7 +874,7 @@ window.HUBUBAT = {
       "caveat": "Statik ağırlık, güncellenmiyor; İngilizce odaklı. Rutin zaten Claude kullandığı için ek fayda sınırlı.",
       "effort": "orta",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "TimesFM (Google Research)",
@@ -889,7 +889,7 @@ window.HUBUBAT = {
       "caveat": "Varsayılan TimesFM 3.0 ağırlıkları yalnız ticari olmayan kullanım içindir. Şirkette yalnız timesfm-2.5-200m (Apache-2.0) kullanılabilir.",
       "effort": "orta",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "QuantConnect LEAN",
@@ -904,7 +904,7 @@ window.HUBUBAT = {
       "caveat": "Motor serbest; QuantConnect bulut verisi ayrı ve ücretli. Docker/.NET kurulumu ağır.",
       "effort": "yuksek",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "Mirror-Market",
@@ -919,7 +919,7 @@ window.HUBUBAT = {
       "caveat": "LICENSE dosyası yok: kod kopyalanamaz, yalnızca fikir alınabilir. Yahoo verisine ve ticari kullanıma kapalı ücretsiz Open-Meteo API'sine bağlı.",
       "effort": "yuksek",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     },
     {
       "name": "grain-market-dashboard",
@@ -934,7 +934,7 @@ window.HUBUBAT = {
       "caveat": "LICENSE dosyası yok: kod kopyalanamaz. 5 Ekim 2026'da açılmış yeni bir depo; fiyatları Yahoo'dan alıyor (kişisel kullanım şartı).",
       "effort": "yuksek",
       "recommendation": "izle",
-      "checked": "2026-10-07"
+      "checked": "2026-10-12"
     }
   ],
   "refs": [
@@ -1027,7 +1027,7 @@ window.HUBUBAT = {
       "id": 23,
       "title": "Coinbase döviz kurları API (piyasa kuru)",
       "url": "https://api.coinbase.com/v2/exchange-rates?currency=USD",
-      "published": "2026-10-11T08:14:00+03:00"
+      "published": "2026-10-12T08:14:00+03:00"
     },
     {
       "id": 24,
@@ -1126,12 +1126,6 @@ window.HUBUBAT = {
       "published": "2026-10-07"
     },
     {
-      "id": 41,
-      "title": "Interfax: Rusagrotrans, dünya buğday fiyatları (29 Eyl–7 Eki)",
-      "url": "https://www.interfax.ru/business/1120902",
-      "published": "2026-10-07"
-    },
-    {
       "id": 42,
       "title": "Interfax: SovEcon Rus buğday hasadı tahminini 87,5 Mt'a indirdi",
       "url": "https://www.interfax.ru/business/1120927",
@@ -1148,6 +1142,12 @@ window.HUBUBAT = {
       "title": "DTN / Northern Ag Network: Ekim WASDE sonrası vadeliler",
       "url": "https://www.northernag.net/october-wasdes-shocks-grain-futures/",
       "published": "2026-10-09"
+    },
+    {
+      "id": 46,
+      "title": "Euronews: Karadeniz’deki drone saldırıları ve Avrupa’nın savunması",
+      "url": "https://www.euronews.com/2026/10/07/deadly-drone-attacks-raise-questions-over-europes-black-sea-defences",
+      "published": "2026-10-07"
     }
   ]
 };
