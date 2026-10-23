@@ -23,7 +23,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-22",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [28]
     },
     {
@@ -37,7 +37,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-22",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [28],
       "base": { "value": 673, "label": "21 Eki uzlaşmasına göre" }
     },
@@ -53,7 +53,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-22",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [28]
     },
     {
@@ -68,19 +68,19 @@ window.HUBUBAT = {
       "asOf": "2026-10-22",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.7374,
+      "value": 49.737,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.7228, "decimals": 2 },
-      "asOf": "2026-10-23T18:01:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.6725, "decimals": 2 },
+      "asOf": "2026-10-23T20:27:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 23 Eki 15:30: 49,61",
       "asOfNote": "piyasa"
@@ -111,7 +111,7 @@ window.HUBUBAT = {
       "asOfNote": "12.10–18.10 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [30],
       "base": { "value": 249.79, "label": "11 Eki 05.10–11.10 haftası fiyatına göre" }
     },
@@ -125,7 +125,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-22",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-23T18:01:00+03:00",
+      "checked": "2026-10-23T20:27:00+03:00",
       "src": [29],
       "sub": "1. grup beyaz sert 21.582 · 2. grup kırmızı sert 19.102",
       "base": { "value": 20193, "label": "21 Eki borsa ortalaması fiyatına göre" }
@@ -299,7 +299,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-10-13",
-    "checked": "2026-10-23T18:01:00+03:00",
+    "checked": "2026-10-23T20:27:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -494,7 +494,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 28,
       "latest": "2026-10-22",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -542,7 +542,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-10-22",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -554,7 +554,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-10-18",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -590,7 +590,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-23",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -601,8 +601,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-23T18:01:00+03:00",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "latest": "2026-10-23T20:27:00+03:00",
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -614,7 +614,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-10-13",
-      "lastChecked": "2026-10-23T18:01:00+03:00"
+      "lastChecked": "2026-10-23T20:27:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
