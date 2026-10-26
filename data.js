@@ -15,72 +15,72 @@ window.HUBUBAT = {
       "id": "cbot_wheat",
       "label": "CBOT buğday · Ara-26",
       "contract": "Dec 26",
-      "value": 625,
+      "value": 616,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 624.75, "label": "22 Eki uzlaşmasına göre" },
+      "base": { "value": 625, "label": "23 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-23",
+      "asOf": "2026-10-26",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [28]
     },
     {
       "id": "kc_wheat",
       "label": "KC buğday (HRW) · Ara-26",
       "contract": "Dec 26",
-      "value": 664.5,
+      "value": 659,
       "decimals": 2,
       "unit": "¢/bu",
       "perTonne": 36.7437,
-      "asOf": "2026-10-23",
+      "asOf": "2026-10-26",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [28],
-      "base": { "value": 665.75, "label": "22 Eki uzlaşmasına göre" }
+      "base": { "value": 664.5, "label": "23 Eki uzlaşmasına göre" }
     },
     {
       "id": "cbot_corn",
       "label": "CBOT mısır · Ara-26",
       "contract": "Dec 26",
-      "value": 456,
+      "value": 455,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 460.5, "label": "22 Eki uzlaşmasına göre" },
+      "base": { "value": 456, "label": "23 Eki uzlaşmasına göre" },
       "perTonne": 39.368,
-      "asOf": "2026-10-23",
+      "asOf": "2026-10-26",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [28]
     },
     {
       "id": "cbot_soy",
       "label": "CBOT soya · Kas-26",
       "contract": "Nov 26",
-      "value": 1256.5,
+      "value": 1241.25,
       "decimals": 2,
       "unit": "¢/bu",
-      "base": { "value": 1253, "label": "22 Eki uzlaşmasına göre" },
+      "base": { "value": 1256.5, "label": "23 Eki uzlaşmasına göre" },
       "perTonne": 36.7437,
-      "asOf": "2026-10-23",
+      "asOf": "2026-10-26",
       "asOfNote": "uzlaşma",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [28]
     },
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 49.7624,
+      "value": 49.7616,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.6519, "decimals": 2 },
-      "asOf": "2026-10-26T19:46:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.6541, "decimals": 2 },
+      "asOf": "2026-10-26T21:51:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 26 Eki 15:30: 49,72",
       "asOfNote": "piyasa"
@@ -111,7 +111,7 @@ window.HUBUBAT = {
       "asOfNote": "12.10–18.10 haftası",
       "cadence": "haftalik",
       "maxAge": 14,
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [30],
       "base": { "value": 249.79, "label": "11 Eki 05.10–11.10 haftası fiyatına göre" }
     },
@@ -125,7 +125,7 @@ window.HUBUBAT = {
       "asOf": "2026-10-23",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-10-26T19:46:00+03:00",
+      "checked": "2026-10-26T21:52:00+03:00",
       "src": [29],
       "sub": "1. grup beyaz sert 21.345 · 2. grup kırmızı sert 19.483",
       "base": { "value": 20366, "label": "22 Eki borsa ortalaması fiyatına göre" }
@@ -299,7 +299,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-10-20",
-    "checked": "2026-10-26T19:46:00+03:00",
+    "checked": "2026-10-26T21:52:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -481,7 +481,8 @@ window.HUBUBAT = {
       ["2026-10-19", 655.25, "AMS uzlaşma"],
       ["2026-10-21", 628.25, "AMS uzlaşma"],
       ["2026-10-22", 624.75, "AMS uzlaşma"],
-      ["2026-10-23", 625, "AMS uzlaşma"]
+      ["2026-10-23", 625, "AMS uzlaşma"],
+      ["2026-10-26", 616, "AMS uzlaşma"]
     ]
   },
   "feeds": [
@@ -494,8 +495,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 28,
-      "latest": "2026-10-23",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "latest": "2026-10-26",
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "Reuters (haber akışı)",
@@ -543,7 +544,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-10-23",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -555,7 +556,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 30,
       "latest": "2026-10-18",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "TMO duyuruları",
@@ -591,7 +592,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-10-26",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -602,8 +603,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-10-26T19:46:00+03:00",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "latest": "2026-10-26T21:51:00+03:00",
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -615,7 +616,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-10-20",
-      "lastChecked": "2026-10-26T19:46:00+03:00"
+      "lastChecked": "2026-10-26T21:52:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -1055,7 +1056,7 @@ window.HUBUBAT = {
       "id": 28,
       "title": "USDA AMS: Kansas City Daily Grain Bids, vadeli uzlaşma fiyatları",
       "url": "https://www.ams.usda.gov/mnreports/ams_3223.pdf",
-      "published": "2026-10-23"
+      "published": "2026-10-26"
     },
     {
       "id": 29,
