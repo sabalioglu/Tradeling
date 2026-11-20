@@ -74,15 +74,15 @@ window.HUBUBAT = {
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 50.4641,
+      "value": 50.5792,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.3905, "decimals": 2 },
-      "asOf": "2026-11-19T23:59:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.4876, "decimals": 2 },
+      "asOf": "2026-11-20T21:33:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-11-19T23:59:00+03:00",
+      "checked": "2026-11-20T21:33:00+03:00",
       "src": [23, 24],
-      "sub": "TCMB gösterge 19 Kas 15:30: 50,42",
+      "sub": "TCMB gösterge 20 Kas 15:30: 50,45",
       "asOfNote": "piyasa"
     },
     {
@@ -118,17 +118,17 @@ window.HUBUBAT = {
     {
       "id": "konya_wheat",
       "label": "Konya TB · 1. grup kırmızı sert",
-      "value": 20686,
+      "value": 20333,
       "decimals": 0,
       "unit": "TL/t",
       "fx": "usdtry",
-      "asOf": "2026-11-18",
+      "asOf": "2026-11-19",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-11-19T23:59:00+03:00",
+      "checked": "2026-11-20T21:33:00+03:00",
       "src": [29],
-      "sub": "1. grup beyaz sert 21.860 · 2. grup kırmızı sert 17.197",
-      "base": { "value": 20641, "label": "17 Kas borsa ortalaması fiyatına göre" }
+      "sub": "2. grup kırmızı sert 20.192",
+      "base": { "value": 20686, "label": "18 Kas borsa ortalaması fiyatına göre" }
     },
     {
       "id": "tmo_sell",
@@ -299,7 +299,7 @@ window.HUBUBAT = {
     "cadence": "haftalik",
     "maxAge": 10,
     "asOf": "2026-11-10",
-    "checked": "2026-11-19T23:59:00+03:00",
+    "checked": "2026-11-20T21:33:00+03:00",
     "src": [25],
     "rows": [
       {
@@ -553,8 +553,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 29,
-      "latest": "2026-11-18",
-      "lastChecked": "2026-11-19T23:59:00+03:00"
+      "latest": "2026-11-19",
+      "lastChecked": "2026-11-20T21:33:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -601,8 +601,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 24,
-      "latest": "2026-11-19",
-      "lastChecked": "2026-11-19T23:59:00+03:00"
+      "latest": "2026-11-20",
+      "lastChecked": "2026-11-20T21:33:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -613,8 +613,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-11-19T23:59:00+03:00",
-      "lastChecked": "2026-11-19T23:59:00+03:00"
+      "latest": "2026-11-20T21:33:00+03:00",
+      "lastChecked": "2026-11-20T21:33:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -626,7 +626,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 25,
       "latest": "2026-11-10",
-      "lastChecked": "2026-11-19T23:59:00+03:00"
+      "lastChecked": "2026-11-20T21:33:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -1048,13 +1048,13 @@ window.HUBUBAT = {
       "id": 23,
       "title": "Coinbase döviz kurları API (piyasa kuru)",
       "url": "https://api.coinbase.com/v2/exchange-rates?currency=USD",
-      "published": "2026-11-19"
+      "published": "2026-11-20"
     },
     {
       "id": 24,
       "title": "TCMB gösterge niteliğindeki döviz kurları",
       "url": "https://www.tcmb.gov.tr/kurlar/today.xml",
-      "published": "2026-11-19"
+      "published": "2026-11-20"
     },
     {
       "id": 25,
@@ -1072,7 +1072,7 @@ window.HUBUBAT = {
       "id": 29,
       "title": "Konya Ticaret Borsası: günlük bülten",
       "url": "https://www.ktb.org.tr/",
-      "published": "2026-11-18"
+      "published": "2026-11-19"
     },
     {
       "id": 30,
