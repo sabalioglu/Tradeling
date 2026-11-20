@@ -74,13 +74,13 @@ window.HUBUBAT = {
     {
       "id": "usdtry",
       "label": "USD/TRY",
-      "value": 50.5792,
+      "value": 50.5761,
       "decimals": 2,
       "unit": "",
-      "secondary": { "label": "EUR/TRY", "value": 55.4876, "decimals": 2 },
-      "asOf": "2026-11-20T21:33:00+03:00",
+      "secondary": { "label": "EUR/TRY", "value": 55.4591, "decimals": 2 },
+      "asOf": "2026-11-20T23:44:00+03:00",
       "cadence": "gunluk",
-      "checked": "2026-11-20T21:33:00+03:00",
+      "checked": "2026-11-20T23:44:00+03:00",
       "src": [23, 24],
       "sub": "TCMB gösterge 20 Kas 15:30: 50,45",
       "asOfNote": "piyasa"
@@ -125,7 +125,7 @@ window.HUBUBAT = {
       "asOf": "2026-11-19",
       "asOfNote": "borsa ortalaması",
       "cadence": "gunluk",
-      "checked": "2026-11-20T21:33:00+03:00",
+      "checked": "2026-11-20T23:44:00+03:00",
       "src": [29],
       "sub": "2. grup kırmızı sert 20.192",
       "base": { "value": 20686, "label": "18 Kas borsa ortalaması fiyatına göre" }
@@ -298,45 +298,45 @@ window.HUBUBAT = {
     "source": "CFTC COT · managed money",
     "cadence": "haftalik",
     "maxAge": 10,
-    "asOf": "2026-11-10",
-    "checked": "2026-11-20T21:33:00+03:00",
+    "asOf": "2026-11-17",
+    "checked": "2026-11-20T23:44:00+03:00",
     "src": [25],
     "rows": [
       {
         "label": "CBOT buğday (SRW)",
         "code": "001602",
-        "long": 83411,
-        "short": 164461,
-        "changeLong": 4632,
-        "changeShort": -1444,
-        "oi": 553579
+        "long": 90741,
+        "short": 175577,
+        "changeLong": 7330,
+        "changeShort": 11116,
+        "oi": 558414
       },
       {
         "label": "KC buğday (HRW)",
         "code": "001612",
-        "long": 51046,
-        "short": 64342,
-        "changeLong": 50,
-        "changeShort": 8237,
-        "oi": 323203
+        "long": 55927,
+        "short": 74068,
+        "changeLong": 4881,
+        "changeShort": 9726,
+        "oi": 330018
       },
       {
         "label": "CBOT mısır",
         "code": "002602",
-        "long": 243161,
-        "short": 265789,
-        "changeLong": 13820,
-        "changeShort": 45243,
-        "oi": 1979758
+        "long": 244177,
+        "short": 278039,
+        "changeLong": 1016,
+        "changeShort": 12250,
+        "oi": 1954229
       },
       {
         "label": "CBOT soya",
         "code": "005602",
-        "long": 181446,
-        "short": 63860,
-        "changeLong": -6267,
-        "changeShort": 18874,
-        "oi": 973693
+        "long": 170322,
+        "short": 56692,
+        "changeLong": -11124,
+        "changeShort": -7168,
+        "oi": 997948
       }
     ]
   },
@@ -554,7 +554,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 29,
       "latest": "2026-11-19",
-      "lastChecked": "2026-11-20T21:33:00+03:00"
+      "lastChecked": "2026-11-20T23:44:00+03:00"
     },
     {
       "name": "AB Komisyonu tarım veri portalı",
@@ -602,7 +602,7 @@ window.HUBUBAT = {
       "status": "used",
       "ref": 24,
       "latest": "2026-11-20",
-      "lastChecked": "2026-11-20T21:33:00+03:00"
+      "lastChecked": "2026-11-20T23:44:00+03:00"
     },
     {
       "name": "Coinbase kur API",
@@ -613,8 +613,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz",
       "status": "used",
       "ref": 23,
-      "latest": "2026-11-20T21:33:00+03:00",
-      "lastChecked": "2026-11-20T21:33:00+03:00"
+      "latest": "2026-11-20T23:44:00+03:00",
+      "lastChecked": "2026-11-20T23:44:00+03:00"
     },
     {
       "name": "CFTC Commitments of Traders",
@@ -625,8 +625,8 @@ window.HUBUBAT = {
       "cost": "Ücretsiz, kamu verisi",
       "status": "used",
       "ref": 25,
-      "latest": "2026-11-10",
-      "lastChecked": "2026-11-20T21:33:00+03:00"
+      "latest": "2026-11-17",
+      "lastChecked": "2026-11-20T23:44:00+03:00"
     },
     {
       "name": "Sektör haberleri (Baird Maritime, Fastmarkets)",
@@ -1060,7 +1060,7 @@ window.HUBUBAT = {
       "id": 25,
       "title": "CFTC: Commitments of Traders, disaggregated futures-only",
       "url": "https://publicreporting.cftc.gov/Commitments-of-Traders/Disaggregated-Futures-Only/72hh-3qpy",
-      "published": "2026-11-13"
+      "published": "2026-11-20"
     },
     {
       "id": 28,
